@@ -1,0 +1,13 @@
+Node:Cue License
+
+Copyright (c) 2026 Allan Le Guyader. All rights reserved.
+
+Node:Cue is free to use and may be shared for free.
+
+You may use Node:Cue for personal, artistic, educational, and professional show-control work.
+
+You may not sell, rent, sublicense, repackage, modify, or commercially exploit Node:Cue itself.
+
+The Node:Cue name, source code, binaries, design, and documentation remain the intellectual property of Allan Le Guyader.
+
+Third-party components bundled with Node:Cue remain under their own licenses. See THIRD_PARTY_LICENSES.txt for third-party notices and additional component-specific rights.
