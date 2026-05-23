@@ -1,5 +1,14 @@
 # Changelog
 
+## Node:Cue 0.18.29 - Tooltip Polish
+
+This release focuses on clearer native tooltips and a simple way to disable them when they are not needed.
+
+### Improvements
+
+- Added an Enable tooltips option in Preferences.
+- Standardized native tooltips across Cuelist, Pads, Playlist, sidebar transport controls, and editor normalization controls.
+
 ## Node:Cue 0.18.28 - Initial Public Release
 
 Node:Cue is a Windows show-control application designed for live audio playback, cue sequencing, pads, playlists, and professional event operation.
