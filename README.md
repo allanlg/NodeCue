@@ -51,3 +51,9 @@ The automatically generated GitHub `Source code` archives contain only this publ
 ## Security
 
 Do not install Node:Cue from unofficial mirrors or repackaged installers. If a release asset looks suspicious or unexpected, do not run it.
+
+## Support
+
+Node:Cue is currently distributed for free. If it helps your work and you want to support ongoing development, optional donations are welcome:
+
+[Support development via PayPal](https://paypal.me/allanleguyader)
