@@ -1,5 +1,17 @@
 # Changelog
 
+## Node:Cue 0.18.30 - Cuelist Overlap and Workflow Fixes
+
+### New Features
+
+- Added Cuelist auto-follow overlap, allowing the next cue to start before the current cue reaches its trimmed end. This makes it possible to build asymmetric crossfades using the existing per-cue fade-in and fade-out settings.
+
+### Fixes
+
+- Fixed a Cuelist navigation issue where using Previous cue after an Enter-triggered GO could move the armed/selected cue back by two positions instead of one in some conditions.
+- Fixed Playlist multi-selection editing so selected playlist tracks show playlist-relevant controls instead of Cuelist cue options.
+- Fixed multi-item drag behavior in the Cuelist and Playlist so selected items move together as a block instead of only moving the item under the pointer.
+
 ## Node:Cue 0.18.29 - Tooltip Polish
 
 This release focuses on clearer native tooltips and a simple way to disable them when they are not needed.
