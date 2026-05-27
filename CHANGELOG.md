@@ -1,5 +1,17 @@
 # Changelog
 
+## Node:Cue 0.18.31 - Playback Time Display and Device Discovery
+
+### Improvements
+
+- Added a Preferences setting for choosing whether Now Playing cards display remaining time or playhead position.
+- Editor headers now show the current source playhead position and total source duration, including idle items and manual waveform playhead moves.
+
+### Fixes
+
+- Improved WASAPI output device discovery so newly connected USB audio interfaces are more reliably listed without restarting Node:Cue.
+- Reapplying System Default now detects when the underlying Windows default output endpoint has changed and reopens the output stream accordingly.
+
 ## Node:Cue 0.18.30 - Cuelist Overlap and Workflow Fixes
 
 ### New Features
