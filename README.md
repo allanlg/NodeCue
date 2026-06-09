@@ -26,12 +26,16 @@ Updater metadata may be published as release assets, including `latest.json` and
 
 Release notes are tracked in [CHANGELOG.md](CHANGELOG.md) and mirrored in GitHub Release descriptions.
 
+OSC input commands are documented in [OSC_COMMANDS.md](OSC_COMMANDS.md).
+
 ## Repository Contents
 
 This repository may contain public distribution files only:
 
 - release notes and update metadata;
 - `CHANGELOG.md`, the public release notes;
+- `OSC_COMMANDS.md`, the public OSC command reference;
+- `NodeCue logo.png`, the public Node:Cue app logo asset;
 - updater manifest examples or public manifests;
 - `LICENSE.txt`, the Node:Cue end-user license;
 - `THIRD_PARTY_LICENSES.txt`, the third-party dependency notice file;

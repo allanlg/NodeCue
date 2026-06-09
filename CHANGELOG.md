@@ -1,5 +1,34 @@
 # Changelog
 
+## Node:Cue 0.19.0 - MIDI/OSC Cues, Waveform Navigation, and Playback Polish
+
+### New Features
+
+- Added MIDI cues for sending Note, Control Change, and Program Change messages to configured MIDI outputs.
+- Added OSC cues for sending OSC commands to configured local or network endpoints.
+- Added OSC input commands so external controllers can trigger Node:Cue transport, Cuelist, Pads, Playlist, bus, and fade actions.
+- Added Play next support across audio, MIDI, OSC, and Stop cues, with overlap timing where applicable.
+- Added a waveform overview strip for zoomed navigation, visible-range resizing, and trim-aware inactive regions.
+- Added editable Start and End fields for audio cues, pads, and playlist tracks.
+- Added an OSC command reference document for configuring external controllers.
+- Added a public Node:Cue logo asset for users who need to identify the app in show files, controller layouts, or documentation.
+
+### Improvements
+
+- Improved Now Playing feedback with clearer pre-wait, post-wait, next-cue, next-track, fade-out, MIDI, OSC, and Stop cue cards.
+- Improved Cuelist Pre-wait, Duration, and Post-wait countdown displays so they update consistently during playback.
+- Reduced UI refresh cost during playback for bus meters, editor meters, Cuelist, Pads, Playlist, Now Playing, and waveform updates.
+- Improved audio device selection by showing both the friendly device name and the technical device name when available.
+- Reworked pad text and pad background color selection with a compact color palette, presets, recent colors, default reset, and live pad preview while editing.
+- Refined Configuration styling, editor fields, normalization buttons, cue status icons, pad color behavior, bus mute styling, and transport tooltips.
+- Improved diagnostic logging so user commands, backend responses, and playback state transitions are easier to follow when troubleshooting sessions.
+
+### Fixes
+
+- Fixed Cuelist and Pads default play mode application when opening Node:Cue without recovering a previous session.
+- Fixed several Play next, loop, pre-wait, post-wait, pause, and Stop All edge cases across audio and control cues.
+- Fixed pad pause/resume transport highlighting so the Resume state matches the Cuelist and Playlist behavior.
+
 ## Node:Cue 0.18.31 - Playback Time Display and Device Discovery
 
 ### Improvements
