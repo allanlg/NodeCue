@@ -1,5 +1,20 @@
 # Changelog
 
+## Node:Cue 0.19.1 - Fade Transitions and Update Notes
+
+### Improvements
+
+- Added Now Playing waiting cards for playback queued behind a Fade out only transition. The card becomes the normal playback card when the queued item starts.
+- Improved update-note rendering in the update window so Markdown headings and lists display correctly.
+- The latest changelog can now be opened from `Info` -> `Check for updates` even when no newer version is available.
+- Recent pad and text colors are now saved when closing the color picker after live preview, even without pressing Apply.
+- Renamed the update dialog's `Later` button to `Close` when it only dismisses the window.
+
+### Fixes
+
+- Fixed Cuelist single-play Fade out only so the next cue waits for the interrupted cue's configured fade-out before starting.
+- Kept item fade-ins intact during single-play Fade out only and Crossfade transitions for Cuelist, Pads, and Playlist playback.
+
 ## Node:Cue 0.19.0 - MIDI/OSC Cues, Waveform Navigation, and Playback Polish
 
 ### New Features
