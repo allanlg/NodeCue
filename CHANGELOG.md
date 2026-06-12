@@ -1,5 +1,24 @@
 # Changelog
 
+## Node:Cue 0.19.2 - Audio Format Support and Interface Polish
+
+### New Features
+
+- Added support for AAC and MP4/M4A audio files.
+- Added support for AIFF/AIFC audio files.
+- Added support for ALAC audio files.
+
+### Improvements
+
+- Refined the DSP, transport, Configuration, and editor control styling for a more cohesive Node:Cue interface.
+- Improved waveform navigation and editor interaction polish while preserving the existing workflow.
+
+### Fixes
+
+- Fixed paused pre-wait cleanup after Stop All so Cuelist cues can be launched reliably again afterward.
+- Fixed Playlist double-click playback so the selected track starts consistently.
+- Fixed paused Cuelist, Pads, and Playlist launches so single-play transitions are not triggered incorrectly.
+
 ## Node:Cue 0.19.1 - Fade Transitions and Update Notes
 
 ### Improvements
