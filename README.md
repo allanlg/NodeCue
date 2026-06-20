@@ -4,9 +4,9 @@ Official public distribution repository for Node:Cue.
 
 This repository is used to publish official Node:Cue installers, release notes, update metadata, and public documentation. It does not contain the application source code and Node:Cue is not distributed as an open-source project.
 
-Website: [allanlg.github.io/NodeCue](https://allanlg.github.io/NodeCue/)
+Website: [nodecue.app](https://nodecue.app/)
 
-Support email: [support.nodecue@gmail.com](mailto:support.nodecue@gmail.com)
+Support email: [support@nodecue.app](mailto:support@nodecue.app)
 
 ## Download
 
@@ -68,4 +68,4 @@ Node:Cue is free to use. If it helps your work, you can support ongoing developm
 
 [Get the optional supporter license](https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98)
 
-For support requests, contact [support.nodecue@gmail.com](mailto:support.nodecue@gmail.com).
+For support requests, contact [support@nodecue.app](mailto:support@nodecue.app).
