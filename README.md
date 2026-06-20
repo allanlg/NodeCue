@@ -4,6 +4,10 @@ Official public distribution repository for Node:Cue.
 
 This repository is used to publish official Node:Cue installers, release notes, update metadata, and public documentation. It does not contain the application source code and Node:Cue is not distributed as an open-source project.
 
+Website: [allanlg.github.io/NodeCue](https://allanlg.github.io/NodeCue/)
+
+Support email: [support.nodecue@gmail.com](mailto:support.nodecue@gmail.com)
+
 ## Download
 
 Installers are published from the [latest GitHub release](https://github.com/allanlg/NodeCue/releases/latest).
@@ -46,6 +50,8 @@ This repository may contain public distribution files only:
 
 Node:Cue is free to use and may be shared for free, but it remains proprietary software. See [LICENSE.txt](LICENSE.txt) for the Node:Cue license.
 
+The optional official supporter license supports development and removes in-app supporter reminders. It does not unlock or restrict playback, projects, show operation, or audio features.
+
 Third-party notices are listed in [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt).
 
 Node:Cue includes `soxr.dll`, a dynamically linked libsoxr component distributed under LGPL-2.1-or-later. Its notice files are included under [licenses/libsoxr](licenses/libsoxr).
@@ -56,8 +62,10 @@ The automatically generated GitHub `Source code` archives contain only this publ
 
 Do not install Node:Cue from unofficial mirrors or repackaged installers. If a release asset looks suspicious or unexpected, do not run it.
 
-## Support
+## Supporter License
 
-Node:Cue is currently distributed for free. If it helps your work and you want to support ongoing development, optional donations are welcome:
+Node:Cue is free to use. If it helps your work, you can support ongoing development with an optional supporter license.
 
-[Support development via PayPal](https://paypal.me/allanleguyader)
+[Get the optional supporter license](https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98)
+
+For support requests, contact [support.nodecue@gmail.com](mailto:support.nodecue@gmail.com).

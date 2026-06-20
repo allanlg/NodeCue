@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Node:Cue</title>
+  <meta name="description" content="Node:Cue is a free live-audio cue playback application for professional show operation.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #171a1d;
+      --panel: rgba(31, 36, 40, 0.76);
+      --panel-solid: #202428;
+      --panel-raised: #252b30;
+      --text: #f2f2ee;
+      --muted: #c1c6c5;
+      --soft: #879093;
+      --line: #3b454c;
+      --line-strong: #53606a;
+      --cue: #6faee8;
+      --pads: #df9a33;
+      --playlist: #8273df;
+      --green: #55b978;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background:
+        radial-gradient(circle at 17% 5%, rgba(69, 125, 170, 0.34), transparent 25rem),
+        radial-gradient(circle at 78% 0%, rgba(119, 103, 203, 0.17), transparent 28rem),
+        linear-gradient(180deg, #1d2329 0%, #171a1d 55%, #141619 100%);
+      color: var(--text);
+      font-family: "Segoe UI", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 12px 12px;
+      opacity: 0.21;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 58%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 34px 0 42px;
+    }
+
+    .topbar,
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar {
+      padding-bottom: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+      letter-spacing: 0.085em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 720;
+      letter-spacing: 0.02em;
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.98fr) minmax(320px, 0.82fr);
+      min-height: 506px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.012)),
+        rgba(30, 35, 39, 0.88);
+      box-shadow: 0 26px 78px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 54px 46px;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--cue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.115em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 660px;
+      margin: 0;
+      font-size: clamp(58px, 9vw, 116px);
+      letter-spacing: -0.055em;
+      line-height: 0.9;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.42;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid rgba(111, 174, 232, 0.55);
+      border-radius: 4px;
+      background: rgba(111, 174, 232, 0.15);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 780;
+      letter-spacing: 0.055em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .button:hover {
+      background: rgba(111, 174, 232, 0.24);
+      border-color: rgba(111, 174, 232, 0.86);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--muted);
+    }
+
+    .button.secondary:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.065);
+      border-color: var(--line-strong);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 38px 38px 38px 0;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-visual::before {
+      width: min(92%, 470px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 44% 48%, rgba(111, 174, 232, 0.24), transparent 50%),
+        radial-gradient(circle at 66% 42%, rgba(130, 115, 223, 0.22), transparent 43%),
+        radial-gradient(circle at 54% 64%, rgba(85, 185, 120, 0.09), transparent 50%);
+      filter: blur(8px);
+    }
+
+    .hero-visual::after {
+      inset: 44px 36px;
+      border: 1px solid rgba(255, 255, 255, 0.055);
+      border-radius: 50%;
+      opacity: 0.44;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 1;
+      width: min(82%, 420px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.32));
+    }
+
+    .one-rig {
+      margin-top: 22px;
+    }
+
+    .workflow-tabs {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(27, 31, 35, 0.7);
+    }
+
+    .tabbar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .tab {
+      min-height: 50px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 820;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tab:last-child {
+      border-right: 0;
+    }
+
+    .tab:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .tab[aria-selected="true"] {
+      color: var(--text);
+      background: color-mix(in srgb, var(--accent) 22%, transparent);
+      box-shadow: inset 0 -3px 0 var(--accent);
+    }
+
+    .tab.cuelist {
+      --accent: var(--cue);
+    }
+
+    .tab.pads {
+      --accent: var(--pads);
+    }
+
+    .tab.playlist {
+      --accent: var(--playlist);
+    }
+
+    .panel {
+      display: none;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      padding: 28px;
+    }
+
+    .panel.active {
+      display: grid;
+    }
+
+    .panel-copy {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.42fr) minmax(360px, 1fr);
+      column-gap: 34px;
+      align-items: end;
+      min-height: 0;
+    }
+
+    .panel-copy h2 {
+      grid-row: span 2;
+      margin: 0;
+      font-size: clamp(32px, 5vw, 58px);
+      letter-spacing: -0.045em;
+      line-height: 0.95;
+    }
+
+    .panel-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .feature-points {
+      display: grid;
+      gap: 8px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .feature-points li {
+      display: grid;
+      grid-template-columns: 10px 1fr;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .feature-points li::before {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+      transform: translateY(-1px);
+    }
+
+    .app-shot {
+      --accent: var(--cue);
+      margin: 0;
+      min-width: 0;
+    }
+
+    .app-shot.pads {
+      --accent: var(--pads);
+    }
+
+    .app-shot.playlist {
+      --accent: var(--playlist);
+    }
+
+    .shot-shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line));
+      border-radius: 7px;
+      background: #15191d;
+      box-shadow:
+        0 24px 46px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    }
+
+    .shot-shell::before {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 22%),
+        radial-gradient(circle at 24% 0%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 30%);
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .shot-shell img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
+    .app-shot figcaption {
+      margin-top: 9px;
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .bus-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.014)),
+        rgba(27, 31, 35, 0.72);
+    }
+
+    .bus-card h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.065em;
+      text-transform: uppercase;
+    }
+
+    .bus-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bus-routes {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .bus-route {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      align-items: center;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 12px;
+      font-weight: 770;
+    }
+
+    .bus-route strong {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--accent) 32%, #202428);
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+    }
+
+    .bus-route span {
+      padding: 0 12px;
+      color: var(--muted);
+    }
+
+    .bus-route.cuelist {
+      --accent: var(--cue);
+    }
+
+    .bus-route.pads {
+      --accent: var(--pads);
+    }
+
+    .bus-route.playlist {
+      --accent: var(--playlist);
+    }
+
+    .support {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(85, 185, 120, 0.38);
+      border-radius: 6px;
+      background: rgba(85, 185, 120, 0.07);
+      color: var(--muted);
+    }
+
+    .support strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    footer {
+      padding-top: 26px;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(210px, 0.52fr);
+        min-height: 420px;
+      }
+
+      .panel-copy {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .panel-copy h2 {
+        grid-row: auto;
+      }
+
+      .hero-copy {
+        padding: 40px 0 40px 30px;
+      }
+
+      .hero-visual {
+        padding: 26px 28px 26px 0;
+      }
+
+      .hero-logo {
+        width: min(90%, 310px);
+      }
+
+      .panel-copy {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page {
+        width: min(100% - 24px, 520px);
+        padding-top: 24px;
+      }
+
+      .topbar,
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .hero-copy {
+        padding: 28px 0 28px 20px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(118px, 0.42fr);
+        min-height: 330px;
+      }
+
+      .hero-visual {
+        padding: 22px 18px 22px 0;
+      }
+
+      .hero-visual::after {
+        inset: 26px 14px;
+      }
+
+      .hero-logo {
+        width: min(96%, 190px);
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .actions {
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .button {
+        min-height: 36px;
+        padding: 0 12px;
+        font-size: 10px;
+      }
+
+      .tabbar,
+      .bus-route {
+        grid-template-columns: 1fr;
+      }
+
+      .tab {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .tab:last-child {
+        border-bottom: 0;
+      }
+
+      .support {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="https://github.com/allanlg/NodeCue/releases/latest" aria-label="Download Node:Cue">
+        <img src="nodecue-logo-transparent.png" alt="" aria-hidden="true">
+        <span>Node:Cue</span>
+      </a>
+      <nav class="nav" aria-label="Primary links">
+        <a href="https://github.com/allanlg">GitHub</a>
+        <a href="OSC_COMMANDS.md">OSC</a>
+        <a href="CHANGELOG.md">Changelog</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Live audio cue playback</p>
+        <h1>Node:Cue</h1>
+        <p class="lead">
+          One free show-control application for cues, pads, playlists, routing,
+          fades, MIDI, OSC, keyboard shortcuts, and Stream Deck control.
+        </p>
+        <div class="actions">
+          <a class="button" href="https://github.com/allanlg/NodeCue/releases/latest">Download latest release</a>
+          <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Get supporter license</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <img class="hero-logo" src="nodecue-logo-transparent.png" alt="">
+      </div>
+    </section>
+
+    <section class="one-rig" aria-label="Node:Cue workflows">
+      <section class="workflow-tabs">
+        <div class="tabbar" role="tablist" aria-label="Node:Cue views">
+          <button class="tab cuelist" type="button" role="tab" aria-selected="true" aria-controls="panel-cuelist" id="tab-cuelist" data-view="cuelist">Cuelist</button>
+          <button class="tab pads" type="button" role="tab" aria-selected="false" aria-controls="panel-pads" id="tab-pads" data-view="pads">Pads</button>
+          <button class="tab playlist" type="button" role="tab" aria-selected="false" aria-controls="panel-playlist" id="tab-playlist" data-view="playlist">Playlist</button>
+        </div>
+
+        <article class="panel active" id="panel-cuelist" role="tabpanel" aria-labelledby="tab-cuelist" data-view="cuelist">
+          <div class="panel-copy" style="--accent: var(--cue);">
+            <h2>Cues for the show order.</h2>
+            <p>Build a precise sequence, launch it from transport controls, and let each item prepare the next step of the show.</p>
+            <ul class="feature-points">
+              <li>Audio, stop, MIDI, and OSC cues in the same list.</li>
+              <li>Pre-wait, post-wait, play-next, loop, trim, fades, and crossfades.</li>
+              <li>Keep the armed cue visible even when the list is scrolled.</li>
+            </ul>
+          </div>
+          <figure class="app-shot cuelist">
+            <div class="shot-shell">
+              <img src="assets/screenshots/nodecue-cuelist-demo-20260620.png" alt="Node:Cue Cuelist view with generic demo cues">
+            </div>
+            <figcaption>Real Node:Cue interface with Now Playing, bus routing, and a visible waveform.</figcaption>
+          </figure>
+        </article>
+
+        <article class="panel" id="panel-pads" role="tabpanel" aria-labelledby="tab-pads" data-view="pads">
+          <div class="panel-copy" style="--accent: var(--pads);">
+            <h2>Pads for instant material.</h2>
+            <p>Keep jingles, stingers, atmospheres, and one-shot sounds ready without leaving the main show interface.</p>
+            <ul class="feature-points">
+              <li>Pages of pads with names, colors, images, loops, and re-click behavior.</li>
+              <li>Trigger from mouse, keyboard, MIDI, OSC, or Stream Deck.</li>
+              <li>Route pads to their own bus while cues and playlist keep playing.</li>
+            </ul>
+          </div>
+          <figure class="app-shot pads">
+            <div class="shot-shell">
+              <img src="assets/screenshots/nodecue-pads-demo-20260620.png" alt="Node:Cue Pads view with generic colored pads">
+            </div>
+            <figcaption>Real pads page with generic labels, colors, selected-pad recall, and playlist sidebar.</figcaption>
+          </figure>
+        </article>
+
+        <article class="panel" id="panel-playlist" role="tabpanel" aria-labelledby="tab-playlist" data-view="playlist">
+          <div class="panel-copy" style="--accent: var(--playlist);">
+            <h2>Playlist for continuous playback.</h2>
+            <p>Run a music bed or interval playlist while cues and pads stay available for live interventions.</p>
+            <ul class="feature-points">
+              <li>Active tracks, trim-aware total duration, loop mode, overlap, and auto-trim.</li>
+              <li>Fade from a cue into the playlist, or fade the playlist out to return to cues.</li>
+              <li>Use a dedicated playlist bus for clean routing to another output device.</li>
+            </ul>
+          </div>
+          <figure class="app-shot playlist">
+            <div class="shot-shell">
+              <img src="assets/screenshots/nodecue-playlist-demo-20260620.png" alt="Node:Cue Playlist view with generic active tracks">
+            </div>
+            <figcaption>Real playlist view with active tracks, Now Playing, pads sidebar, and the DSP editor.</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <aside class="bus-card">
+        <div>
+          <h2>One workspace. Three buses.</h2>
+          <p>
+            Node:Cue is built for shows that need more than a linear list:
+            fire a cue, trigger pads on top, crossfade into playlist music,
+            and keep each family on a separate audio output.
+          </p>
+        </div>
+        <div class="bus-routes" aria-label="Audio bus routing examples">
+          <div class="bus-route cuelist"><strong>Cues</strong><span>Output 1 - main cue system</span></div>
+          <div class="bus-route pads"><strong>Pads</strong><span>Output 2 - stingers and live hits</span></div>
+          <div class="bus-route playlist"><strong>Playlist</strong><span>Output 3 - music bed or foyer feed</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="support">
+      <div>
+        <strong>Optional supporter license.</strong>
+        Node:Cue is free to use. If it helps your work, you can support ongoing development with an optional supporter license.
+        Support: <a href="mailto:support.nodecue@gmail.com">support.nodecue@gmail.com</a>.
+      </div>
+      <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Support Node:Cue</a>
+    </section>
+
+    <footer>
+      <span>Copyright 2026 Allan Le Guyader. All rights reserved.</span>
+      <span>Node:Cue is proprietary software distributed for free use. <a href="mailto:support.nodecue@gmail.com">Support email</a>.</span>
+    </footer>
+  </main>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const panels = Array.from(document.querySelectorAll(".panel"));
+
+    function activateTab(view) {
+      tabs.forEach((tab) => {
+        tab.setAttribute("aria-selected", String(tab.dataset.view === view));
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.view === view);
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activateTab(tab.dataset.view));
+    });
+  </script>
+</body>
+</html>
