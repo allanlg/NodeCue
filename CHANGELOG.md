@@ -1,5 +1,37 @@
 # Changelog
 
+## Node:Cue 0.20.0 - Supporter License, MIDI Map, and Live Operation Polish
+
+### New Features
+
+- Added the optional Node:Cue Supporter License flow. Node:Cue remains free to use, and playback, projects, and show operation are never limited by license state.
+- Added license activation and deactivation inside the application, with offline persistence after a successful activation.
+- Added a startup reminder for the optional supporter license, shown before session recovery prompts.
+- Added a startup splash screen so the application gives immediate launch feedback while the main window initializes.
+- Added a compact MIDI Map panel for viewing, adding, editing, and deleting MIDI assignments directly from the main interface.
+- Added a bottom status bar with view status information and quick access to interface, MIDI, remote view, theme, and settings controls.
+
+### Improvements
+
+- Refreshed the main Cuelist, Pads, and Playlist headers, transport controls, item title displays, sidebar tabs, and empty-state behavior.
+- Improved Pad image loading and caching so pad pages and pad color edits remain more responsive with image-heavy sessions.
+- Improved session loading feedback by keeping the loading flow active until the frontend is usable.
+- Improved Cuelist, Playlist, and sidebar scrolling with more compact overlay scrollbars.
+- Improved light and dark palettes, table headers, row styling, pad grid contrast, sidebar lists, and selected/playing state visibility.
+- Added clearer armed-cue and armed-stop indicators in the Cuelist and sidebar.
+- Added a persistent per-view item display showing the currently armed or selected cue, pad, or track.
+
+### Fixes
+
+- Fixed pause handling during pre-wait and post-wait so waiting cards and countdowns remain consistent while paused.
+- Fixed post-wait Play next progress glitches that could briefly fill duration gauges incorrectly.
+- Fixed Stop Selected behavior for cues in pre-wait or post-wait so related Now Playing cards are cleared immediately.
+- Fixed Pad re-click stop so active loop counts are cancelled instead of advancing to the next loop.
+- Fixed hidden Pads being lost when reducing the visible grid size and reopening a session.
+- Fixed bus fader and mute changes causing Now Playing progress cards to jump backward.
+- Fixed Playlist empty-state scrolling when no tracks are present.
+- Fixed several transport-button, tab-border, modal-layering, and layout consistency issues across light and dark mode.
+
 ## Node:Cue 0.19.2 - Audio Format Support and Interface Polish
 
 ### New Features
