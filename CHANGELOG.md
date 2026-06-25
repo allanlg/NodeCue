@@ -1,5 +1,28 @@
 # Changelog
 
+## Node:Cue 0.20.1 - Show Mode and Interface Reliability
+
+### New Features
+
+- Added Show Mode, a live-operation lock that keeps playback controls, Now Playing, bus monitoring, view switching, and panel controls usable while hiding or blocking editing actions.
+- Added a read-only Show Mode monitor in the bottom panel, with waveform display for audio items and compact command summaries for MIDI, OSC, and Stop cues.
+- Added an optional EQ/Compressor drawer in Show Mode for audio items, while narrow windows automatically stay in waveform-only mode.
+
+### Improvements
+
+- Improved Cuelist and Playlist row selection, armed indicators, playing-state markers, and sidebar list alignment so live states are easier to read at a glance.
+- Improved sidebar Cuelist and Playlist rows with firmer separators, aligned ID/duration columns, progress fills inside the Duration column, and sharper text rendering.
+- Improved modal keyboard handling so `Tab` cycles through modal controls and `Enter` activates the focused action button.
+- Improved window geometry recovery so Node:Cue avoids restoring windows outside the available monitor area.
+- Improved status-bar Edit/Show controls and Show Mode Fade Out duration editing.
+
+### Fixes
+
+- Fixed command-cue editing and Show Mode display for MIDI, OSC, and Stop cues.
+- Fixed Playlist sidebar selection visibility after the pointer leaves the selected track.
+- Fixed waveform time labeling at the start of the timeline.
+- Fixed dark-mode Stop cue icon contrast in the sidebar.
+
 ## Node:Cue 0.20.0 - Supporter License, MIDI Map, and Live Operation Polish
 
 ### New Features
