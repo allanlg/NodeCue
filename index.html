@@ -6,6 +6,7 @@
   <title>Node:Cue</title>
   <meta name="description" content="Node:Cue is a free live-audio cue playback application for professional show operation.">
   <link rel="canonical" href="https://nodecue.app/">
+  <link rel="icon" type="image/png" href="nodecue-logo-transparent.png">
   <style>
     :root {
       color-scheme: dark;
@@ -635,7 +636,14 @@
           fades, MIDI, OSC, keyboard shortcuts, and Stream Deck control.
         </p>
         <div class="actions">
-          <a class="button" href="https://github.com/allanlg/NodeCue/releases/latest">Download latest release</a>
+          <a
+            class="button"
+            href="https://github.com/allanlg/NodeCue/releases/latest"
+            data-download-latest
+            data-goatcounter-click="download-installer"
+            data-goatcounter-title="Download latest installer"
+            data-goatcounter-no-session="1"
+          >Download latest release</a>
           <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Get supporter license</a>
         </div>
       </div>
@@ -741,6 +749,40 @@
   </main>
 
   <script>
+    const NODECUE_LATEST_RELEASE_API_URL = "https://api.github.com/repos/allanlg/NodeCue/releases/latest";
+
+    async function resolveLatestInstallerDownload() {
+      const downloadLinks = Array.from(document.querySelectorAll("[data-download-latest]"));
+      if (!downloadLinks.length) return;
+
+      try {
+        const response = await fetch(NODECUE_LATEST_RELEASE_API_URL, {
+          headers: { Accept: "application/vnd.github+json" },
+        });
+        if (!response.ok) return;
+
+        const release = await response.json();
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const installer = assets.find((asset) => {
+          return (
+            typeof asset.name === "string" &&
+            /_x64-setup\.exe$/i.test(asset.name) &&
+            typeof asset.browser_download_url === "string"
+          );
+        });
+
+        if (!installer) return;
+
+        downloadLinks.forEach((link) => {
+          link.href = installer.browser_download_url;
+          link.dataset.releaseTag = release.tag_name || "";
+          link.dataset.downloadAsset = installer.name;
+        });
+      } catch (error) {
+        console.warn("Unable to resolve latest Node:Cue installer.", error);
+      }
+    }
+
     const tabs = Array.from(document.querySelectorAll(".tab"));
     const panels = Array.from(document.querySelectorAll(".panel"));
 
@@ -757,6 +799,13 @@
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => activateTab(tab.dataset.view));
     });
+
+    resolveLatestInstallerDownload();
   </script>
+  <script
+    data-goatcounter="https://nodecue.goatcounter.com/count"
+    async
+    src="https://gc.zgo.at/count.js"
+  ></script>
 </body>
 </html>
