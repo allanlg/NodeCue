@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Node:Cue release history, new features, improvements, and fixes.">
+  <title>Changelog - Node:Cue</title>
+  <link rel="icon" href="nodecue-logo-transparent.png">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html" aria-label="Node:Cue home"><img src="nodecue-logo-transparent.png" alt=""><span>Node:Cue</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#workflows">Workflows</a>
+        <a href="osc.html">OSC</a>
+        <a href="changelog.html" aria-current="page">Changelog</a>
+        <a href="https://github.com/allanlg/NodeCue">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <header class="doc-hero">
+      <div class="shell">
+        <p class="eyebrow">Product history / Public releases</p>
+        <h1>Changelog</h1>
+        <p>Follow the features, reliability improvements, and live-operation refinements delivered in each Node:Cue release.</p>
+      </div>
+    </header>
+
+    <div class="shell doc-layout">
+      <nav class="toc" id="release-nav" aria-label="Release navigation"><strong>Releases</strong></nav>
+      <div class="doc-content" id="release-list" aria-live="polite">
+        <p class="callout" id="loading-state">Loading release history...</p>
+        <noscript><p>JavaScript is required to format this page. The <a href="CHANGELOG.md">plain-text changelog</a> remains available.</p></noscript>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Node:Cue / Release history</span><a href="index.html">Return to Node:Cue</a></div></footer>
+
+  <script>
+    const list = document.querySelector("#release-list");
+    const nav = document.querySelector("#release-nav");
+
+    const slug = (value) => value
+      .toLowerCase()
+      .replace(/[^a-z0-9.]+/g, "-")
+      .replace(/^-|-$/g, "");
+
+    function appendParagraph(parent, text) {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      parent.append(paragraph);
+    }
+
+    function render(markdown) {
+      list.replaceChildren();
+      const lines = markdown.replace(/\r/g, "").split("\n");
+      let release = null;
+      let body = null;
+      let bullets = null;
+
+      for (const raw of lines) {
+        const line = raw.trim();
+        if (!line || line === "# Changelog") {
+          bullets = null;
+          continue;
+        }
+
+        if (line.startsWith("## ")) {
+          const heading = line.slice(3);
+          const match = heading.match(/^Node:Cue\s+([^\s]+)\s+-\s+(.+)$/);
+          const version = match ? match[1] : heading;
+          const title = match ? match[2] : "Release notes";
+          const id = `release-${slug(version)}`;
+
+          release = document.createElement("article");
+          release.className = "release";
+          release.id = id;
+
+          const header = document.createElement("header");
+          header.className = "release-header";
+          const versionLabel = document.createElement("span");
+          versionLabel.className = "release-version";
+          versionLabel.textContent = `v${version}`;
+          const titleLabel = document.createElement("span");
+          titleLabel.className = "release-title";
+          titleLabel.textContent = title;
+          header.append(versionLabel, titleLabel);
+
+          body = document.createElement("div");
+          body.className = "release-body";
+          release.append(header, body);
+          list.append(release);
+
+          const link = document.createElement("a");
+          link.href = `#${id}`;
+          link.textContent = `v${version}`;
+          nav.append(link);
+          bullets = null;
+          continue;
+        }
+
+        if (!body) continue;
+
+        if (line.startsWith("### ")) {
+          const heading = document.createElement("h3");
+          heading.textContent = line.slice(4);
+          body.append(heading);
+          bullets = null;
+          continue;
+        }
+
+        if (line.startsWith("- ")) {
+          if (!bullets) {
+            bullets = document.createElement("ul");
+            body.append(bullets);
+          }
+          const item = document.createElement("li");
+          item.textContent = line.slice(2).replace(/`([^`]+)`/g, "$1");
+          bullets.append(item);
+          continue;
+        }
+
+        bullets = null;
+        appendParagraph(body, line.replace(/`([^`]+)`/g, "$1"));
+      }
+    }
+
+    fetch("CHANGELOG.md", { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then(render)
+      .catch(() => {
+        list.innerHTML = '<p class="callout">The release history could not be loaded. <a href="CHANGELOG.md">Open the plain-text changelog.</a></p>';
+      });
+  </script>
+  <script data-goatcounter="https://nodecue.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

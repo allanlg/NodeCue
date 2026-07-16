@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Node:Cue OSC command reference for Cuelist, Pads, Playlist, global transport, and bus control.">
+  <title>OSC Command Reference - Node:Cue</title>
+  <link rel="icon" href="nodecue-logo-transparent.png">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html" aria-label="Node:Cue home"><img src="nodecue-logo-transparent.png" alt=""><span>Node:Cue</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#workflows">Workflows</a>
+        <a href="osc.html" aria-current="page">OSC</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="https://github.com/allanlg/NodeCue">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <header class="doc-hero">
+      <div class="shell">
+        <p class="eyebrow">Control protocol / Reference</p>
+        <h1>OSC commands</h1>
+        <p>Connect Node:Cue to controllers, automation systems, and other production tools over the network.</p>
+      </div>
+    </header>
+
+    <div class="shell doc-layout">
+      <nav class="toc" aria-label="OSC reference sections">
+        <strong>Commands</strong>
+        <a href="#setup">Setup</a><a href="#cuelist">Cuelist</a><a href="#pads">Pads</a>
+        <a href="#playlist">Playlist</a><a href="#global">Global</a><a href="#bus">Bus</a><a href="#examples">Examples</a>
+      </nav>
+
+      <div class="doc-content">
+        <section id="setup">
+          <h2>Setup and conventions</h2>
+          <p class="callout">Configure OSC input in <code>Configuration &gt; OSC</code>. Add a receive endpoint, select the network interface, set its port, then send commands to that IP address and port.</p>
+          <ul>
+            <li>Addresses are lowercase and start with <code>/nodecue</code>.</li>
+            <li>Values are sent as OSC arguments.</li>
+            <li>A first trigger argument of <code>false</code>, <code>0</code>, <code>0.0</code>, or <code>nil</code> is ignored.</li>
+            <li>Fade commands accept an optional duration in milliseconds as their first argument.</li>
+            <li>Pad and bus targets can be included in the address or sent as the first argument.</li>
+          </ul>
+        </section>
+
+        <section id="cuelist"><h2>Cuelist</h2><div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
+          <tbody>
+            <tr><td>Play armed cue</td><td><code>/nodecue/cuelist/go</code></td><td><code>/nodecue/cue/go</code>, <code>/nodecue/cues/go</code>, play variants</td><td>Optional trigger</td></tr>
+            <tr><td>Stop cuelist playback</td><td><code>/nodecue/cuelist/stop</code></td><td><code>/nodecue/cue/stop</code>, <code>/nodecue/cues/stop_all</code></td><td>Optional trigger</td></tr>
+            <tr><td>Pause / resume</td><td><code>/nodecue/cuelist/pause</code></td><td><code>/nodecue/cue/pause</code>, resume and pause_resume variants</td><td>Optional trigger</td></tr>
+            <tr><td>Previous cue</td><td><code>/nodecue/cuelist/back</code></td><td><code>/nodecue/cuelist/previous</code>, cue and cues variants</td><td>Optional trigger</td></tr>
+            <tr><td>Next cue</td><td><code>/nodecue/cuelist/next</code></td><td><code>/nodecue/cue/next</code>, <code>/nodecue/cues/next</code></td><td>Optional trigger</td></tr>
+            <tr><td>Fade out cuelist</td><td><code>/nodecue/cuelist/fade_out</code></td><td><code>/nodecue/cue/fade_out</code>, <code>/nodecue/cuelist/fade/out</code></td><td>Optional duration, trigger</td></tr>
+          </tbody>
+        </table></div></section>
+
+        <section id="pads"><h2>Pads</h2><div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
+          <tbody>
+            <tr><td>Play pad by address</td><td><code>/nodecue/pads/play/{pad_id}</code></td><td><code>/nodecue/pad/play/{pad_id}</code></td><td>Optional trigger</td></tr>
+            <tr><td>Play pad by argument</td><td><code>/nodecue/pads/play</code></td><td><code>/nodecue/pad/play</code></td><td><code>pad_id</code>, optional trigger</td></tr>
+            <tr><td>Stop pads playback</td><td><code>/nodecue/pads/stop</code></td><td><code>/nodecue/pad/stop</code>, stop_all variants</td><td>Optional trigger</td></tr>
+            <tr><td>Pause / resume</td><td><code>/nodecue/pads/pause</code></td><td><code>/nodecue/pad/pause</code>, resume and pause_resume variants</td><td>Optional trigger</td></tr>
+            <tr><td>Fade out pads</td><td><code>/nodecue/pads/fade_out</code></td><td><code>/nodecue/pad/fade_out</code>, <code>/nodecue/pads/fade/out</code></td><td>Optional duration, trigger</td></tr>
+          </tbody>
+        </table></div></section>
+
+        <section id="playlist"><h2>Playlist</h2><div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
+          <tbody>
+            <tr><td>Play selected track</td><td><code>/nodecue/playlist/go</code></td><td><code>/nodecue/playlist/play</code></td><td>Optional trigger</td></tr>
+            <tr><td>Pause / resume</td><td><code>/nodecue/playlist/pause</code></td><td>resume and pause_resume variants</td><td>Optional trigger</td></tr>
+            <tr><td>Stop playback</td><td><code>/nodecue/playlist/stop</code></td><td>-</td><td>Optional trigger</td></tr>
+            <tr><td>Previous track</td><td><code>/nodecue/playlist/back</code></td><td><code>/nodecue/playlist/previous</code></td><td>Optional trigger</td></tr>
+            <tr><td>Next track</td><td><code>/nodecue/playlist/next</code></td><td>-</td><td>Optional trigger</td></tr>
+            <tr><td>Fade out playlist</td><td><code>/nodecue/playlist/fade_out</code></td><td><code>/nodecue/playlist/fade/out</code></td><td>Optional duration, trigger</td></tr>
+          </tbody>
+        </table></div></section>
+
+        <section id="global"><h2>Global transport</h2><div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
+          <tbody>
+            <tr><td>Stop all playback / panic</td><td><code>/nodecue/panic</code></td><td><code>/nodecue/stop_all</code></td><td>Optional trigger</td></tr>
+            <tr><td>Fade out all playback</td><td><code>/nodecue/global/fade_out</code></td><td><code>/nodecue/fade_out</code></td><td>Optional duration, trigger</td></tr>
+          </tbody>
+        </table></div></section>
+
+        <section id="bus"><h2>Bus control</h2><p>Bus IDs are zero-based: <code>0</code> Cuelist, <code>1</code> Pads, and <code>2</code> Playlist.</p><div class="table-wrap"><table>
+          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
+          <tbody>
+            <tr><td>Toggle mute by address</td><td><code>/nodecue/bus/mute/{bus_id}</code></td><td><code>/nodecue/bus/{bus_id}/mute</code> and toggle variants</td><td>Optional trigger</td></tr>
+            <tr><td>Toggle mute by argument</td><td><code>/nodecue/bus/mute</code></td><td><code>/nodecue/bus/mute/toggle</code></td><td><code>bus_id</code>, optional trigger</td></tr>
+          </tbody>
+        </table></div></section>
+
+        <section id="examples"><h2>Examples</h2>
+          <h3>Play the armed Cuelist cue</h3><pre><code>/nodecue/cuelist/go</code></pre>
+          <h3>Play Pad 7</h3><pre><code>/nodecue/pads/play/7</code></pre>
+          <h3>Fade out all playback over 3 seconds</h3><pre><code>Address: /nodecue/global/fade_out
+Argument: 3000</code></pre>
+          <h3>Toggle mute on the Pads bus</h3><pre><code>/nodecue/bus/mute/1</code></pre>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><span>Node:Cue / OSC command reference</span><a href="index.html">Return to Node:Cue</a></div></footer>
+  <script data-goatcounter="https://nodecue.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
