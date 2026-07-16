@@ -1,5 +1,36 @@
 # Changelog
 
+## Node:Cue 0.21.0 - Primary/Backup Sync and Live Reliability
+
+### New Features
+
+- Added Primary/Backup Sync for mirroring live operation between two Node:Cue systems over a dedicated IP network. The Backup follows accepted transport and project changes in read-only mode and automatically returns to Standalone operation if the Primary connection is lost.
+- Added project validation and alignment for Sync, including media checks, per-instance MIDI output mapping, network-interface selection, link-resilience profiles, and live latency monitoring.
+- Added an operator Logs panel with concise playback, control, device, Sync, warning, and error events, plus unread severity feedback in the status bar.
+
+### Improvements
+
+- Improved audio startup and device recovery so output streams are prepared earlier and playback can recover after a disconnected ASIO or WASAPI device becomes available again.
+- Refined Pads with faster image caching, more responsive page changes, adaptive labels, clearer duration progress, improved image and color editing, and more consistent grid controls.
+- Improved the Properties and EQ/Compressor editors with responsive narrow layouts, clearer controls, realtime analysis feedback, updated meters, and modernized parameter knobs.
+- Improved Cuelist, Pads, Playlist, Now Playing, sidebar, waveform, countdown, and progress feedback for active, paused, waiting, and transition states.
+- Renamed the Configuration window to Preferences, clarified its tabs, and improved modal sizing across display resolutions and Windows scaling settings.
+- Enlarged internal resize hit areas and refined compact controls, status-bar actions, themes, icons, and light/dark contrast throughout the interface.
+
+### Reliability
+
+- Hardened command application, project persistence, autosave revision handling, frontend update delivery, and Sync reconciliation without adding acknowledgement delays to normal operator commands.
+- Improved pre-wait, post-wait, Play next, fade, crossfade, loop, Stop, Stop All, and single-play state consistency across Cuelist, Pads, Playlist, and Primary/Backup operation.
+- Improved missing-media, unavailable MIDI output, audio-device loss, failed playback, and Sync divergence reporting so failures remain visible and actionable.
+
+### Fixes
+
+- Fixed several cases where Now Playing cards, duration gauges, countdowns, waveform playheads, or realtime analysis could stop updating or show stale state.
+- Fixed Pad image loading gaps during page changes and prevented images from disappearing during window or panel resizing.
+- Fixed project and transport drift caused by ordering, page selection, pad re-click, MIDI mapping, and repeated transition events during Sync.
+- Fixed unnecessary project revisions when unchanged audio settings are applied.
+- Fixed multiple layout, selection, drag-and-drop, missing-media, theme contrast, and compact-control inconsistencies.
+
 ## Node:Cue 0.20.1 - Show Mode and Interface Reliability
 
 ### New Features
