@@ -1,5 +1,65 @@
 # Changelog
 
+## Node:Cue 1.0.0 - First Official Release
+
+Node:Cue 1.0.0 is the first official release of the application. It brings the complete live-show workflow together in one Windows application: plan a show in the Cuelist, trigger live elements from Pads, keep background music running in the Playlist, and control the whole system from the same operator workspace.
+
+### Major Changes
+
+- **Multiple lists in one project.** Project Browser organizes multiple Cuelists, Pad Sets, and Playlists. Browse and edit another list while the current scenario continues, including repeats and automatic sequences. Starting playback in another list of the same player applies the project's Cross Project List transition; Stop All remains available across lists.
+- **FLOW overhaul.** Interactions between Cuelist, Pads, and Playlist have moved out of Preferences and into the core of Node:Cue. FLOW is now a dedicated, project-level feature for defining what happens when one view starts while another is active: stop, pause, fade out, crossfade, or continue. Each view can use its own transition rules, making FLOW a central part of the show's playback design rather than a collection of hidden application settings.
+- **ALT GO.** Added an alternate transition path for live operation. Holding Alt, or using the alternate GO shortcut, lets the operator trigger a different transition profile without changing the project's normal GO behavior. ALT GO is available across the main and Sidebar controls, with clear held-state feedback and focus protection so a quick live action cannot leak into the Windows system menu.
+- **Group Cues.** Introduced a new grouped-cue model with three explicit playback modes: Group Play for parallel playback, Sequence for ordered automatic continuation, and Sublist for a contained cue list. Parent waits, repetitions, Play Next, fades, mixed audio and control cues, external triggers, and Sync all follow the selected group mode while preserving ordinary internal-cue behavior.
+- **Timecode Trigger V1.** Timecode scheduling has been consolidated into a project timeline with armed-state monitoring, timed MIDI support, trigger-list diagnostics, and consistent behavior across ordinary cues and the wider transport model.
+- **Primary/Backup Sync completion.** Sync has grown from a mirrored transport link into a complete recovery workflow: project changes and live playback remain aligned, the Primary can transfer a portable project to the Backup, and the Backup can leave read-only mode when the physical Primary computer drops out of the show.
+
+### New Features
+
+- Added a compact, resizable Project Browser with folder navigation, list creation, renaming, drag-and-drop ordering, deletion confirmation, and undo/redo for deleted lists.
+- Added editable Cuelist, Pad Set, and Playlist IDs with fixed C/P/T prefixes, values up to 99.9, duplicate protection, and stable internal project identities. Contextual keyboard, MIDI, OSC, Stream Deck, and Remote View controls target the opened list.
+- Added Cross Project List transitions and an Immediate option to Playback Flow and Cuelist/Pad play-mode transition settings.
+- Added the opened list's ID and name to the transport bar, with a compact hover expansion when space is limited.
+- Added Playlist resume after an interruption and a single-track loop mode for keeping one selected track running continuously.
+- Added persistent Cue, Group Cue, and Playlist-track enable/disable controls, with disabled-state handling carried through targeting, playback, and Sync.
+- Added per-bus Mono/Stereo routing, including true stereo fold-down for mono outputs and route-aware metering.
+- Added native system-style menus and expanded Preferences controls for themes, tooltips, transport behavior, audio routing, MIDI mappings, and operator shortcuts.
+- Added structural undo support for cue, group, and playlist editing workflows.
+- Added channel-aware waveform detail with balance control and Compact or L/R display modes, while preserving the existing trim and zoom workflow.
+
+### Improvements
+
+- Unified Remote View presentation with the main workspace; Remote Views now follow the main window's Show/Edit mode changes.
+- Refined sidebar resizing and snap behavior, Project Browser contrast, light-theme headers, disabled controls, and inline ID/name editing.
+- Refined startup feedback with a smooth, sequential three-color logo animation.
+- Improved control and display responsiveness during simultaneous playback, including faders, scrolling, waveforms, countdowns, and Now Playing.
+- Preserved sample-accurate trim placement at high waveform zoom, with aligned drag markers and clearer operator-facing errors.
+- Improved transport behavior across pre-waits, post-waits, Play Next, repeats, loops, fades, crossfades, Stop, Stop All, pause, resume, and Single Play.
+- Improved Primary/Backup state convergence so project changes, transport actions, waiting phases, transitions, and takeover behavior remain aligned without adding acknowledgement delays to normal operator commands.
+- Improved audio startup, device discovery, route recovery, progressive streaming, and terminal fade handling for demanding live sessions.
+- Improved waveform rendering and navigation with bounded reusable geometry, multiresolution data, progressive drawing, and smoother playback-follow updates.
+- Improved Now Playing cards, countdowns, duration gauges, playheads, waiting states, fade states, and bus meters so live feedback stays current and readable.
+- Improved Cuelist, Pads, Playlist, Sidebar, Properties, EQ/Compressor, Timecode, and Preferences layouts across display sizes and Windows scaling settings.
+- Improved keyboard shortcuts and Hotkeys behavior, including one command per physical key press, reliable Alt-held GO behavior, and safer focus handling around system menus.
+- Improved Pad image loading and caching, color editing, page changes, grid controls, and empty-state presentation.
+- Improved project/session restore, recent-project identity, persistence paths, autosave revision handling, and installed `.ncue` handoff.
+- Improved dark and light themes, compact controls, active-state indicators, disabled-state presentation, resize hit areas, and native Windows framing.
+
+### Reliability and Fixes
+
+- Added predictable admission for up to 64 simultaneous audio voices without replacing older playback, plus advance capacity warnings for oversized Group Play cues.
+- Strengthened playback preparation and repeated-launch handling while preserving real-time streaming and bounded memory use.
+- Fixed stale or missing updates in Now Playing, countdowns, waveform playheads, duration progress, realtime analysis, and bus metering.
+- Fixed playback ordering and state drift during Sync, Playback Flow transitions, Group Cue waits, Play Next, repeated launches, and interrupted fades.
+- Fixed pause, resume, Stop, Stop All, pre-wait, post-wait, loop, and Single Play edge cases across Cuelist, Pads, Playlist, and control cues.
+- Fixed Playlist navigation and resume behavior after interruptions, including navigation during active overlaps and stopped or paused playback.
+- Fixed project-transfer and Sync issues involving missing media, portable OSC endpoints, runtime-only Playlist history, media-derived metadata, network interfaces, and reconnects.
+- Fixed audio-device loss and recovery cases affecting ASIO, WASAPI, USB devices, generic Windows device names, and system-default route changes.
+- Fixed mono output isolation, bus mute and fader feedback, output identity preservation, and route-aware meter presentation.
+- Fixed Pad image gaps during page changes and resizing, hidden-grid restoration, targeted paste behavior, re-click loop handling, and color-update inconsistencies.
+- Fixed cue and track selection, multi-item drag operations, cue targeting, Group Cue editing, disabled rows, identity colors, and editor focus retention.
+- Fixed keyboard shortcut repeat, Alt/system-menu focus leakage, modal focus, window geometry restoration, and native menu interaction issues.
+- Fixed light/dark contrast, scroll behavior, tooltip consistency, transport indicators, empty states, editor scaling, and compact-control layout issues.
+
 ## Node:Cue 0.21.0 - Primary/Backup Sync and Live Reliability
 
 ### New Features

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Node:Cue - Live audio show control</title>
-  <meta name="description" content="Node:Cue is a free live-audio cue playback application for professional show operation.">
+  <title>Node:Cue V1.0.0 — Live audio show control</title>
+  <meta name="description" content="Node:Cue V1.0.0 is out now: dependable live-audio cue playback and show control for Windows.">
   <link rel="canonical" href="https://nodecue.app/">
   <link rel="icon" type="image/png" href="nodecue-logo-transparent.png">
   <style>
@@ -180,32 +180,70 @@
       text-align: center;
     }
 
+    .hero-lockup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
     .hero-mark {
       width: clamp(104px, 11vw, 150px);
       height: auto;
       display: block;
-      margin: 0 auto 20px;
+      transform: translateY(-9px);
       filter: drop-shadow(0 22px 32px rgba(0,0,0,.34));
     }
+
+    .hero-mark-wrap {
+      flex: none;
+      width: clamp(104px, 11vw, 150px);
+    }
+
+    .hero-mark-wrap .hero-mark { width: 100%; }
+
+    .hero-mark-tint {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 320ms ease-in-out;
+    }
+
+    .hero-mark-pan:hover .hero-mark-tint {
+      opacity: 1;
+      transition: opacity 120ms ease-out;
+    }
+
+    .hero-mark-hit {
+      fill: transparent;
+      pointer-events: fill;
+      cursor: default;
+    }
+
+    .hero-lockup h1 { margin-bottom: 0; }
 
     .system-label {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 12px;
       margin: 0 0 21px;
-      color: var(--cue);
+      color: var(--muted);
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 700;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .system-label::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: var(--green);
-      box-shadow: 0 0 0 3px rgba(88,186,124,.12);
+    .hero-lockup + .system-label {
+      justify-content: center;
+      margin-bottom: 21px;
+    }
+
+    .version-mark {
+      padding: 0;
+      border: 0;
+      color: var(--text);
     }
 
     h1,
@@ -290,64 +328,6 @@
       transform: translateY(-2px);
     }
 
-    .hero-meta {
-      flex-basis: 100%;
-      margin-top: 2px;
-      color: var(--quiet);
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-
-    .hero-modes {
-      width: min(860px, 100%);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin: 42px auto 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(7,10,12,.56);
-      text-align: left;
-    }
-
-    .hero-mode {
-      --mode-accent: var(--cue);
-      position: relative;
-      padding: 18px 20px 17px;
-      border-right: 1px solid var(--line);
-    }
-
-    .hero-mode:last-child { border-right: 0; }
-    .hero-mode.pads { --mode-accent: var(--pads); }
-    .hero-mode.playlist { --mode-accent: var(--playlist); }
-
-    .hero-mode::before {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      width: 48%;
-      height: 2px;
-      content: "";
-      background: var(--mode-accent);
-    }
-
-    .hero-mode strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--text);
-      font-family: var(--display);
-      font-size: 15px;
-      font-weight: 650;
-      text-transform: uppercase;
-    }
-
-    .hero-mode span {
-      color: var(--quiet);
-      font-family: var(--mono);
-      font-size: 9px;
-      text-transform: uppercase;
-    }
-
     .workflow {
       padding: 92px 0 104px;
       background: #0d1215;
@@ -383,6 +363,10 @@
       margin-bottom: 2px;
       color: var(--muted);
       font-size: 17px;
+    }
+
+    .workflow .section-heading {
+      display: block;
     }
 
     .view-selector {
@@ -464,19 +448,8 @@
       background: color-mix(in srgb, var(--panel-accent) 7%, var(--surface));
     }
 
-    .target-display {
-      padding: 13px 14px;
-      border: 1px solid color-mix(in srgb, var(--panel-accent) 65%, var(--line));
-      background: #20272c;
-      font-family: var(--display);
-      font-size: 19px;
-      font-weight: 650;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
     .workflow-copy h3 {
-      margin: 24px 0 12px;
+      margin: 0 0 12px;
       font-family: var(--display);
       font-size: 28px;
       font-weight: 650;
@@ -543,6 +516,74 @@
       padding: 8px 12px;
       background: rgba(8,12,14,.9);
       color: var(--muted);
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .flow-feature {
+      padding: 100px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #11181c;
+    }
+
+    .flow-feature-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .flow-feature-copy h2 {
+      max-width: 620px;
+      margin-bottom: 22px;
+      color: var(--text);
+    }
+
+    .flow-feature-copy > p:not(.section-kicker) {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .flow-feature-link {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 8px;
+      color: var(--cue);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .flow-feature-link:hover { color: var(--text); }
+
+    .flow-feature-shot {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line-strong);
+      background: #0b1013;
+      box-shadow: 0 24px 65px rgba(0,0,0,.25);
+    }
+
+    .flow-feature-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: auto;
+      filter: contrast(1.025) saturate(.96);
+    }
+
+    .flow-feature-shot figcaption {
+      padding: 9px 12px;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
       font-family: var(--mono);
       font-size: 9px;
       text-transform: uppercase;
@@ -643,7 +684,7 @@
       min-height: 210px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       padding: 28px 30px;
       background: #10171b;
     }
@@ -673,6 +714,7 @@
 
     .sync-node strong {
       display: block;
+      margin-top: 48px;
       margin-bottom: 8px;
       font-family: var(--display);
       font-size: 30px;
@@ -687,48 +729,80 @@
     }
 
     .sync-link {
-      position: relative;
-      display: grid;
-      place-items: center;
-      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 28px;
       border-right: 1px solid var(--line);
       border-left: 1px solid var(--line);
       background: #090e11;
-      overflow: hidden;
       text-align: center;
     }
 
-    .sync-link::before {
-      position: absolute;
-      top: 50%;
-      right: 28px;
-      left: 28px;
-      height: 1px;
+    .sync-signals {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: none;
+    }
+
+    .sync-signal {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      width: 36px;
+      height: 28px;
+      flex: none;
+      color: var(--cue);
+    }
+
+    .sync-signal.backup {
+      color: var(--green);
+      transform: scaleX(-1);
+    }
+
+    .sync-signal i {
+      width: 4px;
+      height: 24px;
+      flex: none;
+      background: currentColor;
+      transform: scaleY(.4);
+      animation: sync-signal 2.4s ease-in-out infinite;
+    }
+
+    /* Both copies share the same phases; only the Backup's horizontal axis is mirrored. */
+    .sync-signal i:nth-child(2) { animation-delay: -.16s; }
+    .sync-signal i:nth-child(3) { animation-delay: -.32s; }
+    .sync-signal i:nth-child(4) { animation-delay: -.48s; }
+    .sync-signal i:nth-child(5) { animation-delay: -.64s; }
+
+    .sync-match {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 12px;
+      flex: none;
+    }
+
+    .sync-match::before,
+    .sync-match::after {
       content: "";
-      background: var(--line-strong);
+      height: 1px;
+      background: var(--quiet);
     }
 
-    .sync-packet {
-      position: absolute;
-      top: calc(50% - 3px);
-      left: 28px;
-      width: 7px;
-      height: 7px;
-      background: var(--cue);
-      box-shadow: 0 0 13px rgba(102,161,214,.72);
-      animation: sync-packet 2.2s linear infinite;
-    }
-
-    @keyframes sync-packet {
-      from { left: 28px; }
-      to { left: calc(100% - 35px); }
+    @keyframes sync-signal {
+      0%, 100% { transform: scaleY(.3); }
+      30% { transform: scaleY(.8); }
+      50% { transform: scaleY(.42); }
+      70% { transform: scaleY(1); }
+      85% { transform: scaleY(.5); }
     }
 
     .sync-link-copy {
-      position: relative;
-      z-index: 1;
-      padding: 9px 12px;
-      background: #090e11;
+      min-width: 0;
       color: var(--muted);
       font-family: var(--mono);
       font-size: 9px;
@@ -744,8 +818,8 @@
 
     .takeover-rule {
       display: grid;
-      grid-template-columns: minmax(160px, .28fr) minmax(0, 1fr);
-      gap: 36px;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 24px;
       align-items: center;
       padding: 22px 30px;
       border-bottom: 1px solid var(--line);
@@ -778,14 +852,18 @@
 
     .integration-grid {
       display: grid;
-      grid-template-columns: minmax(300px, .8fr) minmax(0, 1.2fr);
-      gap: 80px;
-      align-items: start;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 44px 56px;
+      align-items: center;
     }
 
     .integration-intro {
-      position: sticky;
-      top: 36px;
+      max-width: 550px;
+    }
+
+    .integration-intro h2 {
+      font-size: clamp(38px, 4.3vw, 60px);
+      text-wrap: balance;
     }
 
     .integration-intro p {
@@ -795,15 +873,32 @@
     }
 
     .capability-list {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
       border-top: 1px solid var(--line);
+    }
+
+    .streamdeck-figure {
+      margin: 0;
+      width: 100%;
+      max-width: 600px;
+      justify-self: center;
+    }
+
+    .streamdeck-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     .capability {
       display: grid;
-      grid-template-columns: 82px minmax(0, 1fr);
-      gap: 24px;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--line);
+      grid-template-rows: auto 1fr;
+      align-content: start;
+      gap: 12px;
+      padding: 24px 0 0;
     }
 
     .capability code {
@@ -903,12 +998,17 @@
 
     .site-footer a { color: var(--muted); }
 
+    @media (max-width: 1100px) {
+      .capability-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
+      .capability { padding: 24px 0; border-bottom: 1px solid var(--line); }
+    }
+
     @media (max-width: 900px) {
       .shell { width: min(100% - 30px, 760px); }
       .site-nav { gap: 14px; }
       .hero-copy { width: 100%; }
-      .section-heading,
-      .integration-grid { grid-template-columns: 1fr; gap: 25px; }
+      .section-heading { grid-template-columns: 1fr; gap: 25px; }
+      .integration-grid { grid-template-columns: 1fr; gap: 32px; }
       .workflow-panel { grid-template-columns: 1fr; }
       .workflow-copy { border-right: 0; border-bottom: 1px solid var(--line); }
       .workflow-shot { min-height: 420px; }
@@ -916,11 +1016,12 @@
       .signal-channel { min-height: 168px; }
       .sync-diagram { grid-template-columns: 1fr; }
       .sync-link { min-height: 112px; border: 1px solid var(--line); border-top: 0; }
-      .sync-link::before { top: 50%; }
       .sync-node.primary { border-bottom: 1px solid var(--line); }
       .sync-node.backup { border-top: 1px solid var(--line); }
-      .integration-intro { position: static; }
+      .integration-intro { max-width: 640px; }
+      .streamdeck-figure { max-width: 520px; }
       .support-band .shell { grid-template-columns: 1fr; gap: 28px; padding: 42px 0; }
+      .flow-feature-grid { grid-template-columns: 1fr; gap: 38px; }
     }
 
     @media (max-width: 620px) {
@@ -937,20 +1038,17 @@
       .hero-lead { font-size: 18px; }
       .hero-actions { align-items: stretch; flex-direction: column; }
       .button { width: 100%; }
-      .hero-meta { margin: 0; text-align: center; }
-      .hero-mark { width: 94px; }
-      .hero-modes { grid-template-columns: repeat(3, 1fr); margin-top: 34px; }
-      .hero-mode { padding: 14px 10px; border-right: 1px solid var(--line); border-bottom: 0; }
-      .hero-mode:last-child { border-right: 0; }
-      .hero-mode strong { font-size: 12px; }
-      .hero-mode span { display: none; }
-      .workflow, .routing, .redundancy, .integrations { padding: 68px 0; }
+      .hero-mark-wrap { width: 94px; }
+      .hero-lockup { gap: 16px; margin-bottom: 12px; }
+      .hero-lockup h1 { font-size: clamp(48px, 16vw, 68px); }
+      .workflow, .routing, .redundancy, .integrations, .flow-feature { padding: 68px 0; }
       .view-tab { min-height: 52px; padding: 0 8px; font-size: 12px; }
       .workflow-shot { min-height: 300px; }
       .workflow-shot img { object-position: top left; }
       .sync-node { min-height: 176px; padding: 24px 22px; }
       .takeover-rule { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
-      .capability { grid-template-columns: 58px minmax(0, 1fr); gap: 15px; }
+      .capability-list { grid-template-columns: 1fr; }
+      .capability { grid-template-columns: 44px minmax(0, 1fr); grid-template-rows: auto; gap: 15px; }
       .support-band .button { width: 100%; }
       .site-footer .shell { flex-direction: column; gap: 7px; }
     }
@@ -974,6 +1072,7 @@
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#workflows">Workflows</a>
+        <a href="#flow">FLOW</a>
         <a href="#redundancy">Sync</a>
         <a href="osc.html">OSC</a>
         <a href="changelog.html">Changelog</a>
@@ -987,12 +1086,52 @@
       <div class="disco-grid" aria-hidden="true"></div>
       <div class="shell">
         <div class="hero-copy">
-          <img class="hero-mark" src="nodecue-logo-transparent.png" alt="">
-          <p class="system-label">System ready / Windows</p>
-          <h1 id="hero-title">Node:Cue</h1>
+          <div class="hero-lockup">
+            <div class="hero-mark-wrap">
+              <svg class="hero-mark" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Node:Cue: Cuelist, Pads and Playlist">
+                <defs>
+                  <!-- The three continuous faces follow the seams of the original 1024px logo. -->
+                  <path id="logo-face-cuelist" d="M96 94 L707 447 L592 513 L200 287 L200 992 L96 933 Z"/>
+                  <path id="logo-face-pads" d="M96 94 L200 35 L925 454 L314 806 L314 674 L707 447 Z"/>
+                  <path id="logo-face-playlist" d="M200 287 L314 353 L314 806 L925 454 L925 574 L200 992 Z"/>
+                  <clipPath id="logo-clip-cuelist"><use href="#logo-face-cuelist"/></clipPath>
+                  <clipPath id="logo-clip-pads"><use href="#logo-face-pads"/></clipPath>
+                  <clipPath id="logo-clip-playlist"><use href="#logo-face-playlist"/></clipPath>
+                  <!-- Tint original luminance with the playback colours; retain the PNG alpha and relief. -->
+                  <filter id="logo-tint-cuelist" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="saturate" values="0"/>
+                    <feComponentTransfer><feFuncR type="linear" slope="0.895"/><feFuncG type="linear" slope="1.412"/><feFuncB type="linear" slope="1.877"/></feComponentTransfer>
+                  </filter>
+                  <filter id="logo-tint-pads" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="saturate" values="0"/>
+                    <feComponentTransfer><feFuncR type="linear" slope="1.16"/><feFuncG type="linear" slope="0.91"/><feFuncB type="linear" slope="0.57"/></feComponentTransfer>
+                  </filter>
+                  <filter id="logo-tint-playlist" color-interpolation-filters="sRGB">
+                    <feColorMatrix type="saturate" values="0"/>
+                    <feComponentTransfer><feFuncR type="linear" slope="1.035"/><feFuncG type="linear" slope="0.904"/><feFuncB type="linear" slope="1.895"/></feComponentTransfer>
+                  </filter>
+                </defs>
+                <image href="nodecue-logo-transparent.png" width="1024" height="1024" pointer-events="none"/>
+                <g class="hero-mark-pan" data-player="cuelist">
+                  <image class="hero-mark-tint" href="nodecue-logo-transparent.png" width="1024" height="1024" clip-path="url(#logo-clip-cuelist)" filter="url(#logo-tint-cuelist)"/>
+                  <use class="hero-mark-hit" href="#logo-face-cuelist"/>
+                </g>
+                <g class="hero-mark-pan" data-player="pads">
+                  <image class="hero-mark-tint" href="nodecue-logo-transparent.png" width="1024" height="1024" clip-path="url(#logo-clip-pads)" filter="url(#logo-tint-pads)"/>
+                  <use class="hero-mark-hit" href="#logo-face-pads"/>
+                </g>
+                <g class="hero-mark-pan" data-player="playlist">
+                  <image class="hero-mark-tint" href="nodecue-logo-transparent.png" width="1024" height="1024" clip-path="url(#logo-clip-playlist)" filter="url(#logo-tint-playlist)"/>
+                  <use class="hero-mark-hit" href="#logo-face-playlist"/>
+                </g>
+              </svg>
+            </div>
+            <h1 id="hero-title">Node:Cue</h1>
+          </div>
+          <p class="system-label"><span class="version-mark">V1.0.0 Out now!</span><span>Only on Windows</span></p>
           <p class="hero-lead">
-            <strong>Live audio show control.</strong> Run a programmed cue sequence, trigger
-            pads on demand, and keep an integrated music player ready in one workspace.
+            <strong>Live audio show control.</strong> Plan the show, trigger sounds, and play
+            background music, all from one application.
           </p>
           <div class="hero-actions">
             <a
@@ -1004,21 +1143,6 @@
               data-goatcounter-no-session="1"
             >Download for Windows</a>
             <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Support development</a>
-            <span class="hero-meta">Free to use / Professional show operation</span>
-          </div>
-          <div class="hero-modes" aria-label="Three integrated playback views">
-            <div class="hero-mode cuelist">
-              <strong>Cuelist</strong>
-              <span>Programmed show sequence</span>
-            </div>
-            <div class="hero-mode pads">
-              <strong>Pads</strong>
-              <span>Immediate on-demand playback</span>
-            </div>
-            <div class="hero-mode playlist">
-              <strong>Playlist</strong>
-              <span>Continuous music playback</span>
-            </div>
           </div>
         </div>
       </div>
@@ -1028,10 +1152,9 @@
       <div class="shell">
         <header class="section-heading">
           <div>
-            <p class="section-kicker">One show / Three playback views</p>
-            <h2 id="workflow-title">A dedicated view for each part of the show.</h2>
+            <p class="section-kicker">Cuelist / Pads / Playlist</p>
+            <h2 id="workflow-title">Choose the playback view for the job.</h2>
           </div>
-          <p>Follow the rundown, fire unscripted material, and manage continuous music without switching applications or losing the show context.</p>
         </header>
 
         <div class="view-selector" role="tablist" aria-label="Node:Cue workflows">
@@ -1044,19 +1167,18 @@
           <article class="workflow-panel active" id="workflow-cuelist" role="tabpanel" aria-labelledby="tab-cuelist" data-view="cuelist" style="--panel-accent: var(--cue);">
             <div class="workflow-copy">
               <div>
-                <div class="target-display">Cue 2.20 &nbsp; Live</div>
-                <h3>A programmed sequence for the show rundown.</h3>
-                <p>Build the conduite in its intended order, arm the next cue, and keep every timed or control action visible while the show runs.</p>
+                <h3>Build a cue sequence tailored to your show.</h3>
+                <p>Arrange audio, MIDI, OSC, and Stop cues in the exact order they need to run, with waits, fades, and transitions where you need them.</p>
                 <ul class="feature-list">
                   <li>Audio, Stop, MIDI, and OSC cues</li>
                   <li>Pre-wait, post-wait, loop, and play-next</li>
                   <li>Trim, fades, crossfades, EQ, and compression</li>
                 </ul>
               </div>
-              <span class="workflow-mode">Mode / Sequential show control</span>
+              <span class="workflow-mode">Use / Planned cue sequence</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-cuelist-demo-20260620.png" alt="Node:Cue Cuelist running a keynote with audio, MIDI, OSC, Stop cues, Now Playing, buses, and waveform editing">
+              <img src="assets/screenshots/nodecue-cuelist-20260907.png" alt="Node:Cue Cuelist running the Node:Cue Launch Keynote with audio, MIDI, OSC, Stop cues, Now Playing, buses, and waveform editing">
               <figcaption>Actual Node:Cue interface / Cuelist</figcaption>
             </figure>
           </article>
@@ -1064,19 +1186,18 @@
           <article class="workflow-panel" id="workflow-pads" role="tabpanel" aria-labelledby="tab-pads" data-view="pads" style="--panel-accent: var(--pads);">
             <div class="workflow-copy">
               <div>
-                <div class="target-display">Pad 08 &nbsp; Playing</div>
-                <h3>An on-demand bank for unscripted playback.</h3>
-                <p>Trigger material at the moment it feels right, independently from the conduite: jingles, stingers, atmospheres, or spontaneous cues.</p>
+                <h3>Keep your jingles ready to play.</h3>
+                <p>Keep jingles, stings, and sound effects available outside the main cue sequence, ready to trigger whenever the show needs them.</p>
                 <ul class="feature-list">
-                  <li>Pages, custom images, colors, and shortcuts</li>
-                  <li>Restart, pause/resume, and stop re-click modes</li>
-                  <li>Independent routing and simultaneous playback</li>
+                  <li>Pages, custom images, colors, and hotkeys</li>
+                  <li>Trigger jingles and sound effects without changing the planned sequence</li>
+                  <li>Keep playback available for simultaneous live cues</li>
                 </ul>
               </div>
-              <span class="workflow-mode">Mode / Immediate playback</span>
+              <span class="workflow-mode">Use / Jingles and sound effects</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-pads-demo-20260620.png" alt="Node:Cue Pads with images, colors, shortcuts, Playlist sidebar, EQ, compression, and live RTA">
+              <img src="assets/screenshots/nodecue-pads-20260907.png" alt="Node:Cue Pads with custom images, colors, hotkeys, simultaneous cue and pad playback, bus meters, EQ, compression, and live RTA">
               <figcaption>Actual Node:Cue interface / Pads</figcaption>
             </figure>
           </article>
@@ -1084,23 +1205,37 @@
           <article class="workflow-panel" id="workflow-playlist" role="tabpanel" aria-labelledby="tab-playlist" data-view="playlist" style="--panel-accent: var(--playlist);">
             <div class="workflow-copy">
               <div>
-                <div class="target-display">Track 11 &nbsp; Playing</div>
-                <h3>An integrated player for continuous music.</h3>
-                <p>Run preshow, interval, or background playlists without a second player, while the Cuelist and Pads remain ready.</p>
+                <h3>An integrated player for background music.</h3>
+                <p>Play event ambience before, during, and after the show, without tying it to the Cuelist sequence.</p>
                 <ul class="feature-list">
-                  <li>Auto-trim, overlap, loop, and track enable states</li>
-                  <li>Automatic fades between Playlist and Cuelist playback</li>
-                  <li>Waveform, EQ, compressor, and RTA monitoring</li>
+                  <li>Auto-trim and overlap for continuous background music</li>
+                  <li>Resume playback from the same place after an interruption</li>
+                  <li>Normalize tracks for a consistent playlist level</li>
                 </ul>
               </div>
-              <span class="workflow-mode">Mode / Continuous playback</span>
+              <span class="workflow-mode">Use / Background music</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-playlist-demo-20260620.png" alt="Node:Cue Playlist with enabled tracks, active playback, Pads sidebar, waveform, EQ, compression, and RTA">
+              <img src="assets/screenshots/nodecue-playlist-20260907.png" alt="Node:Cue Playlist playing Quiet Machines with auto-trim and overlap controls, Now Playing, bus meters, waveform, EQ, and compression">
               <figcaption>Actual Node:Cue interface / Playlist</figcaption>
             </figure>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="flow-feature" id="flow" aria-labelledby="flow-title">
+      <div class="shell flow-feature-grid">
+        <div class="flow-feature-copy">
+          <p class="section-kicker">Playback Flow / Cross-view control</p>
+          <h2 id="flow-title">FLOW is at the core of Node:Cue.</h2>
+          <p>Automate transitions between Cuelist, Pads, and Playlist for more precise and responsive sequences. FLOW manages what stops, what fades, and what keeps playing.</p>
+          <p>It reduces manual work at the mixing console by handling playback priorities and transitions between the three views.</p>
+        </div>
+        <figure class="flow-feature-shot">
+          <img src="assets/screenshots/nodecue-flow-20260907.svg" alt="Node:Cue Playback Flow showing transitions between players and Cross Project List settings">
+          <figcaption>Playback Flow / cross-view transition rules</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -1109,33 +1244,33 @@
         <header class="section-heading">
           <div>
             <p class="section-kicker">Audio routing</p>
-            <h2 id="routing-title">One workspace. Three independent buses.</h2>
+            <h2 id="routing-title">Route each playback view where it needs to go.</h2>
           </div>
-          <p>Send each playback family where the production needs it, including separate output devices and channel mappings.</p>
+          <p>Each playback view has its own routable bus. Send each signal to its own audio device and channel mapping, then mix the three sources separately.</p>
         </header>
 
         <div class="signal-flow" aria-label="Node:Cue bus routing">
           <article class="signal-channel cuelist">
             <div class="signal-copy">
               <span>Bus 01 / Cuelist</span>
-              <strong>Sequential cue list</strong>
-              <p>The programmed conduite: audio, control cues, waits, and timed transitions in a precise order.</p>
+              <strong>Planned cue sequence</strong>
+              <p>The planned show sequence: audio, control cues, waits, and timed transitions in a precise order.</p>
             </div>
             <div class="meter" aria-hidden="true"></div>
           </article>
           <article class="signal-channel pads">
             <div class="signal-copy">
               <span>Bus 02 / Pads</span>
-              <strong>On-demand pad bank</strong>
-              <p>Independent playback fired outside the sequence, from a jingle to an unplanned live cue.</p>
+              <strong>Jingles and sound effects</strong>
+              <p>Playback outside the main sequence, from a jingle to an unplanned live cue.</p>
             </div>
             <div class="meter" aria-hidden="true"></div>
           </article>
           <article class="signal-channel playlist">
             <div class="signal-copy">
               <span>Bus 03 / Playlist</span>
-              <strong>Integrated playlist player</strong>
-              <p>Continuous music playback with automatic transitions to or from the programmed cues.</p>
+              <strong>Background music</strong>
+              <p>Event ambience for the time before, during, and after the show.</p>
             </div>
             <div class="meter" aria-hidden="true"></div>
           </article>
@@ -1158,12 +1293,16 @@
             <div class="sync-node-label"><span>Node:Cue / Primary</span><i aria-hidden="true"></i></div>
             <div>
               <strong>Operator control</strong>
-              <p>The authoritative instance accepts show commands and sends each committed action to the Backup.</p>
+              <p>The Primary instance accepts show commands and sends each committed action to the Backup.</p>
             </div>
           </article>
 
           <div class="sync-link" aria-hidden="true">
-            <i class="sync-packet"></i>
+            <div class="sync-signals">
+              <span class="sync-signal primary"><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="sync-match"></span>
+              <span class="sync-signal backup"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
             <div class="sync-link-copy">
               <strong>Synced</strong>
               Project / transport / state
@@ -1174,14 +1313,14 @@
             <div class="sync-node-label"><span>Node:Cue / Backup</span><i aria-hidden="true"></i></div>
             <div>
               <strong>Live mirror</strong>
-              <p>The Backup follows in read-only mode and plays locally in parallel, ready at the current show position.</p>
+              <p>The Backup follows in read-only mode and plays locally in parallel. It is ready to take over if the Primary computer has a bad day.</p>
             </div>
           </article>
         </div>
 
         <div class="takeover-rule">
           <span>Primary lost</span>
-          <strong>If the Primary PC or app crashes, the Backup automatically leaves read-only mode and becomes an immediately operable Standalone instance, preserving current playback so the operator can continue the show.</strong>
+          <strong>If the Primary computer loses power, gets unplugged, or otherwise drops out of the show, the Backup automatically leaves read-only mode and becomes an immediately operable Standalone instance, preserving current playback so the show can go on uninterrupted.</strong>
         </div>
         <p class="takeover-note">Audio-path switching remains under the operator's console, matrix, or hardware redundancy system.</p>
       </div>
@@ -1191,31 +1330,30 @@
       <div class="shell integration-grid">
         <div class="integration-intro">
           <p class="section-kicker">Control surfaces</p>
-          <h2 id="integrations-title">Meet the control system already on the show.</h2>
-          <p>Node:Cue stays operable from its main interface while extending control to the devices and protocols used around it.</p>
+          <h2 id="integrations-title">Control Node:Cue and external devices.</h2>
+          <p>Send MIDI and OSC commands from Node:Cue to external devices, and receive MIDI and OSC input to control Node:Cue. The included Stream Deck plugin provides direct access to live controls.</p>
         </div>
-        <div class="capability-list">
+          <figure class="streamdeck-figure">
+            <img src="assets/nodecue-streamdeck-studio-20260904.png" width="1449" height="1086" loading="lazy" decoding="async" alt="Stream Deck displaying the Node:Cue plugin: cue transport, pads, playlist controls, Sync status, and armed timecode.">
+          </figure>
+          <div class="capability-list">
           <article class="capability">
             <code>MIDI</code>
-            <div><strong>Map physical controls to show actions.</strong><p>Trigger transport, pads, cues, and application commands from MIDI input.</p></div>
+            <div><strong>Send and receive MIDI control.</strong><p>Use Node:Cue to trigger external equipment, or use MIDI input to control transport, pads, cues, and application commands.</p></div>
           </article>
           <article class="capability">
             <code>OSC</code>
-            <div><strong>Integrate over the production network.</strong><p>Send and receive control messages using configurable endpoints and documented commands.</p></div>
+            <div><strong>Send and receive OSC control.</strong><p>Exchange control messages with devices and software over the production network.</p></div>
           </article>
           <article class="capability">
             <code>Keys</code>
-            <div><strong>Keep essential actions under the operator's hands.</strong><p>Assign shortcuts globally or directly to pads without changing the current view.</p></div>
+              <div><strong>Control Node:Cue from the keyboard.</strong><p>Assign shortcuts to transport, pads, cues, and application commands without changing the current view.</p></div>
           </article>
           <article class="capability">
             <code>Deck</code>
-            <div><strong>Operate from Elgato Stream Deck.</strong><p>Use the Node:Cue plugin for compact tactile access to live controls.</p></div>
+            <div><strong>Use the included Node:Cue Stream Deck plugin.</strong><p>Trigger transport, pads, cues, and other live controls directly from Stream Deck.</p></div>
           </article>
-          <article class="capability">
-            <code>DSP</code>
-            <div><strong>Shape material without leaving the cue.</strong><p>Per-item EQ and compression stay visible beside the waveform and live analysis.</p></div>
-          </article>
-        </div>
+          </div>
       </div>
     </section>
 
@@ -1223,8 +1361,8 @@
       <div class="shell">
         <div class="support-copy">
           <p class="section-kicker">Free to use</p>
-          <h2 id="support-title">Use Node:Cue on the show.</h2>
-          <p>The application is distributed for free use. An optional supporter license helps fund continued development without changing the core workflow.</p>
+          <h2 id="support-title">Node:Cue is free to use.</h2>
+          <p>Use the complete application without a subscription. An optional supporter license helps fund continued development.</p>
         </div>
         <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Get supporter license</a>
       </div>
@@ -1232,9 +1370,9 @@
 
     <section class="download-band" aria-labelledby="download-title">
       <div class="shell">
-        <p class="section-kicker">Current release / Windows x64</p>
-        <h2 id="download-title">Put the next cue on standby.</h2>
-        <p>Download the latest official Node:Cue installer from the public GitHub release.</p>
+        <p class="section-kicker">Node:Cue V1.0.0 / Windows x64</p>
+        <h2 id="download-title">Node:Cue V1 is ready for your next show.</h2>
+        <p>Download the official Windows installer for Node:Cue V1.0.0.</p>
         <a
           class="button primary"
           href="https://github.com/allanlg/NodeCue/releases/latest"
