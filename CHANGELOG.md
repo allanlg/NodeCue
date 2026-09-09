@@ -1,5 +1,24 @@
 # Changelog
 
+## Node:Cue 1.0.1 - Live Playback and Reliability
+
+### Improvements
+
+- Improved responsiveness when triggering Pads and Playlist tracks in rapid succession, including during fade transitions.
+- Smoother progress bars, playheads and countdowns across Cuelist, Pads, Playlist and Now Playing when another playback starts, including short audio files.
+- Refined Playback Flow controls and kept Playlist transitions independently editable when Cuelist and Pads use Linked Single Play.
+
+### Fixes
+
+- Fixed pending Single Play and Playlist starts accumulating during rapid GO commands. The latest valid request replaces a conflicting pending start, and Stop cancels queued starts.
+- Fixed Group Cue sequence timing around repeats, waits, overlaps, pause and seeking. Audio-source failures now stop the affected group's automatic continuation while allowing healthy siblings to finish.
+- Fixed control-cue Stop, restart and pause handling during delayed starts, post-waits and timed continuations.
+- Fixed multi-selection Properties edits applying unwanted defaults or changing unrelated Play Count and Infinite Play settings.
+- Fixed trimmed Pad playhead positioning and refined Sidebar selection and Project Browser keyboard navigation.
+- Fixed Save As references to collected media and Pad images when changing project folders.
+- Strengthened autosave and backup recovery so failed restores preserve the active project and recovery source, including when the original project folder is unavailable.
+- Fixed a Primary/Backup project mismatch after replacing a Pad's audio file.
+
 ## Node:Cue 1.0.0 - First Official Release
 
 Node:Cue 1.0.0 is the first official release of the application. It brings the complete live-show workflow together in one Windows application: plan a show in the Cuelist, trigger live elements from Pads, keep background music running in the Playlist, and control the whole system from the same operator workspace.
