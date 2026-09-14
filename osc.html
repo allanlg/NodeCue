@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Node:Cue OSC command reference for Cuelist, Pads, Playlist, global transport, and bus control.">
+  <meta name="description" content="Node:Cue OSC command reference for Node:Cue 1.0.2: Cuelist, Pads, Playlist, Auxiliary In, global transport, and bus control.">
   <title>OSC Command Reference - Node:Cue</title>
   <link rel="icon" href="nodecue-logo-transparent.png">
   <link rel="stylesheet" href="assets/docs.css">
@@ -31,84 +31,77 @@
     </header>
 
     <div class="shell doc-layout">
-      <nav class="toc" aria-label="OSC reference sections">
-        <strong>Commands</strong>
-        <a href="#setup">Setup</a><a href="#cuelist">Cuelist</a><a href="#pads">Pads</a>
-        <a href="#playlist">Playlist</a><a href="#global">Global</a><a href="#bus">Bus</a><a href="#examples">Examples</a>
-      </nav>
-
-      <div class="doc-content">
-        <section id="setup">
-          <h2>Setup and conventions</h2>
-          <p class="callout">Configure OSC input in <code>Configuration &gt; OSC</code>. Add a receive endpoint, select the network interface, set its port, then send commands to that IP address and port.</p>
-          <ul>
-            <li>Addresses are lowercase and start with <code>/nodecue</code>.</li>
-            <li>Values are sent as OSC arguments.</li>
-            <li>A first trigger argument of <code>false</code>, <code>0</code>, <code>0.0</code>, or <code>nil</code> is ignored.</li>
-            <li>Fade commands accept an optional duration in milliseconds as their first argument.</li>
-            <li>Pad and bus targets can be included in the address or sent as the first argument.</li>
-          </ul>
-        </section>
-
-        <section id="cuelist"><h2>Cuelist</h2><div class="table-wrap"><table>
-          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
-          <tbody>
-            <tr><td>Play armed cue</td><td><code>/nodecue/cuelist/go</code></td><td><code>/nodecue/cue/go</code>, <code>/nodecue/cues/go</code>, play variants</td><td>Optional trigger</td></tr>
-            <tr><td>Stop cuelist playback</td><td><code>/nodecue/cuelist/stop</code></td><td><code>/nodecue/cue/stop</code>, <code>/nodecue/cues/stop_all</code></td><td>Optional trigger</td></tr>
-            <tr><td>Pause / resume</td><td><code>/nodecue/cuelist/pause</code></td><td><code>/nodecue/cue/pause</code>, resume and pause_resume variants</td><td>Optional trigger</td></tr>
-            <tr><td>Previous cue</td><td><code>/nodecue/cuelist/back</code></td><td><code>/nodecue/cuelist/previous</code>, cue and cues variants</td><td>Optional trigger</td></tr>
-            <tr><td>Next cue</td><td><code>/nodecue/cuelist/next</code></td><td><code>/nodecue/cue/next</code>, <code>/nodecue/cues/next</code></td><td>Optional trigger</td></tr>
-            <tr><td>Fade out cuelist</td><td><code>/nodecue/cuelist/fade_out</code></td><td><code>/nodecue/cue/fade_out</code>, <code>/nodecue/cuelist/fade/out</code></td><td>Optional duration, trigger</td></tr>
-          </tbody>
-        </table></div></section>
-
-        <section id="pads"><h2>Pads</h2><div class="table-wrap"><table>
-          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
-          <tbody>
-            <tr><td>Play pad by address</td><td><code>/nodecue/pads/play/{pad_id}</code></td><td><code>/nodecue/pad/play/{pad_id}</code></td><td>Optional trigger</td></tr>
-            <tr><td>Play pad by argument</td><td><code>/nodecue/pads/play</code></td><td><code>/nodecue/pad/play</code></td><td><code>pad_id</code>, optional trigger</td></tr>
-            <tr><td>Stop pads playback</td><td><code>/nodecue/pads/stop</code></td><td><code>/nodecue/pad/stop</code>, stop_all variants</td><td>Optional trigger</td></tr>
-            <tr><td>Pause / resume</td><td><code>/nodecue/pads/pause</code></td><td><code>/nodecue/pad/pause</code>, resume and pause_resume variants</td><td>Optional trigger</td></tr>
-            <tr><td>Fade out pads</td><td><code>/nodecue/pads/fade_out</code></td><td><code>/nodecue/pad/fade_out</code>, <code>/nodecue/pads/fade/out</code></td><td>Optional duration, trigger</td></tr>
-          </tbody>
-        </table></div></section>
-
-        <section id="playlist"><h2>Playlist</h2><div class="table-wrap"><table>
-          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
-          <tbody>
-            <tr><td>Play selected track</td><td><code>/nodecue/playlist/go</code></td><td><code>/nodecue/playlist/play</code></td><td>Optional trigger</td></tr>
-            <tr><td>Pause / resume</td><td><code>/nodecue/playlist/pause</code></td><td>resume and pause_resume variants</td><td>Optional trigger</td></tr>
-            <tr><td>Stop playback</td><td><code>/nodecue/playlist/stop</code></td><td>-</td><td>Optional trigger</td></tr>
-            <tr><td>Previous track</td><td><code>/nodecue/playlist/back</code></td><td><code>/nodecue/playlist/previous</code></td><td>Optional trigger</td></tr>
-            <tr><td>Next track</td><td><code>/nodecue/playlist/next</code></td><td>-</td><td>Optional trigger</td></tr>
-            <tr><td>Fade out playlist</td><td><code>/nodecue/playlist/fade_out</code></td><td><code>/nodecue/playlist/fade/out</code></td><td>Optional duration, trigger</td></tr>
-          </tbody>
-        </table></div></section>
-
-        <section id="global"><h2>Global transport</h2><div class="table-wrap"><table>
-          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
-          <tbody>
-            <tr><td>Stop all playback / panic</td><td><code>/nodecue/panic</code></td><td><code>/nodecue/stop_all</code></td><td>Optional trigger</td></tr>
-            <tr><td>Fade out all playback</td><td><code>/nodecue/global/fade_out</code></td><td><code>/nodecue/fade_out</code></td><td>Optional duration, trigger</td></tr>
-          </tbody>
-        </table></div></section>
-
-        <section id="bus"><h2>Bus control</h2><p>Bus IDs are zero-based: <code>0</code> Cuelist, <code>1</code> Pads, and <code>2</code> Playlist.</p><div class="table-wrap"><table>
-          <thead><tr><th>Action</th><th>Recommended address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead>
-          <tbody>
-            <tr><td>Toggle mute by address</td><td><code>/nodecue/bus/mute/{bus_id}</code></td><td><code>/nodecue/bus/{bus_id}/mute</code> and toggle variants</td><td>Optional trigger</td></tr>
-            <tr><td>Toggle mute by argument</td><td><code>/nodecue/bus/mute</code></td><td><code>/nodecue/bus/mute/toggle</code></td><td><code>bus_id</code>, optional trigger</td></tr>
-          </tbody>
-        </table></div></section>
-
-        <section id="examples"><h2>Examples</h2>
-          <h3>Play the armed Cuelist cue</h3><pre><code>/nodecue/cuelist/go</code></pre>
-          <h3>Play Pad 7</h3><pre><code>/nodecue/pads/play/7</code></pre>
-          <h3>Fade out all playback over 3 seconds</h3><pre><code>Address: /nodecue/global/fade_out
+<nav class="toc" aria-label="OSC reference sections">
+<strong>Commands</strong>
+<a href="#setup">Setup and conventions</a>
+<a href="#cuelist">Cuelist</a>
+<a href="#pads">Pads</a>
+<a href="#playlist">Playlist</a>
+<a href="#auxiliary">Auxiliary In</a>
+<a href="#global">Global</a>
+<a href="#bus">Bus</a>
+<a href="#examples">Examples</a>
+</nav>
+<div class="doc-content">
+<section id="setup"><h2>Setup and conventions</h2>
+<p>This document lists the OSC input commands supported by Node:Cue 1.0.2.</p>
+<p>OSC input is configured in <code>Preferences &gt; Control &gt; OSC</code>. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.</p>
+<ul><li>All command addresses are lowercase.</li><li>Addresses start with <code>/nodecue</code>.</li><li>Values can be sent as OSC arguments.</li><li>Boolean-style triggers are accepted. A first trigger argument of <code>false</code>, <code>0</code>, <code>0.0</code>, or <code>nil</code> is ignored.</li><li>Required values and IDs are consumed before checking optional trigger arguments. In particular, AUX Level <code>0</code> sets the level to zero; it is not ignored.</li><li>Fade commands accept an optional fade duration in milliseconds as the first argument.</li><li>Pad and bus commands can take their target ID either in the OSC address or as the first argument.</li><li>Cuelist cue IDs are the visible IDs shown in the <code>ID</code> column. For custom IDs, using an OSC argument is the safest form.</li><li><code>/nodecue/cuelist/go</code> always launches the currently armed cue. Its arguments are trigger arguments only; they are not interpreted as a cue ID. To launch a cue by visible ID, use <code>/nodecue/cuelist/go_id</code> with the ID as first argument, or <code>/nodecue/cuelist/go/{cue_id}</code>.</li></ul>
+</section>
+<section id="cuelist"><h2>Cuelist</h2>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Play armed cue</td><td><code>/nodecue/cuelist/go</code></td><td><code>/nodecue/cue/go</code>, <code>/nodecue/cues/go</code>, <code>/nodecue/cuelist/play</code>, <code>/nodecue/cue/play</code>, <code>/nodecue/cues/play</code></td><td>Optional trigger</td></tr><tr><td>Play cue by visible ID</td><td><code>/nodecue/cuelist/go_id</code></td><td><code>/nodecue/cue/go_id</code>, <code>/nodecue/cues/go_id</code>, <code>/nodecue/cuelist/go_number</code>, <code>/nodecue/cuelist/play_id</code>, <code>/nodecue/cuelist/play_number</code></td><td><code>cue_id</code>, optional trigger</td></tr><tr><td>Play cue by visible ID</td><td><code>/nodecue/cuelist/go/{cue_id}</code></td><td><code>/nodecue/cue/go/{cue_id}</code>, <code>/nodecue/cues/go/{cue_id}</code>, <code>/nodecue/cuelist/play/{cue_id}</code>, <code>/nodecue/cuelist/go_id/{cue_id}</code>, <code>/nodecue/cuelist/go_number/{cue_id}</code></td><td>Optional trigger</td></tr><tr><td>Stop all cuelist playback</td><td><code>/nodecue/cuelist/stop</code></td><td><code>/nodecue/cue/stop</code>, <code>/nodecue/cues/stop</code>, <code>/nodecue/cuelist/stop_all</code>, <code>/nodecue/cue/stop_all</code>, <code>/nodecue/cues/stop_all</code></td><td>Optional trigger</td></tr><tr><td>Pause / resume cuelist playback</td><td><code>/nodecue/cuelist/pause</code></td><td><code>/nodecue/cue/pause</code>, <code>/nodecue/cues/pause</code>, <code>/nodecue/cuelist/resume</code>, <code>/nodecue/cuelist/pause_resume</code></td><td>Optional trigger</td></tr><tr><td>Previous cue</td><td><code>/nodecue/cuelist/back</code></td><td><code>/nodecue/cuelist/previous</code>, <code>/nodecue/cue/back</code>, <code>/nodecue/cue/previous</code>, <code>/nodecue/cues/back</code>, <code>/nodecue/cues/previous</code></td><td>Optional trigger</td></tr><tr><td>Next cue</td><td><code>/nodecue/cuelist/next</code></td><td><code>/nodecue/cue/next</code>, <code>/nodecue/cues/next</code></td><td>Optional trigger</td></tr><tr><td>Panic / stop all playback</td><td><code>/nodecue/panic</code></td><td><code>/nodecue/stop_all</code>, <code>/nodecue/cuelist/panic</code>, <code>/nodecue/cue/panic</code>, <code>/nodecue/cues/panic</code></td><td>Optional trigger</td></tr><tr><td>Fade out cuelist playback</td><td><code>/nodecue/cuelist/fade_out</code></td><td><code>/nodecue/cue/fade_out</code>, <code>/nodecue/cues/fade_out</code>, <code>/nodecue/cuelist/fade/out</code></td><td>Optional fade duration in ms, optional trigger</td></tr></tbody></table></div>
+</section>
+<section id="pads"><h2>Pads</h2>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Play pad</td><td><code>/nodecue/pads/play/{pad_id}</code></td><td><code>/nodecue/pad/play/{pad_id}</code></td><td>Optional trigger</td></tr><tr><td>Play pad</td><td><code>/nodecue/pads/play</code></td><td><code>/nodecue/pad/play</code></td><td><code>pad_id</code>, optional trigger</td></tr><tr><td>Stop pads playback</td><td><code>/nodecue/pads/stop</code></td><td><code>/nodecue/pad/stop</code>, <code>/nodecue/pads/stop_all</code>, <code>/nodecue/pad/stop_all</code></td><td>Optional trigger</td></tr><tr><td>Pause / resume pads playback</td><td><code>/nodecue/pads/pause</code></td><td><code>/nodecue/pad/pause</code>, <code>/nodecue/pads/resume</code>, <code>/nodecue/pads/pause_resume</code></td><td>Optional trigger</td></tr><tr><td>Fade out pads playback</td><td><code>/nodecue/pads/fade_out</code></td><td><code>/nodecue/pad/fade_out</code>, <code>/nodecue/pads/fade/out</code></td><td>Optional fade duration in ms, optional trigger</td></tr></tbody></table></div>
+</section>
+<section id="playlist"><h2>Playlist</h2>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Play selected track or AUX</td><td><code>/nodecue/playlist/go</code></td><td><code>/nodecue/playlist/play</code></td><td>Optional trigger</td></tr><tr><td>Pause / resume playlist playback</td><td><code>/nodecue/playlist/pause</code></td><td><code>/nodecue/playlist/resume</code>, <code>/nodecue/playlist/pause_resume</code></td><td>Optional trigger</td></tr><tr><td>Stop playlist playback</td><td><code>/nodecue/playlist/stop</code></td><td>-</td><td>Optional trigger</td></tr><tr><td>Previous track</td><td><code>/nodecue/playlist/back</code></td><td><code>/nodecue/playlist/previous</code></td><td>Optional trigger</td></tr><tr><td>Next track</td><td><code>/nodecue/playlist/next</code></td><td>-</td><td>Optional trigger</td></tr><tr><td>Fade out playlist playback</td><td><code>/nodecue/playlist/fade_out</code></td><td><code>/nodecue/playlist/fade/out</code></td><td>Optional fade duration in ms, optional trigger</td></tr></tbody></table></div>
+</section>
+<section id="auxiliary"><h2>Auxiliary In</h2>
+<p>These commands target AUX directly, regardless of the selected Playlist track. AUX Stop/Fade Out close only AUX; they do not stop a Playlist track.</p>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Select and open AUX</td><td><code>/nodecue/aux/go</code></td><td><code>/nodecue/aux/play</code></td><td>Optional trigger</td></tr><tr><td>Close AUX immediately</td><td><code>/nodecue/aux/stop</code></td><td>-</td><td>Optional trigger</td></tr><tr><td>Fade AUX out</td><td><code>/nodecue/aux/fade_out</code></td><td><code>/nodecue/aux/fade/out</code></td><td>Optional integer duration in ms, optional trigger</td></tr><tr><td>Set the AUX knob level</td><td><code>/nodecue/aux/level</code></td><td>-</td><td>Number from 0 to 1, optional trigger</td></tr></tbody></table></div>
+<p>GO uses the Playlist GO preference and the normal AUX/Playlist handoff transition. Repeated GO does not restart an already open AUX. Input enable/device settings must be configured first; GO never enables or reroutes an unavailable input.</p>
+<p>Fade Out accepts 0 to 600000 ms. Omitting its duration uses the existing AUX command fade duration (1000 ms by default), matching the dedicated MIDI Fade Out action.</p>
+<p>Level uses the knob&#x27;s 0-100% scale, not decibels: <code>0.5</code> means 50%. Setting the level to zero keeps an open AUX open; raising it restores its sound. Use Stop to close AUX. Values outside the stated ranges are rejected. The external application&#x27;s own playback remains unchanged.</p>
+<p>Commands respect the same Backup read-only guard and Sync replication as local AUX controls. Playlist Stop and Playlist Fade Out also close AUX. Dedicated AUX commands target only AUX. Fade In, Mute and Unmute are not separate external commands; use GO and Stop.</p>
+</section>
+<section id="global"><h2>Global</h2>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Stop all playback / panic</td><td><code>/nodecue/panic</code></td><td><code>/nodecue/stop_all</code></td><td>Optional trigger</td></tr><tr><td>Fade out all playback</td><td><code>/nodecue/global/fade_out</code></td><td><code>/nodecue/fade_out</code></td><td>Optional fade duration in ms, optional trigger</td></tr></tbody></table></div>
+</section>
+<section id="bus"><h2>Bus</h2>
+<p>Bus IDs are zero-based:</p>
+<ul><li><code>0</code>: Cuelist bus</li><li><code>1</code>: Pads bus</li><li><code>2</code>: Playlist bus</li></ul>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Recommended OSC address</th><th>Accepted aliases</th><th>Arguments</th></tr></thead><tbody><tr><td>Toggle bus mute</td><td><code>/nodecue/bus/mute/{bus_id}</code></td><td><code>/nodecue/bus/mute/toggle/{bus_id}</code>, <code>/nodecue/bus/{bus_id}/mute</code>, <code>/nodecue/bus/{bus_id}/mute/toggle</code></td><td>Optional trigger</td></tr><tr><td>Toggle bus mute</td><td><code>/nodecue/bus/mute</code></td><td><code>/nodecue/bus/mute/toggle</code></td><td><code>bus_id</code>, optional trigger</td></tr></tbody></table></div>
+</section>
+<section id="examples"><h2>Examples</h2>
+<p>Play the armed cuelist cue:</p>
+<pre><code>/nodecue/cuelist/go</code></pre>
+<p>Play cuelist cue ID <code>12.5</code>:</p>
+<pre><code>Address: /nodecue/cuelist/go_id
+Argument: 12.5</code></pre>
+<p>Or:</p>
+<pre><code>/nodecue/cuelist/go/12.5</code></pre>
+<p>Play pad 7:</p>
+<pre><code>/nodecue/pads/play/7</code></pre>
+<p>Play pad 7 using an argument:</p>
+<pre><code>Address: /nodecue/pads/play
+Argument: 7</code></pre>
+<p>Fade out all playback over 3 seconds:</p>
+<pre><code>Address: /nodecue/global/fade_out
 Argument: 3000</code></pre>
-          <h3>Toggle mute on the Pads bus</h3><pre><code>/nodecue/bus/mute/1</code></pre>
-        </section>
-      </div>
+<p>Toggle mute on the Pads bus:</p>
+<pre><code>/nodecue/bus/mute/1</code></pre>
+<p>Select and open AUX using the configured GO and handoff behavior:</p>
+<pre><code>/nodecue/aux/go</code></pre>
+<p>Set the AUX knob to 50% without changing its open/closed state:</p>
+<pre><code>Address: /nodecue/aux/level
+Argument: 0.5 (OSC Float)</code></pre>
+<p>Fade AUX out over 3 seconds:</p>
+<pre><code>Address: /nodecue/aux/fade_out
+Argument: 3000 (OSC Int)</code></pre>
+</section>
+<p><a href="OSC_COMMANDS.md">Download the plain-text OSC reference</a></p>
+</div>
     </div>
   </main>
 

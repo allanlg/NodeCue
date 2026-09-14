@@ -14,6 +14,8 @@ Bundled/native components
 - libsoxr 0.1.3 - LGPL-2.1-or-later (distributed as the dynamically linked `soxr.dll`; the installed application also includes `licenses/libsoxr/LICENCE` and `licenses/libsoxr/COPYING.LGPL`). Users may replace `soxr.dll` with a compatible modified version.
 - Microsoft WebView2 Runtime - Microsoft Edge WebView2 Runtime terms (provided by Windows/WebView2 runtime, not owned by Node:Cue).
 - Material Design Icons - Apache-2.0 (inline SVG icons `midi-port` and `transit-connection-variant` from Pictogrammers).
+- IBM Plex Sans SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 font candidates retained under `frontend/assets/fonts/ibm-plex-sans/`; the complete license is bundled beside the fonts).
+- Outfit Regular, Medium, SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 fonts; the complete license is bundled beside the fonts under `frontend/assets/fonts/outfit/OFL.txt`).
 
 Main dependency families
 - Tauri / WebView2 - desktop application shell and native window integration.
@@ -24,17 +26,17 @@ Main dependency families
 
 Bundled Stream Deck plugin runtime dependencies
 License expressions are copied from the Stream Deck plugin package lock.
-Generated from the Stream Deck plugin package lock on 2026-05-22.
+Generated from the Stream Deck plugin package lock on 2026-09-13.
 
 @elgato/schemas 0.4.15 - MIT
-@elgato/streamdeck 2.0.4 - MIT
+@elgato/streamdeck 2.1.0 - MIT
 @elgato/utils 0.4.4 - MIT
-ws 8.20.0 - MIT
+ws 8.21.1 - MIT
 zod 3.25.76 - MIT
 
 Complete dependency inventory
 License expressions are copied from each package metadata. Build-only crates may appear because they are used to produce the distributed binary.
-Generated from `cargo metadata --format-version 1 --locked` on 2026-05-22.
+Generated from `cargo metadata --format-version 1 --locked` on 2026-09-13.
 
 adler2 2.0.1 - 0BSD OR MIT OR Apache-2.0
 aho-corasick 1.1.4 - Unlicense OR MIT
@@ -44,10 +46,19 @@ alsa 0.10.0 - Apache-2.0/MIT
 alsa 0.9.1 - Apache-2.0/MIT
 alsa-sys 0.3.1 - MIT
 android_system_properties 0.1.5 - MIT/Apache-2.0
-anyhow 1.0.102 - MIT OR Apache-2.0
+anyhow 1.0.103 - MIT OR Apache-2.0
 arbitrary 1.4.2 - MIT OR Apache-2.0
 arrayvec 0.7.6 - MIT OR Apache-2.0
 asio-sys 0.2.6 - Apache-2.0
+async-broadcast 0.7.2 - MIT OR Apache-2.0
+async-channel 2.5.0 - Apache-2.0 OR MIT
+async-executor 1.14.0 - Apache-2.0 OR MIT
+async-io 2.6.0 - Apache-2.0 OR MIT
+async-lock 3.4.2 - Apache-2.0 OR MIT
+async-process 2.5.0 - Apache-2.0 OR MIT
+async-recursion 1.1.1 - MIT OR Apache-2.0
+async-signal 0.2.14 - Apache-2.0 OR MIT
+async-task 4.7.1 - Apache-2.0 OR MIT
 async-trait 0.1.89 - MIT OR Apache-2.0
 atk 0.18.2 - MIT
 atk-sys 0.18.2 - MIT
@@ -59,13 +70,14 @@ base64 0.21.7 - MIT OR Apache-2.0
 base64 0.22.1 - MIT OR Apache-2.0
 bindgen 0.72.1 - BSD-3-Clause
 biquad 0.6.0 - MIT OR Apache-2.0
-bitflags 1.3.2 - MIT/Apache-2.0
-bitflags 2.11.0 - MIT OR Apache-2.0
 bit-set 0.8.0 - Apache-2.0 OR MIT
 bit-vec 0.8.0 - Apache-2.0 OR MIT
+bitflags 1.3.2 - MIT/Apache-2.0
+bitflags 2.11.0 - MIT OR Apache-2.0
 block 0.1.6 - MIT
-block2 0.6.2 - MIT
 block-buffer 0.10.4 - MIT OR Apache-2.0
+block2 0.6.2 - MIT
+blocking 1.6.2 - Apache-2.0 OR MIT
 brotli 8.0.2 - BSD-3-Clause AND MIT
 brotli-decompressor 5.0.0 - BSD-3-Clause/MIT
 bumpalo 3.20.2 - MIT OR Apache-2.0
@@ -76,25 +88,27 @@ bytes 1.11.1 - MIT
 cairo-rs 0.18.5 - MIT
 cairo-sys-rs 0.18.2 - MIT
 camino 1.2.2 - MIT OR Apache-2.0
+cargo-platform 0.1.9 - MIT OR Apache-2.0
 cargo_metadata 0.19.2 - MIT
 cargo_toml 0.22.3 - Apache-2.0 OR MIT
-cargo-platform 0.1.9 - MIT OR Apache-2.0
 cc 1.2.57 - MIT OR Apache-2.0
 cesu8 1.1.0 - Apache-2.0/MIT
 cexpr 0.6.0 - Apache-2.0/MIT
 cfb 0.7.3 - MIT
 cfg-expr 0.15.8 - MIT OR Apache-2.0
 cfg-if 1.0.4 - MIT OR Apache-2.0
+cfg_aliases 0.2.1 - MIT
 chrono 0.4.44 - MIT OR Apache-2.0
 clang-sys 1.8.1 - Apache-2.0
 combine 4.6.7 - MIT
+concurrent-queue 2.5.0 - Apache-2.0 OR MIT
 convert_case 0.4.0 - MIT
 cookie 0.18.1 - MIT OR Apache-2.0
-coreaudio-rs 0.13.0 - MIT/Apache-2.0
 core-foundation 0.10.1 - MIT OR Apache-2.0
 core-foundation-sys 0.8.7 - MIT OR Apache-2.0
 core-graphics 0.25.0 - MIT OR Apache-2.0
 core-graphics-types 0.2.0 - MIT OR Apache-2.0
+coreaudio-rs 0.13.0 - MIT/Apache-2.0
 coremidi 0.9.0 - MIT
 coremidi-sys 3.2.0 - MIT
 cpal 0.17.1 - Apache-2.0
@@ -133,12 +147,17 @@ dunce 1.0.5 - CC0-1.0 OR MIT-0 OR Apache-2.0
 dyn-clone 1.0.20 - MIT OR Apache-2.0
 ebur128 0.1.10 - MIT
 either 1.15.0 - MIT OR Apache-2.0
-embed_plist 1.2.2 - MIT OR Apache-2.0
 embed-resource 3.0.7 - MIT
+embed_plist 1.2.2 - MIT OR Apache-2.0
 encoding_rs 0.8.35 - (Apache-2.0 OR MIT) AND BSD-3-Clause
+endi 1.1.1 - MIT
+enumflags2 0.7.12 - MIT OR Apache-2.0
+enumflags2_derive 0.7.12 - MIT OR Apache-2.0
 equivalent 1.0.2 - Apache-2.0 OR MIT
 erased-serde 0.4.10 - MIT OR Apache-2.0
 errno 0.3.14 - MIT OR Apache-2.0
+event-listener 5.4.1 - Apache-2.0 OR MIT
+event-listener-strategy 0.5.4 - Apache-2.0 OR MIT
 extended 0.1.0 - MIT
 fastrand 2.3.0 - Apache-2.0 OR MIT
 fdeflate 0.3.7 - MIT OR Apache-2.0
@@ -159,6 +178,7 @@ futures-channel 0.3.32 - MIT OR Apache-2.0
 futures-core 0.3.32 - MIT OR Apache-2.0
 futures-executor 0.3.32 - MIT OR Apache-2.0
 futures-io 0.3.32 - MIT OR Apache-2.0
+futures-lite 2.6.1 - Apache-2.0 OR MIT
 futures-macro 0.3.32 - MIT OR Apache-2.0
 futures-sink 0.3.32 - MIT OR Apache-2.0
 futures-task 0.3.32 - MIT OR Apache-2.0
@@ -172,7 +192,6 @@ gdkwayland-sys 0.18.2 - MIT
 gdkx11 0.18.2 - MIT
 gdkx11-sys 0.18.2 - MIT
 generic-array 0.14.7 - MIT
-gethostname 1.1.0 - Apache-2.0
 getrandom 0.1.16 - MIT OR Apache-2.0
 getrandom 0.2.17 - MIT OR Apache-2.0
 getrandom 0.3.4 - MIT OR Apache-2.0
@@ -183,24 +202,25 @@ glib 0.18.5 - MIT
 glib-macros 0.18.5 - MIT
 glib-sys 0.18.1 - MIT
 glob 0.3.3 - MIT OR Apache-2.0
-global-hotkey 0.7.0 - Apache-2.0 OR MIT
 gobject-sys 0.18.0 - MIT
 gtk 0.18.2 - MIT
-gtk3-macros 0.18.2 - MIT
 gtk-sys 0.18.2 - MIT
+gtk3-macros 0.18.2 - MIT
 hashbrown 0.12.3 - MIT OR Apache-2.0
 hashbrown 0.15.5 - MIT OR Apache-2.0
 hashbrown 0.16.1 - MIT OR Apache-2.0
 heck 0.4.1 - MIT OR Apache-2.0
 heck 0.5.0 - MIT OR Apache-2.0
+hermit-abi 0.5.2 - MIT OR Apache-2.0
 hex 0.4.3 - MIT OR Apache-2.0
 hound 3.5.1 - Apache-2.0
 html5ever 0.29.1 - MIT OR Apache-2.0
 html5ever 0.38.0 - MIT OR Apache-2.0
 http 1.4.0 - MIT OR Apache-2.0
-httparse 1.10.1 - MIT OR Apache-2.0
 http-body 1.0.1 - MIT
 http-body-util 0.1.3 - MIT
+http-range 0.1.5 - MIT
+httparse 1.10.1 - MIT OR Apache-2.0
 httpdate 1.0.3 - MIT OR Apache-2.0
 hyper 1.8.1 - MIT
 hyper-rustls 0.27.9 - Apache-2.0 OR ISC OR MIT
@@ -219,6 +239,7 @@ id-arena 2.3.0 - MIT/Apache-2.0
 ident_case 1.0.1 - MIT/Apache-2.0
 idna 1.1.0 - MIT OR Apache-2.0
 idna_adapter 1.2.1 - Apache-2.0 OR MIT
+if-addrs 0.15.0 - MIT OR BSD-3-Clause
 image 0.25.10 - MIT OR Apache-2.0
 indexmap 1.9.3 - Apache-2.0 OR MIT
 indexmap 2.13.0 - Apache-2.0 OR MIT
@@ -233,9 +254,9 @@ jni 0.21.1 - MIT/Apache-2.0
 jni-sys 0.3.1 - MIT OR Apache-2.0
 jni-sys 0.4.1 - MIT OR Apache-2.0
 jni-sys-macros 0.4.1 - MIT OR Apache-2.0
+js-sys 0.3.91 - MIT OR Apache-2.0
 json-patch 3.0.1 - MIT/Apache-2.0
 jsonptr 0.6.3 - MIT OR Apache-2.0
-js-sys 0.3.91 - MIT OR Apache-2.0
 keyboard-types 0.7.0 - MIT OR Apache-2.0
 kuchikiki 0.8.8-speedreader - MIT
 lazy_static 1.5.0 - MIT OR Apache-2.0
@@ -251,6 +272,8 @@ linux-raw-sys 0.12.1 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 litemap 0.8.1 - Unicode-3.0
 lock_api 0.4.14 - MIT OR Apache-2.0
 log 0.4.29 - MIT OR Apache-2.0
+lru-slab 0.1.2 - MIT OR Apache-2.0 OR Zlib
+ltc 0.2.0 - BSD-3-Clause
 mac 0.1.1 - MIT/Apache-2.0
 mach2 0.5.0 - BSD-2-Clause OR MIT OR Apache-2.0
 markup5ever 0.14.1 - MIT OR Apache-2.0
@@ -260,7 +283,7 @@ matchers 0.2.0 - MIT
 matches 0.1.10 - MIT
 matchit 0.7.3 - MIT AND BSD-3-Clause
 memchr 2.8.0 - Unlicense OR MIT
-memmap2 0.9.10 - MIT OR Apache-2.0
+memmap2 0.9.11 - MIT OR Apache-2.0
 memoffset 0.9.1 - MIT
 midir 0.10.4 - MIT
 mime 0.3.17 - MIT OR Apache-2.0
@@ -277,11 +300,13 @@ new_debug_unreachable 1.0.6 - MIT
 nodrop 0.1.14 - MIT/Apache-2.0
 nom 7.1.3 - MIT
 nu-ansi-term 0.50.3 - MIT
-num_enum 0.7.6 - BSD-3-Clause OR MIT OR Apache-2.0
-num_enum_derive 0.7.6 - BSD-3-Clause OR MIT OR Apache-2.0
+num-complex 0.4.6 - MIT OR Apache-2.0
 num-conv 0.2.0 - MIT OR Apache-2.0
 num-derive 0.4.2 - MIT OR Apache-2.0
+num-integer 0.1.46 - MIT OR Apache-2.0
 num-traits 0.2.19 - MIT OR Apache-2.0
+num_enum 0.7.6 - BSD-3-Clause OR MIT OR Apache-2.0
+num_enum_derive 0.7.6 - BSD-3-Clause OR MIT OR Apache-2.0
 objc2 0.6.4 - MIT
 objc2-app-kit 0.3.2 - Zlib OR Apache-2.0 OR MIT
 objc2-audio-toolbox 0.3.2 - Zlib OR Apache-2.0 OR MIT
@@ -301,9 +326,11 @@ objc2-web-kit 0.3.2 - Zlib OR Apache-2.0 OR MIT
 once_cell 1.21.4 - MIT OR Apache-2.0
 openssl-probe 0.2.1 - MIT OR Apache-2.0
 option-ext 0.2.0 - MPL-2.0
+ordered-stream 0.2.0 - MIT OR Apache-2.0
 osakit 0.3.1 - MIT OR Apache-2.0
 pango 0.18.3 - MIT
 pango-sys 0.18.0 - MIT
+parking 2.2.1 - Apache-2.0 OR MIT
 parking_lot 0.12.5 - MIT OR Apache-2.0
 parking_lot_core 0.9.12 - MIT OR Apache-2.0
 parse_cfg 4.1.1 - CC0-1.0 OR MIT
@@ -328,31 +355,42 @@ phf_shared 0.13.1 - MIT
 phf_shared 0.8.0 - MIT
 pin-project-lite 0.2.17 - Apache-2.0 OR MIT
 pin-utils 0.1.0 - MIT OR Apache-2.0
+piper 0.2.5 - MIT OR Apache-2.0
 pkg-config 0.3.32 - MIT OR Apache-2.0
-plist 1.8.0 - MIT
+plist 1.10.0 - MIT
 png 0.17.16 - MIT OR Apache-2.0
 png 0.18.1 - MIT OR Apache-2.0
+polling 3.11.0 - Apache-2.0 OR MIT
 potential_utf 0.1.4 - Unicode-3.0
 powerfmt 0.2.0 - MIT OR Apache-2.0
 ppv-lite86 0.2.21 - MIT OR Apache-2.0
 precomputed-hash 0.1.1 - MIT
 prettyplease 0.2.37 - MIT OR Apache-2.0
-proc-macro2 1.0.106 - MIT OR Apache-2.0
+primal-check 0.3.4 - MIT OR Apache-2.0
 proc-macro-crate 1.3.1 - MIT OR Apache-2.0
 proc-macro-crate 2.0.0 - MIT OR Apache-2.0
 proc-macro-crate 3.5.0 - MIT OR Apache-2.0
 proc-macro-error 1.0.4 - MIT OR Apache-2.0
 proc-macro-error-attr 1.0.4 - MIT OR Apache-2.0
 proc-macro-hack 0.5.20+deprecated - MIT OR Apache-2.0
+proc-macro2 1.0.106 - MIT OR Apache-2.0
 pxfm 0.1.28 - BSD-3-Clause OR Apache-2.0
-quick-xml 0.38.4 - MIT
+quick-xml 0.41.0 - MIT
+quinn 0.11.9 - MIT OR Apache-2.0
+quinn-proto 0.11.15 - MIT OR Apache-2.0
+quinn-udp 0.5.14 - MIT OR Apache-2.0
 quote 1.0.45 - MIT OR Apache-2.0
+r-efi 5.3.0 - MIT OR Apache-2.0 OR LGPL-2.1-or-later
+r-efi 6.0.0 - MIT OR Apache-2.0 OR LGPL-2.1-or-later
 rand 0.7.3 - MIT OR Apache-2.0
 rand 0.8.5 - MIT OR Apache-2.0
+rand 0.9.4 - MIT OR Apache-2.0
 rand_chacha 0.2.2 - MIT OR Apache-2.0
 rand_chacha 0.3.1 - MIT OR Apache-2.0
+rand_chacha 0.9.0 - MIT OR Apache-2.0
 rand_core 0.5.1 - MIT OR Apache-2.0
 rand_core 0.6.4 - MIT OR Apache-2.0
+rand_core 0.9.5 - MIT OR Apache-2.0
 rand_hc 0.2.0 - MIT/Apache-2.0
 rand_pcg 0.2.1 - MIT OR Apache-2.0
 raw-window-handle 0.6.2 - MIT OR Apache-2.0 OR Zlib
@@ -360,19 +398,19 @@ redox_syscall 0.5.18 - MIT
 redox_users 0.5.2 - MIT
 ref-cast 1.0.25 - MIT OR Apache-2.0
 ref-cast-impl 1.0.25 - MIT OR Apache-2.0
-r-efi 5.3.0 - MIT OR Apache-2.0 OR LGPL-2.1-or-later
-r-efi 6.0.0 - MIT OR Apache-2.0 OR LGPL-2.1-or-later
 regex 1.12.3 - MIT OR Apache-2.0
 regex-automata 0.4.14 - MIT OR Apache-2.0
 regex-syntax 0.8.10 - MIT OR Apache-2.0
+reqwest 0.12.28 - MIT OR Apache-2.0
 reqwest 0.13.2 - MIT OR Apache-2.0
 rfd 0.16.0 - MIT
 ring 0.17.14 - Apache-2.0 AND ISC
 rmp3 0.3.1 - CC0-1.0
 rosc 0.10.1 - MIT/Apache-2.0
 rtrb 0.3.3 - MIT OR Apache-2.0
-rustc_version 0.4.1 - MIT OR Apache-2.0
 rustc-hash 2.1.1 - Apache-2.0 OR MIT
+rustc_version 0.4.1 - MIT OR Apache-2.0
+rustfft 6.4.1 - MIT OR Apache-2.0
 rustix 1.1.4 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 rustls 0.23.40 - Apache-2.0 OR ISC OR MIT
 rustls-native-certs 0.8.3 - Apache-2.0 OR ISC OR MIT
@@ -395,6 +433,7 @@ selectors 0.24.0 - MPL-2.0
 selectors 0.36.1 - MPL-2.0
 semver 1.0.27 - MIT OR Apache-2.0
 serde 1.0.228 - MIT OR Apache-2.0
+serde-untagged 0.1.9 - MIT OR Apache-2.0
 serde_core 1.0.228 - MIT OR Apache-2.0
 serde_derive 1.0.228 - MIT OR Apache-2.0
 serde_derive_internals 0.29.1 - MIT OR Apache-2.0
@@ -406,7 +445,6 @@ serde_spanned 1.0.4 - MIT OR Apache-2.0
 serde_urlencoded 0.7.1 - MIT/Apache-2.0
 serde_with 3.18.0 - MIT OR Apache-2.0
 serde_with_macros 3.18.0 - MIT OR Apache-2.0
-serde-untagged 0.1.9 - MIT OR Apache-2.0
 serialize-to-javascript 0.1.2 - MIT OR Apache-2.0
 serialize-to-javascript-impl 0.1.2 - MIT OR Apache-2.0
 servo_arc 0.2.0 - MIT OR Apache-2.0
@@ -426,6 +464,7 @@ softbuffer 0.4.8 - MIT OR Apache-2.0
 soup3 0.5.0 - MIT
 soup3-sys 0.5.0 - MIT
 stable_deref_trait 1.2.1 - MIT OR Apache-2.0
+strength_reduce 0.2.4 - MIT OR Apache-2.0
 string_cache 0.8.9 - MIT OR Apache-2.0
 string_cache 0.9.0 - MIT OR Apache-2.0
 string_cache_codegen 0.5.4 - MIT OR Apache-2.0
@@ -464,7 +503,7 @@ tauri-macros 2.5.5 - Apache-2.0 OR MIT
 tauri-plugin 2.5.4 - Apache-2.0 OR MIT
 tauri-plugin-dialog 2.6.0 - Apache-2.0 OR MIT
 tauri-plugin-fs 2.4.5 - Apache-2.0 OR MIT
-tauri-plugin-global-shortcut 2.3.1 - Apache-2.0 OR MIT
+tauri-plugin-single-instance 2.4.3 - Apache-2.0 OR MIT
 tauri-plugin-updater 2.10.1 - Apache-2.0 OR MIT
 tauri-runtime 2.10.1 - Apache-2.0 OR MIT
 tauri-runtime-wry 2.10.1 - Apache-2.0 OR MIT
@@ -477,12 +516,14 @@ thiserror 1.0.69 - MIT OR Apache-2.0
 thiserror 2.0.18 - MIT OR Apache-2.0
 thiserror-impl 1.0.69 - MIT OR Apache-2.0
 thiserror-impl 2.0.18 - MIT OR Apache-2.0
-thread_local 1.1.9 - MIT OR Apache-2.0
 thread-priority 1.2.0 - MIT
+thread_local 1.1.9 - MIT OR Apache-2.0
 time 0.3.47 - MIT OR Apache-2.0
 time-core 0.1.8 - MIT OR Apache-2.0
 time-macros 0.2.27 - MIT OR Apache-2.0
 tinystr 0.8.2 - Unicode-3.0
+tinyvec 1.11.0 - Zlib OR Apache-2.0 OR MIT
+tinyvec_macros 0.1.1 - MIT OR Apache-2.0 OR Zlib
 tokio 1.50.0 - MIT
 tokio-macros 2.6.1 - MIT
 tokio-rustls 0.26.4 - MIT OR Apache-2.0
@@ -509,19 +550,21 @@ tracing-attributes 0.1.31 - MIT
 tracing-core 0.1.36 - MIT
 tracing-log 0.2.0 - MIT
 tracing-subscriber 0.3.23 - MIT
+transpose 0.2.3 - MIT OR Apache-2.0
 tray-icon 0.21.3 - MIT OR Apache-2.0
 try-lock 0.2.5 - MIT
 tungstenite 0.24.0 - MIT OR Apache-2.0
 typeid 1.0.3 - MIT OR Apache-2.0
 typenum 1.19.0 - MIT OR Apache-2.0
+uds_windows 1.2.1 - MIT
 unic-char-property 0.9.0 - MIT/Apache-2.0
 unic-char-range 0.9.0 - MIT/Apache-2.0
 unic-common 0.9.0 - MIT/Apache-2.0
+unic-ucd-ident 0.9.0 - MIT/Apache-2.0
+unic-ucd-version 0.9.0 - MIT/Apache-2.0
 unicode-ident 1.0.24 - (MIT OR Apache-2.0) AND Unicode-3.0
 unicode-segmentation 1.12.0 - MIT OR Apache-2.0
 unicode-xid 0.2.6 - MIT OR Apache-2.0
-unic-ucd-ident 0.9.0 - MIT/Apache-2.0
-unic-ucd-version 0.9.0 - MIT/Apache-2.0
 untrusted 0.9.0 - ISC
 url 2.5.8 - MIT OR Apache-2.0
 urlpattern 0.3.0 - MIT
@@ -529,8 +572,8 @@ utf-8 0.7.6 - MIT OR Apache-2.0
 utf8_iter 1.0.4 - Apache-2.0 OR MIT
 uuid 1.22.0 - Apache-2.0 OR MIT
 valuable 0.1.1 - MIT
-version_check 0.9.5 - MIT/Apache-2.0
 version-compare 0.2.1 - MIT
+version_check 0.9.5 - MIT/Apache-2.0
 vswhom 0.1.0 - MIT
 vswhom-sys 0.1.3 - MIT
 walkdir 2.5.0 - Unlicense/MIT
@@ -546,13 +589,15 @@ wasm-bindgen-macro-support 0.2.114 - MIT OR Apache-2.0
 wasm-bindgen-shared 0.2.114 - MIT OR Apache-2.0
 wasm-encoder 0.244.0 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 wasm-metadata 0.244.0 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
-wasmparser 0.244.0 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
 wasm-streams 0.5.0 - MIT OR Apache-2.0
+wasmparser 0.244.0 - Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
+web-sys 0.3.91 - MIT OR Apache-2.0
+web-time 1.1.0 - MIT OR Apache-2.0
 web_atoms 0.2.3 - MIT OR Apache-2.0
 webkit2gtk 2.0.2 - MIT
 webkit2gtk-sys 2.0.2 - MIT
 webpki-root-certs 1.0.7 - CDLA-Permissive-2.0
-web-sys 0.3.91 - MIT OR Apache-2.0
+webpki-roots 1.0.8 - CDLA-Permissive-2.0
 webview2-com 0.38.2 - MIT
 webview2-com-macros 0.8.1 - MIT
 webview2-com-sys 0.38.2 - MIT
@@ -560,31 +605,9 @@ winapi 0.3.9 - MIT/Apache-2.0
 winapi-i686-pc-windows-gnu 0.4.0 - MIT/Apache-2.0
 winapi-util 0.1.11 - Unlicense OR MIT
 winapi-x86_64-pc-windows-gnu 0.4.0 - MIT/Apache-2.0
+window-vibrancy 0.6.0 - Apache-2.0 OR MIT
 windows 0.56.0 - MIT OR Apache-2.0
 windows 0.61.3 - MIT OR Apache-2.0
-windows_aarch64_gnullvm 0.42.2 - MIT OR Apache-2.0
-windows_aarch64_gnullvm 0.52.6 - MIT OR Apache-2.0
-windows_aarch64_gnullvm 0.53.1 - MIT OR Apache-2.0
-windows_aarch64_msvc 0.42.2 - MIT OR Apache-2.0
-windows_aarch64_msvc 0.52.6 - MIT OR Apache-2.0
-windows_aarch64_msvc 0.53.1 - MIT OR Apache-2.0
-windows_i686_gnu 0.42.2 - MIT OR Apache-2.0
-windows_i686_gnu 0.52.6 - MIT OR Apache-2.0
-windows_i686_gnu 0.53.1 - MIT OR Apache-2.0
-windows_i686_gnullvm 0.52.6 - MIT OR Apache-2.0
-windows_i686_gnullvm 0.53.1 - MIT OR Apache-2.0
-windows_i686_msvc 0.42.2 - MIT OR Apache-2.0
-windows_i686_msvc 0.52.6 - MIT OR Apache-2.0
-windows_i686_msvc 0.53.1 - MIT OR Apache-2.0
-windows_x86_64_gnu 0.42.2 - MIT OR Apache-2.0
-windows_x86_64_gnu 0.52.6 - MIT OR Apache-2.0
-windows_x86_64_gnu 0.53.1 - MIT OR Apache-2.0
-windows_x86_64_gnullvm 0.42.2 - MIT OR Apache-2.0
-windows_x86_64_gnullvm 0.52.6 - MIT OR Apache-2.0
-windows_x86_64_gnullvm 0.53.1 - MIT OR Apache-2.0
-windows_x86_64_msvc 0.42.2 - MIT OR Apache-2.0
-windows_x86_64_msvc 0.52.6 - MIT OR Apache-2.0
-windows_x86_64_msvc 0.53.1 - MIT OR Apache-2.0
 windows-collections 0.2.0 - MIT OR Apache-2.0
 windows-core 0.56.0 - MIT OR Apache-2.0
 windows-core 0.61.2 - MIT OR Apache-2.0
@@ -612,7 +635,29 @@ windows-targets 0.52.6 - MIT OR Apache-2.0
 windows-targets 0.53.5 - MIT OR Apache-2.0
 windows-threading 0.1.0 - MIT OR Apache-2.0
 windows-version 0.1.7 - MIT OR Apache-2.0
-window-vibrancy 0.6.0 - Apache-2.0 OR MIT
+windows_aarch64_gnullvm 0.42.2 - MIT OR Apache-2.0
+windows_aarch64_gnullvm 0.52.6 - MIT OR Apache-2.0
+windows_aarch64_gnullvm 0.53.1 - MIT OR Apache-2.0
+windows_aarch64_msvc 0.42.2 - MIT OR Apache-2.0
+windows_aarch64_msvc 0.52.6 - MIT OR Apache-2.0
+windows_aarch64_msvc 0.53.1 - MIT OR Apache-2.0
+windows_i686_gnu 0.42.2 - MIT OR Apache-2.0
+windows_i686_gnu 0.52.6 - MIT OR Apache-2.0
+windows_i686_gnu 0.53.1 - MIT OR Apache-2.0
+windows_i686_gnullvm 0.52.6 - MIT OR Apache-2.0
+windows_i686_gnullvm 0.53.1 - MIT OR Apache-2.0
+windows_i686_msvc 0.42.2 - MIT OR Apache-2.0
+windows_i686_msvc 0.52.6 - MIT OR Apache-2.0
+windows_i686_msvc 0.53.1 - MIT OR Apache-2.0
+windows_x86_64_gnu 0.42.2 - MIT OR Apache-2.0
+windows_x86_64_gnu 0.52.6 - MIT OR Apache-2.0
+windows_x86_64_gnu 0.53.1 - MIT OR Apache-2.0
+windows_x86_64_gnullvm 0.42.2 - MIT OR Apache-2.0
+windows_x86_64_gnullvm 0.52.6 - MIT OR Apache-2.0
+windows_x86_64_gnullvm 0.53.1 - MIT OR Apache-2.0
+windows_x86_64_msvc 0.42.2 - MIT OR Apache-2.0
+windows_x86_64_msvc 0.52.6 - MIT OR Apache-2.0
+windows_x86_64_msvc 0.53.1 - MIT OR Apache-2.0
 winnow 0.5.40 - MIT
 winnow 0.7.15 - MIT
 winnow 1.0.0 - MIT
@@ -627,12 +672,12 @@ writeable 0.6.2 - Unicode-3.0
 wry 0.54.4 - Apache-2.0 OR MIT
 x11 2.21.0 - MIT
 x11-dl 2.21.0 - MIT
-x11rb 0.13.2 - MIT OR Apache-2.0
-x11rb-protocol 0.13.2 - MIT OR Apache-2.0
 xattr 1.6.1 - MIT OR Apache-2.0
-xkeysym 0.2.1 - MIT OR Apache-2.0 OR Zlib
 yoke 0.8.1 - Unicode-3.0
 yoke-derive 0.8.1 - Unicode-3.0
+zbus 5.18.0 - MIT
+zbus_macros 5.18.0 - MIT
+zbus_names 4.3.4 - MIT
 zerocopy 0.8.47 - BSD-2-Clause OR Apache-2.0 OR MIT
 zerocopy-derive 0.8.47 - BSD-2-Clause OR Apache-2.0 OR MIT
 zerofrom 0.1.6 - Unicode-3.0
@@ -643,6 +688,73 @@ zerovec 0.11.5 - Unicode-3.0
 zerovec-derive 0.11.2 - Unicode-3.0
 zip 4.6.1 - MIT
 zmij 1.0.21 - MIT
+zvariant 5.13.1 - MIT
+zvariant_derive 5.13.1 - MIT
+zvariant_utils 3.5.0 - MIT
+
+Direct dependency license notices
+
+The dependency inventory above records the complete locked graph. The following exact notices are included for direct dependencies added since the previous review. Node:Cue uses the MIT option offered by `if-addrs` and `rustfft`.
+
+ltc 0.2.0 — BSD-3-Clause
+
+Copyright (c) 2020, Danny Wensley
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the copyright holder nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL Danny Wensley BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+if-addrs 0.15.0 — MIT
+
+Copyright 2018 MaidSafe.net limited.
+Copyright 2020 messense
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+rustfft 6.4.1 — MIT
+
+Copyright (c) 2015 The RustFFT Developers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 Notes
 - This inventory is a distribution notice, not a replacement for the full upstream license texts.

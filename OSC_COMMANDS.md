@@ -1,8 +1,8 @@
 # Node:Cue OSC Commands
 
-This document lists the OSC input commands currently supported by Node:Cue.
+This document lists the OSC input commands supported by Node:Cue 1.0.2.
 
-OSC input is configured in `Configuration > OSC`. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.
+OSC input is configured in `Preferences > Control > OSC`. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.
 
 ## Conventions
 
@@ -10,14 +10,23 @@ OSC input is configured in `Configuration > OSC`. Add a receive endpoint, choose
 - Addresses start with `/nodecue`.
 - Values can be sent as OSC arguments.
 - Boolean-style triggers are accepted. A first trigger argument of `false`, `0`, `0.0`, or `nil` is ignored.
+- Required values and IDs are consumed before checking optional trigger arguments.
+  In particular, AUX Level `0` sets the level to zero; it is not ignored.
 - Fade commands accept an optional fade duration in milliseconds as the first argument.
 - Pad and bus commands can take their target ID either in the OSC address or as the first argument.
+- Cuelist cue IDs are the visible IDs shown in the `ID` column. For custom IDs,
+  using an OSC argument is the safest form.
+- `/nodecue/cuelist/go` always launches the currently armed cue. Its arguments are trigger
+  arguments only; they are not interpreted as a cue ID. To launch a cue by visible ID, use
+  `/nodecue/cuelist/go_id` with the ID as first argument, or `/nodecue/cuelist/go/{cue_id}`.
 
 ## Cuelist
 
 | Action | Recommended OSC address | Accepted aliases | Arguments |
 | --- | --- | --- | --- |
 | Play armed cue | `/nodecue/cuelist/go` | `/nodecue/cue/go`, `/nodecue/cues/go`, `/nodecue/cuelist/play`, `/nodecue/cue/play`, `/nodecue/cues/play` | Optional trigger |
+| Play cue by visible ID | `/nodecue/cuelist/go_id` | `/nodecue/cue/go_id`, `/nodecue/cues/go_id`, `/nodecue/cuelist/go_number`, `/nodecue/cuelist/play_id`, `/nodecue/cuelist/play_number` | `cue_id`, optional trigger |
+| Play cue by visible ID | `/nodecue/cuelist/go/{cue_id}` | `/nodecue/cue/go/{cue_id}`, `/nodecue/cues/go/{cue_id}`, `/nodecue/cuelist/play/{cue_id}`, `/nodecue/cuelist/go_id/{cue_id}`, `/nodecue/cuelist/go_number/{cue_id}` | Optional trigger |
 | Stop all cuelist playback | `/nodecue/cuelist/stop` | `/nodecue/cue/stop`, `/nodecue/cues/stop`, `/nodecue/cuelist/stop_all`, `/nodecue/cue/stop_all`, `/nodecue/cues/stop_all` | Optional trigger |
 | Pause / resume cuelist playback | `/nodecue/cuelist/pause` | `/nodecue/cue/pause`, `/nodecue/cues/pause`, `/nodecue/cuelist/resume`, `/nodecue/cuelist/pause_resume` | Optional trigger |
 | Previous cue | `/nodecue/cuelist/back` | `/nodecue/cuelist/previous`, `/nodecue/cue/back`, `/nodecue/cue/previous`, `/nodecue/cues/back`, `/nodecue/cues/previous` | Optional trigger |
@@ -39,12 +48,40 @@ OSC input is configured in `Configuration > OSC`. Add a receive endpoint, choose
 
 | Action | Recommended OSC address | Accepted aliases | Arguments |
 | --- | --- | --- | --- |
-| Play selected / current track | `/nodecue/playlist/go` | `/nodecue/playlist/play` | Optional trigger |
+| Play selected track or AUX | `/nodecue/playlist/go` | `/nodecue/playlist/play` | Optional trigger |
 | Pause / resume playlist playback | `/nodecue/playlist/pause` | `/nodecue/playlist/resume`, `/nodecue/playlist/pause_resume` | Optional trigger |
 | Stop playlist playback | `/nodecue/playlist/stop` | - | Optional trigger |
 | Previous track | `/nodecue/playlist/back` | `/nodecue/playlist/previous` | Optional trigger |
 | Next track | `/nodecue/playlist/next` | - | Optional trigger |
 | Fade out playlist playback | `/nodecue/playlist/fade_out` | `/nodecue/playlist/fade/out` | Optional fade duration in ms, optional trigger |
+
+## Auxiliary In
+
+These commands target AUX directly, regardless of the selected Playlist track.
+AUX Stop/Fade Out close only AUX; they do not stop a Playlist track.
+
+| Action | Recommended OSC address | Accepted aliases | Arguments |
+| --- | --- | --- | --- |
+| Select and open AUX | `/nodecue/aux/go` | `/nodecue/aux/play` | Optional trigger |
+| Close AUX immediately | `/nodecue/aux/stop` | - | Optional trigger |
+| Fade AUX out | `/nodecue/aux/fade_out` | `/nodecue/aux/fade/out` | Optional integer duration in ms, optional trigger |
+| Set the AUX knob level | `/nodecue/aux/level` | - | Number from 0 to 1, optional trigger |
+
+GO uses the Playlist GO preference and the normal AUX/Playlist handoff transition.
+Repeated GO does not restart an already open AUX. Input enable/device settings must
+be configured first; GO never enables or reroutes an unavailable input.
+
+Fade Out accepts 0 to 600000 ms. Omitting its duration uses the existing AUX
+command fade duration (1000 ms by default), matching the dedicated MIDI Fade Out action.
+
+Level uses the knob's 0-100% scale, not decibels: `0.5` means 50%.
+Setting the level to zero keeps an open AUX open; raising it restores its sound.
+Use Stop to close AUX. Values outside the stated ranges are rejected.
+The external application's own playback remains unchanged.
+
+Commands respect the same Backup read-only guard and Sync replication as local AUX controls.
+Playlist Stop and Playlist Fade Out also close AUX. Dedicated AUX commands target
+only AUX. Fade In, Mute and Unmute are not separate external commands; use GO and Stop.
 
 ## Global
 
@@ -74,6 +111,19 @@ Play the armed cuelist cue:
 /nodecue/cuelist/go
 ```
 
+Play cuelist cue ID `12.5`:
+
+```text
+Address: /nodecue/cuelist/go_id
+Argument: 12.5
+```
+
+Or:
+
+```text
+/nodecue/cuelist/go/12.5
+```
+
 Play pad 7:
 
 ```text
@@ -100,3 +150,22 @@ Toggle mute on the Pads bus:
 /nodecue/bus/mute/1
 ```
 
+Select and open AUX using the configured GO and handoff behavior:
+
+```text
+/nodecue/aux/go
+```
+
+Set the AUX knob to 50% without changing its open/closed state:
+
+```text
+Address: /nodecue/aux/level
+Argument: 0.5 (OSC Float)
+```
+
+Fade AUX out over 3 seconds:
+
+```text
+Address: /nodecue/aux/fade_out
+Argument: 3000 (OSC Int)
+```

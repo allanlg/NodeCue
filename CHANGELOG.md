@@ -1,5 +1,40 @@
 # Changelog
 
+## Node:Cue 1.0.2 - Auxiliary Input and Show Operation
+
+### New Features
+
+- Added Auxiliary In to the Playlist: route a physical input or an external application through a compatible virtual audio device into the Playlist bus, with an input selector, source name, level knob and meters.
+- Integrated AUX into the Playlist and Sidebar as a pinned source. Playlist GO opens the selected track or AUX, while Stop and Fade Out use the existing transport controls. Configurable transitions handle the handoff between AUX and tracks.
+- Added a Playlist GO preference for Immediate or Fade In, with an adjustable duration. Immediate remains the default; the setting also applies to Resume without restarting the GO fade when seeking during playback.
+- Added dedicated AUX GO, Stop, Level and Fade Out commands for OSC and MIDI. Updated the included Stream Deck plugin to 1.3.0 with a dedicated AUX GO action and a dynamic Playlist GO key showing the selected track or AUX name.
+- Added duplication for Cuelists, Pad Sets and Playlists in Project Browser, plus Ctrl+G to group selected cues.
+- Added customizable Edit and Show shortcuts, defaulting to F7 and F8.
+
+### Improvements
+
+- Refined Show mode with cue-specific monitors, consistent typography and smoother transitions between Edit and Show. Node:Cue now always opens in Edit mode.
+- Made the global Timecode timeline accessible from the transport timer in Show mode, with a chronological trigger list and dimmed past triggers. Explicit cue navigation returns to cue details; automatic playback can continue without leaving the timeline.
+- Improved MIDI mapping with a note selector, MIDI Learn inside the mapping editor, reliable editing of existing mappings and direct mapping of Playlist Fade Out.
+- Refined transport controls and Fade Out duration interactions, aligned compact Fade Out icons with the main transport, and improved Project Browser actions and light/dark presentation. Auto Normalize stays visible and read-only in Show mode, while the Pad click-mode control remains available.
+
+### Reliability and Fixes
+
+- Improved Primary/Backup synchronization under rapid continuous changes to bus levels, AUX level, EQ and compressor controls, reducing redundant traffic and preventing sequence or project-hash mismatches.
+- Kept Backup fader displays current during rapid level changes and stabilized Playlist GO availability during synchronized updates.
+- Preserved Stop Cue fade priority when a launched group targets a playing cue outside the group, while retaining normal play-mode transitions for other interrupted cues.
+- Improved fullscreen transitions and prevented title-bar dragging while in F11 fullscreen.
+- Fixed Pad background and text color popovers remaining open after changing selection.
+- Fixed brightness adjustments using the previous color after selecting a preset or recent color.
+- Fixed Cuelist Play Count and Infinite Play indicators not refreshing until the view was reopened, and removed the extra delay when toggling Play Next.
+
+### Auxiliary Input Notes
+
+- AUX name, enabled state, level and transition settings are saved with the project and synchronized. Input-device selection remains local to each computer. AUX starts closed when opening the application or loading a project, and after input reconnection.
+- An open AUX remains visibly active at zero level, with the knob percentage shown in Now Playing. Raising its level restores the sound; Stop closes it.
+- External application audio requires a compatible virtual audio device configured by the operator. VB-CABLE is a suggested option and is obtained separately from VB-Audio under its own licensing terms. A physical recording input can be selected directly.
+- Primary/Backup Sync carries AUX settings and commands, not the external audio itself. Route the intended source to each computer separately.
+
 ## Node:Cue 1.0.1 - Live Playback and Reliability
 
 ### Improvements
