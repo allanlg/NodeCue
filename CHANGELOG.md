@@ -1,5 +1,49 @@
 # Changelog
 
+## Node:Cue 1.1.0 - Project Properties and Playlist Random + Stream Deck Plugin 2.0
+
+The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). Install it from Marketplace to receive future plugin updates automatically in the Stream Deck app, with automatic updates enabled.
+
+### New Features
+
+- Added Project Properties alongside Local Preferences, with project naming, playback settings, list management and MIDI/OSC patching.
+- Added project MIDI and OSC patch points. Cues refer to named patch points, while each computer maps them to its own MIDI output or OSC endpoint, including on the Backup.
+- Added Playlist Random, Shuffle and Auto controls. Random displays a shuffled playback order without changing track IDs; disabling it restores the normal order. Next and Back follow the visible order, and manual reordering remains available.
+- Auto reshuffles at the end of a looping random playlist, avoiding an immediate repeat of the previous cycle's final track when multiple tracks are available. Playlist order and settings are saved with the project and synchronized.
+- Added live bypass for Trim In, Trim Out, Fade In and Fade Out on audio cues, Pads and Playlist tracks, including Show mode. Use the waveform buttons or right-click a marker; bypassed settings remain available to restore.
+- Added bypass indicators to Cuelist and Playlist display options and to Pads, with compact indicators for small Pads.
+- Added fade repetition modes for audio cues and Pads with Play Count or Infinite Play: first fade in/last fade out, every fade in/every fade out, every fade in/last fade out, or first fade in/every fade out.
+- Added Copy, Paste and Reset for EQ and compressor settings, including their enabled states and individual EQ-band states.
+- Added a customizable Return playhead to start shortcut, defaulting to W, for stopped, paused and playing items.
+- Added Open last project on startup, restoring the last known project state from the previous session.
+- Added separate project download transfer limits for idle and playback operation in Primary/Backup Sync.
+
+### Improvements
+
+- Separated project playback settings from local defaults for new projects. General application hotkeys, display preferences and physical device assignments stay local; Pad shortcuts, MIDI mappings and cue Timecode triggers stay with the project.
+- Added a warning when the selected or detected Timecode frame rate is incompatible with existing project triggers.
+- Added an optional large hotkey display on Pads, with consistent text colors and improved text contrast and sizing.
+- Added distinct waveform cursors for trims, fades and fade curves. Seeking updates header timing and, while paused, Now Playing and duration gauges; a position label appears during dragging.
+- Improved Resume visibility, MIDI/OSC Destination controls and Show-mode filename truncation. Overlap offers a three-second duration when first enabled without an existing positive value.
+- Available updates are presented at startup, after the supporter reminder when it is shown.
+- Install Stream Deck plugin now opens the official Elgato Marketplace page. The plugin is distributed separately and is no longer included in the Node:Cue installer.
+
+### Reliability and Fixes
+
+- Fixed overlapping Cuelist launch requests and Backup automatic continuation competing with synchronized launches.
+- Improved ASIO selection and recovery after audio-device or sample-rate changes, retiring invalid players and making configuration failures visible in Preferences.
+- Fixed missing-media restoration and project alignment after adding audio or Pad images on the Primary. Restored files are checked, and switching projects releases retired media readers.
+- Improved Sync updates for waveform bypass states, EQ editing and randomized Playlist playback, including reshuffling at the start of a new cycle's overlap.
+- Fixed navigation shortcuts losing their active-view target after interacting with a bus fader or Project Browser, and corrected customizable hotkey validation.
+- Fixed Preferences Apply skipping pending changes when invoked from Sync or Timecode.
+- Fixed frozen Show-mode RTA displays after playback; the spectrum now decays progressively.
+- Fixed F11 fullscreen leaving space for the Windows taskbar and unnecessary resize transitions.
+
+### Notes
+
+- MIDI and OSC cues now use project patch points. Review their assignments when opening projects created before this release, and configure local destinations on each computer.
+- Random playback follows the visible list. Manual GO, Back or reshuffling can intentionally replay tracks; a full automatic pass follows the current order.
+
 ## Node:Cue 1.0.2 - Auxiliary Input and Show Operation
 
 ### New Features

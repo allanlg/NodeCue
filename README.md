@@ -18,11 +18,11 @@ Installer binaries are distributed as GitHub Release assets. They are not commit
 
 ## Stream Deck Plugin
 
-When available, the official Stream Deck plugin is bundled with the Node:Cue installer. Use only the plugin distributed through official Node:Cue releases.
+The official Stream Deck plugin is available on [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). In Node:Cue, **Install Stream Deck plugin** opens that page. The plugin is no longer bundled with the application installer.
 
 ## Updates
 
-Node:Cue can check for updates manually from the app menu: `Info` -> `Check for updates`.
+Node:Cue presents available updates at startup. You can also check manually from the app menu: `Info` -> `Check for updates`.
 
 Node:Cue does not install updates automatically. When an update is available, the app points to the official GitHub Release assets published here and requires explicit confirmation before download, install, and restart.
 

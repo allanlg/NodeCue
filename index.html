@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Node:Cue</title>
-  <meta name="description" content="Node:Cue V1.0.2: live-audio cue playback and show control for Windows, now with Auxiliary In and refined Show operation.">
+  <meta name="description" content="Node:Cue V1.1.0: live-audio cue playback and show control for Windows, with project MIDI/OSC patching, playlist shuffle and live trim/fade bypass.">
   <link rel="canonical" href="https://nodecue.app/">
   <link rel="icon" type="image/png" href="nodecue-logo-transparent.png">
   <style>
@@ -1128,7 +1128,7 @@
             </div>
             <h1 id="hero-title">Node:Cue</h1>
           </div>
-          <p class="system-label"><span class="version-mark">V1.0 Out now</span><span>Only on Windows</span></p>
+          <p class="system-label"><span class="version-mark">V1.1 Out now</span><span>Only on Windows</span></p>
           <p class="hero-lead">
             <strong>Live audio show control.</strong> Plan the show, trigger sounds, and play
             background music, all from one application.
@@ -1209,6 +1209,7 @@
                 <p>Play event ambience from tracks or Auxiliary In before, during, and after the show, without tying it to the Cuelist sequence.</p>
                 <ul class="feature-list">
                   <li>Auto-trim and overlap for continuous background music</li>
+                  <li>Random playback with a visible shuffled order and optional automatic reshuffling on loop</li>
                   <li>Resume playback from the same place after an interruption</li>
                   <li>Normalize tracks for a consistent playlist level</li>
                   <li>Bring in a physical input or route an external app through a virtual audio device, with controlled transitions to tracks</li>
@@ -1332,7 +1333,7 @@
         <div class="integration-intro">
           <p class="section-kicker">Control surfaces</p>
           <h2 id="integrations-title">Control Node:Cue and external devices.</h2>
-          <p>Send MIDI and OSC commands from Node:Cue to external devices, and receive MIDI and OSC input to control Node:Cue. The included Stream Deck plugin provides direct access to live controls.</p>
+          <p>Send MIDI and OSC commands from Node:Cue to external devices, and receive MIDI and OSC input to control Node:Cue. The official Stream Deck plugin provides direct access to live controls and is available on Elgato Marketplace.</p>
         </div>
           <figure class="streamdeck-figure">
             <img src="assets/nodecue-streamdeck-studio-20260904.png" width="1449" height="1086" loading="lazy" decoding="async" alt="Stream Deck displaying the Node:Cue plugin: cue transport, pads, playlist controls, Sync status, and armed timecode.">
@@ -1340,11 +1341,11 @@
           <div class="capability-list">
           <article class="capability">
             <code>MIDI</code>
-            <div><strong>Send and receive MIDI control.</strong><p>Use Node:Cue to trigger external equipment, or use MIDI input to control transport, pads, cues, and application commands.</p></div>
+            <div><strong>Send and receive MIDI control.</strong><p>Use project patch points to route cues to local MIDI outputs, or use MIDI input to control transport, pads, cues, and application commands.</p></div>
           </article>
           <article class="capability">
             <code>OSC</code>
-            <div><strong>Send and receive OSC control.</strong><p>Exchange control messages with devices and software over the production network.</p></div>
+            <div><strong>Send and receive OSC control.</strong><p>Exchange control messages with devices and software over the production network. Project patch points keep cue routing separate from local OSC endpoints.</p></div>
           </article>
           <article class="capability">
             <code>Keys</code>
@@ -1352,7 +1353,7 @@
           </article>
           <article class="capability">
             <code>Deck</code>
-            <div><strong>Use the included Node:Cue Stream Deck plugin.</strong><p>Plugin 1.3.0 adds dedicated AUX GO and shows the selected track or AUX name on Playlist GO, alongside cue, pad, and transport controls.</p></div>
+            <div><strong>Get the official Node:Cue Stream Deck plugin.</strong><p>Control cues, pads, playlists and AUX, with live feedback and grouped transport actions. <a href="https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088">Get it on Elgato Marketplace</a>.</p></div>
           </article>
           </div>
       </div>
@@ -1371,9 +1372,9 @@
 
     <section class="download-band" aria-labelledby="download-title">
       <div class="shell">
-        <p class="section-kicker">Node:Cue V1.0.2 / Windows x64</p>
+        <p class="section-kicker">Node:Cue V1.1.0 / Windows x64</p>
         <h2 id="download-title">Node:Cue V1 is ready for your next show.</h2>
-        <p>Download the official Windows installer for Node:Cue V1.0.2.</p>
+        <p>Download the official Windows installer for Node:Cue V1.1.0.</p>
         <a
           class="button primary"
           href="https://github.com/allanlg/NodeCue/releases/latest"

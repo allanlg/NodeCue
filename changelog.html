@@ -50,9 +50,23 @@
       .replace(/[^a-z0-9.]+/g, "-")
       .replace(/^-|-$/g, "");
 
+    function appendInlineText(parent, text) {
+      const links = /\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g;
+      let end = 0;
+      for (const match of text.matchAll(links)) {
+        parent.append(document.createTextNode(text.slice(end, match.index)));
+        const link = document.createElement("a");
+        link.textContent = match[1];
+        link.href = match[2];
+        parent.append(link);
+        end = match.index + match[0].length;
+      }
+      parent.append(document.createTextNode(text.slice(end)));
+    }
+
     function appendParagraph(parent, text) {
       const paragraph = document.createElement("p");
-      paragraph.textContent = text;
+      appendInlineText(paragraph, text);
       parent.append(paragraph);
     }
 
@@ -120,7 +134,7 @@
             body.append(bullets);
           }
           const item = document.createElement("li");
-          item.textContent = line.slice(2).replace(/`([^`]+)`/g, "$1");
+          appendInlineText(item, line.slice(2).replace(/`([^`]+)`/g, "$1"));
           bullets.append(item);
           continue;
         }
