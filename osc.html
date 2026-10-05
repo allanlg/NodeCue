@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Node:Cue OSC command reference for Node:Cue 1.0.2: Cuelist, Pads, Playlist, Auxiliary In, global transport, and bus control.">
+  <meta name="description" content="Node:Cue OSC command reference for Node:Cue 1.1.1: Cuelist, Pads, Playlist, Auxiliary In, global transport, and bus control.">
   <title>OSC Command Reference - Node:Cue</title>
   <link rel="icon" href="nodecue-logo-transparent.png">
   <link rel="stylesheet" href="assets/docs.css">
@@ -44,7 +44,8 @@
 </nav>
 <div class="doc-content">
 <section id="setup"><h2>Setup and conventions</h2>
-<p>This document lists the OSC input commands supported by Node:Cue 1.0.2.</p>
+<p>This document lists the OSC input commands supported by Node:Cue 1.1.1.</p>
+<p>Monitor/PFL controls use the application and Stream Deck plugin 2.1; this OSC input reference does not define dedicated Monitor addresses. OSC cues inside Show simulation do not send messages unless MIDI/OSC sending is explicitly armed for that session. This differs from receiving OSC commands to control public playback.</p>
 <p>OSC input is configured in <code>Preferences &gt; Control &gt; OSC</code>. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.</p>
 <ul><li>All command addresses are lowercase.</li><li>Addresses start with <code>/nodecue</code>.</li><li>Values can be sent as OSC arguments.</li><li>Boolean-style triggers are accepted. A first trigger argument of <code>false</code>, <code>0</code>, <code>0.0</code>, or <code>nil</code> is ignored.</li><li>Required values and IDs are consumed before checking optional trigger arguments. In particular, AUX Level <code>0</code> sets the level to zero; it is not ignored.</li><li>Fade commands accept an optional fade duration in milliseconds as the first argument.</li><li>Pad and bus commands can take their target ID either in the OSC address or as the first argument.</li><li>Cuelist cue IDs are the visible IDs shown in the <code>ID</code> column. For custom IDs, using an OSC argument is the safest form.</li><li><code>/nodecue/cuelist/go</code> always launches the currently armed cue. Its arguments are trigger arguments only; they are not interpreted as a cue ID. To launch a cue by visible ID, use <code>/nodecue/cuelist/go_id</code> with the ID as first argument, or <code>/nodecue/cuelist/go/{cue_id}</code>.</li></ul>
 </section>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Node:Cue</title>
-  <meta name="description" content="Node:Cue V1.1.0: live-audio cue playback and show control for Windows, with project MIDI/OSC patching, playlist shuffle and live trim/fade bypass.">
+  <meta name="description" content="Node:Cue V1.1.1: live-audio cue playback and show control for Windows, with private monitoring, PFL/AFL listening, show simulation and Timecode triggering.">
   <link rel="canonical" href="https://nodecue.app/">
   <link rel="icon" type="image/png" href="nodecue-logo-transparent.png">
   <style>
@@ -598,6 +598,22 @@
 
     .routing .section-heading { margin-bottom: 54px; }
 
+    .monitor-feature {
+      padding: 102px 0;
+      border-bottom: 1px solid var(--line);
+      background: #11181c;
+    }
+
+    .monitor-feature .section-heading { margin-bottom: 0; }
+
+    .monitor-layout {
+      --channel: var(--muted);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 42px;
+      gap: 32px;
+      align-items: stretch;
+    }
+
     .signal-flow {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1041,7 +1057,7 @@
       .hero-mark-wrap { width: 94px; }
       .hero-lockup { gap: 16px; margin-bottom: 12px; }
       .hero-lockup h1 { font-size: clamp(48px, 16vw, 68px); }
-      .workflow, .routing, .redundancy, .integrations, .flow-feature { padding: 68px 0; }
+      .workflow, .routing, .redundancy, .integrations, .flow-feature, .monitor-feature { padding: 68px 0; }
       .view-tab { min-height: 52px; padding: 0 8px; font-size: 12px; }
       .workflow-shot { min-height: 300px; }
       .workflow-shot img { object-position: top left; }
@@ -1208,7 +1224,7 @@
                 <h3>An integrated player for background music.</h3>
                 <p>Play event ambience from tracks or Auxiliary In before, during, and after the show, without tying it to the Cuelist sequence.</p>
                 <ul class="feature-list">
-                  <li>Auto-trim and overlap for continuous background music</li>
+                  <li>Auto-trim with independent manual trim edges, and overlap for continuous background music</li>
                   <li>Random playback with a visible shuffled order and optional automatic reshuffling on loop</li>
                   <li>Resume playback from the same place after an interruption</li>
                   <li>Normalize tracks for a consistent playlist level</li>
@@ -1277,6 +1293,19 @@
             <div class="meter" aria-hidden="true"></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="monitor-feature" id="monitor" aria-labelledby="monitor-title">
+      <div class="shell monitor-layout">
+        <header class="section-heading">
+          <div>
+            <p class="section-kicker">Monitor / Private listening</p>
+            <h2 id="monitor-title">Listen and rehearse alongside the show.</h2>
+          </div>
+          <p>Check a sound, listen to the mix or rehearse a sequence privately while the show continues. A dedicated monitoring output keeps your listening separate from the audience's sound.</p>
+        </header>
+        <div class="meter" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -1353,7 +1382,7 @@
           </article>
           <article class="capability">
             <code>Deck</code>
-            <div><strong>Get the official Node:Cue Stream Deck plugin.</strong><p>Control cues, pads, playlists and AUX, with live feedback and grouped transport actions. <a href="https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088">Get it on Elgato Marketplace</a>.</p></div>
+            <div><strong>Get the official Node:Cue Stream Deck plugin.</strong><p>Control cues, pads, playlists and AUX, with live feedback and grouped transport actions. Plugin 2.1 adds Monitor/PFL, Capture Trigger and Return Playhead to Start controls for Node:Cue 1.1.1. <a href="https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088">Get it on Elgato Marketplace</a>.</p></div>
           </article>
           </div>
       </div>
@@ -1372,9 +1401,9 @@
 
     <section class="download-band" aria-labelledby="download-title">
       <div class="shell">
-        <p class="section-kicker">Node:Cue V1.1.0 / Windows x64</p>
+        <p class="section-kicker">Node:Cue V1.1.1 / Windows x64</p>
         <h2 id="download-title">Node:Cue V1 is ready for your next show.</h2>
-        <p>Download the official Windows installer for Node:Cue V1.1.0.</p>
+        <p>Download the official Windows installer for Node:Cue V1.1.1.</p>
         <a
           class="button primary"
           href="https://github.com/allanlg/NodeCue/releases/latest"

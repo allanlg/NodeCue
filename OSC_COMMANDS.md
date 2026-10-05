@@ -1,6 +1,6 @@
 # Node:Cue OSC Commands
 
-This document lists the OSC input commands supported by Node:Cue 1.0.2.
+This document lists the OSC input commands supported by Node:Cue 1.1.1.
 
 OSC input is configured in `Preferences > Control > OSC`. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.
 
@@ -19,6 +19,11 @@ OSC input is configured in `Preferences > Control > OSC`. Add a receive endpoint
 - `/nodecue/cuelist/go` always launches the currently armed cue. Its arguments are trigger
   arguments only; they are not interpreted as a cue ID. To launch a cue by visible ID, use
   `/nodecue/cuelist/go_id` with the ID as first argument, or `/nodecue/cuelist/go/{cue_id}`.
+
+Monitor/PFL controls use the application and Stream Deck plugin 2.1; this OSC input
+reference does not define dedicated Monitor addresses. OSC cues inside Show
+simulation do not send messages unless MIDI/OSC sending is explicitly armed for
+that session. This differs from receiving OSC commands to control public playback.
 
 ## Cuelist
 

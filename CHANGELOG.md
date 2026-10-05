@@ -1,5 +1,42 @@
 # Changelog
 
+## Node:Cue 1.1.1 - Monitor, Timecode and Playback Refinements
+
+Node:Cue 1.1.1 adds private listening and show rehearsal alongside public playback, with new Monitor controls supported by Stream Deck plugin 2.1.
+
+### New Features
+
+- Added a local Monitor output with independent level, mute, routing and transport controls for Cuelist, Pads, Playlist and Auxiliary In.
+- Added Single item preview to audition an item once, and Show simulation to rehearse groups, waits, repetitions, Play Next and Playback Flow through the Monitor output.
+- Added PFL listening for items already playing, without restarting them, and Bus Monitoring with PFL/AFL listening points.
+- Added explicit MIDI/OSC output arming for one Show simulation session. Messages are simulated by default, so rehearsal does not trigger external devices unless the operator enables sending.
+- Added current-view and all-view scopes for Pause and Stop. Pause, Stop and Fade Out transport buttons now include the corresponding PFL previews.
+- Added Monitor/PFL, Capture Trigger and Return Playhead to Start commands in Stream Deck plugin 2.1.
+- Added names and colors for Timecode triggers, clearer timeline labels, undo for trigger deletion, and an optional Launch Cue on capture setting when Timecode is armed.
+- Added manual ownership for each Playlist trim edge. Editing a marker or its Start/End field protects that edge from Auto Trim changes; a blue M label offers Switch to Auto Trim independently for Trim In and Trim Out.
+
+### Improvements
+
+- Added remaining-play counts and Infinite Play indicators to Now Playing, including compact cards and Monitor previews. Finite counts include the current pass.
+- Improved readability of compact Now Playing cards, with clearer wait and fade labels.
+- Improved continuity between repeated Cuelist and Pad playback. Operator Fade Out now continues across repetitions until its full duration ends, while cancelling Play Next and pending subsequent starts.
+- Allowed local cue inspection on a following Backup without moving the Primary selection or its next GO target.
+- Refreshed the Stream Deck Timecode and Sync buttons with clearer status displays.
+
+### Fixes
+
+- Fixed Playlist Auto Trim toggles resetting manually edited trim edges. Manual ownership is preserved through save/load, Undo/Redo, copy/paste and Sync.
+- Fixed Cuelist Play Count displaying 1 instead of its configured value after stopping repeated playback.
+- Fixed stale wait indicators, playback-card resets and crossfade feedback during transport changes.
+- Improved Timecode multi-trigger shifting across frame rates and kept trigger deletion focused on the selected triggers rather than a previously selected cue.
+
+### Notes
+
+- Monitor settings and preview sessions are local. Monitoring commands are unavailable on a following Backup while the Primary controls the show.
+- Single item preview ignores Play Count and Play Next. Groups and complete playback sequences use Show simulation; MIDI/OSC sending must be explicitly armed for that session.
+- Some manually edited Playlist trims in older projects may not be recognised as manual. Changing Auto Trim can reset those trim points; review them on a copy of the project before changing Auto Trim.
+- Stream Deck plugin 2.1 requires Node:Cue 1.1.1 or later and is distributed separately through the official Elgato Marketplace.
+
 ## Node:Cue 1.1.0 - Project Properties and Playlist Random + Stream Deck Plugin 2.0
 
 The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). Install it from Marketplace to receive future plugin updates automatically in the Stream Deck app, with automatic updates enabled.

@@ -16,9 +16,17 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.1
+
+Node:Cue 1.1.1 adds a local Monitor output for private preview, PFL/AFL bus listening and Show simulation alongside public playback. Configure Monitor in **Local Preferences > Audio**. Use **Single item** for one audition or **Show simulation** for groups, waits, repeats and Playback Flow. MIDI/OSC messages are simulated unless sending is explicitly armed for that simulation session.
+
+The update also adds Timecode trigger names and colors, remaining-play indicators, and independent manual Playlist trim edges. A manually edited edge is marked with a blue **M** and remains protected from Auto Trim until **Switch to Auto Trim** is selected. See [the changelog](CHANGELOG.md) for details and the note about trim ownership in older projects.
+
 ## Stream Deck Plugin
 
 The official Stream Deck plugin is available on [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). In Node:Cue, **Install Stream Deck plugin** opens that page. The plugin is no longer bundled with the application installer.
+
+Plugin 2.1 adds Monitor/PFL, Capture Trigger and Return Playhead to Start controls for Node:Cue 1.1.1 or later. The application and plugin have separate version numbers and update channels.
 
 ## Updates
 
