@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.2
+
+Node:Cue 1.1.2 fixes accelerated playback of affected mono M4A/MP4 files and keeps the Playlist waveform focused on the incoming track after an overlap. An optional setting in **Local Preferences > General** switches the active view when a GO command is triggered from Stream Deck; it is disabled by default.
+
+Cuelist and Pads now always have independent Play Modes, with cross-view transitions managed by Playback Flow. Review those FLOW rules when opening a project that previously used Linked Single Play. Support logs also include more useful session configuration while limiting repetitive output and disk usage. See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.1
 
 Node:Cue 1.1.1 adds a local Monitor output for private preview, PFL/AFL bus listening and Show simulation alongside public playback. Configure Monitor in **Local Preferences > Audio**. Use **Single item** for one audition or **Show simulation** for groups, waits, repeats and Playback Flow. MIDI/OSC messages are simulated unless sending is explicitly armed for that simulation session.

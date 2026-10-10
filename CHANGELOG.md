@@ -1,5 +1,25 @@
 # Changelog
 
+## Node:Cue 1.1.2
+
+### New Features
+
+- Added an optional setting in Local Preferences > General to automatically switch the active view when a GO command is triggered from Stream Deck. Disabled by default.
+
+### Changes
+
+- Removed the Linked Play Mode option for Cuelist and Pads. Introduced during the alpha for an earlier, more limited version of Playback Flow, this overlapping control had become unnecessary and confusing. Cuelist and Pads now always have independent Play Modes; Playback Flow manages interactions between them.
+- Support logs now include local preferences and project playback settings to help diagnose playback, transition and routing problems. Repetitive logging is reduced and automatic rotation limits disk usage.
+
+### Fixes
+
+- Fixed accelerated playback of mono M4A/MP4 audio files and incorrect duration information for affected files.
+- Fixed the Playlist waveform view sometimes returning to the previous track after an overlap.
+
+### Compatibility
+
+- Existing Linked projects now use independent Play Modes. Their saved Single/Multi settings, transitions and Playback Flow configuration are retained. Interruption between Cuelist and Pads now follows Playback Flow only; review these rules if your project previously relied on Linked Single Play.
+
 ## Node:Cue 1.1.1 - Monitor, Timecode and Playback Refinements
 
 Node:Cue 1.1.1 adds private listening and show rehearsal alongside public playback, with new Monitor controls supported by Stream Deck plugin 2.1.

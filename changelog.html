@@ -86,9 +86,9 @@
 
         if (line.startsWith("## ")) {
           const heading = line.slice(3);
-          const match = heading.match(/^Node:Cue\s+([^\s]+)\s+-\s+(.+)$/);
+          const match = heading.match(/^Node:Cue\s+([^\s]+)(?:\s+[-—]\s+(.+))?$/);
           const version = match ? match[1] : heading;
-          const title = match ? match[2] : "Release notes";
+          const title = match?.[2] || "Release notes";
           const id = `release-${slug(version)}`;
 
           release = document.createElement("article");
