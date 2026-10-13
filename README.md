@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.3
+
+Node:Cue 1.1.3 adds **Help > Report a bug**, with optional contact email and session logs. Reports include local and project settings and retry automatically while the application is open if they cannot be sent immediately. If you provide a contact email, you receive a confirmation copy and support can contact you.
+
+The update also corrects stale waveform file information, including Mono/Stereo labels, and improves metadata placement at increased display scaling and dropdown readability throughout the application. See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.2
 
 Node:Cue 1.1.2 fixes accelerated playback of affected mono M4A/MP4 files and keeps the Playlist waveform focused on the incoming track after an overlap. An optional setting in **Local Preferences > General** switches the active view when a GO command is triggered from Stream Deck; it is disabled by default.

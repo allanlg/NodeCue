@@ -1,5 +1,20 @@
 # Changelog
 
+## Node:Cue 1.1.3
+
+### New Features
+
+- Added **Report a bug** in Help, with optional contact email and selected session logs. Reports include local and project settings. Reports queued offline are retried automatically while Node:Cue is open.
+
+### Improvements
+
+- Improved dropdown readability and consistency across Preferences, audio routing, playback settings and cue editors, keeping option labels clear of the dropdown arrow.
+
+### Fixes
+
+- Fixed waveform file information retaining values from a previous selection, including incorrect Mono/Stereo, format, sample rate and bit depth labels.
+- Fixed waveform file information overlapping the lower border at increased display scaling.
+
 ## Node:Cue 1.1.2
 
 ### New Features
