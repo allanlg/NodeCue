@@ -86,7 +86,7 @@
 
         if (line.startsWith("## ")) {
           const heading = line.slice(3);
-          const match = heading.match(/^Node:Cue\s+([^\s]+)(?:\s+[-—]\s+(.+))?$/);
+          const match = heading.match(/^Node:Cue\s+([^\s]+)(?:\s+-\s+(.+))?$/);
           const version = match ? match[1] : heading;
           const title = match?.[2] || "Release notes";
           const id = `release-${slug(version)}`;
@@ -119,6 +119,21 @@
         }
 
         if (!body) continue;
+
+        const published = line.match(/^Published: (\d{4}-\d{2}-\d{2})$/);
+        if (published) {
+          const date = new Date(`${published[1]}T12:00:00Z`);
+          if (Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === published[1]) {
+            const dateLabel = document.createElement("time");
+            dateLabel.className = "release-date";
+            dateLabel.dateTime = published[1];
+            dateLabel.textContent = new Intl.DateTimeFormat("en-GB", {
+              day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris",
+            }).format(date);
+            release.querySelector(".release-header").append(dateLabel);
+            continue;
+          }
+        }
 
         if (line.startsWith("### ")) {
           const heading = document.createElement("h3");

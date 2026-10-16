@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.4
+
+Node:Cue 1.1.4 restores configured audio outputs when they become available again, with clear device and bus warnings. Recovery keeps the configured route and does not automatically switch to another Windows default output.
+
+The update also adds local Pad and Pad Text color defaults, audio bitrate in waveform file information, and refinements to waveform feedback, compressor meters and Properties controls. See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.3
 
 Node:Cue 1.1.3 adds **Help > Report a bug**, with optional contact email and session logs. Reports include local and project settings and retry automatically while the application is open if they cannot be sent immediately. If you provide a contact email, you receive a confirmation copy and support can contact you.

@@ -1,6 +1,6 @@
 # Node:Cue OSC Commands
 
-This document lists the OSC input commands supported by Node:Cue 1.1.3.
+This document lists the OSC input commands supported by Node:Cue 1.1.4.
 
 OSC input is configured in `Preferences > Control > OSC`. Add a receive endpoint, choose the network interface to listen on, set the port, then send OSC messages to that IP address and port.
 

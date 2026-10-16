@@ -1,6 +1,41 @@
 # Changelog
 
+## Node:Cue 1.1.4
+
+Published: 2026-10-16
+
+### New Features
+
+- Added automatic recovery when a configured audio output is lost and becomes available again, for Cuelist, Pads, Playlist and Monitor. A device-disconnection dialog identifies the affected buses; persistent warnings in the status bar and bus cards open Audio Preferences directly. WASAPI settings show the current Windows default output and identify unavailable System default routes.
+- Added separate default Pad and Pad Text colors for newly created pads. Save as Default stores the selected color locally for both themes; the Default button previews and applies it. Select Auto and Save as Default to restore the built-in adaptive colors. Existing pads keep their colors.
+
+### Improvements
+
+- Expanded Pad and Text Color palettes to 16 presets, including Auto, White and Black. Auto text chooses a light or dark neutral for contrast against each pad background. Improved label separation from large hotkeys, pad borders and Light-theme presentation.
+- Reorganized Pad and Text Color pickers with Save as Default, Cancel and Apply. Colors preview immediately, presets keep the picker open, and Cancel restores the original colors of the targeted pad or selection.
+- Harmonized Properties and Preferences button feedback in both themes, refined Pad customization icons, and made hotkey assignment visibly indicate when it is waiting for a key. Added concise confirmations for color-default actions and EQ/compressor Copy, Paste and Reset.
+- Improved waveform playhead motion at playback start, including short files and repeated Stop/GO actions.
+- Added audio bitrate to waveform file information when available, for all supported formats.
+- Made compressor input, output and gain-reduction meters respond consistently, with a proportional reduction scale that makes light compression easier to assess.
+- Added publication dates to release headers in the in-app changelog and website changelog, including previous releases.
+
+### Fixes
+
+- Fixed seeks made on an incoming item during Fade out, then GO being ignored when playback starts. The chosen position is now used without extending the transition delay.
+- Fixed Playlist rows losing their column layout while being dragged, including the track ID, title and duration.
+- Fixed incomplete hover and pressed areas in compound Properties rows and inconsistent active-button colors and label contrast.
+- Fixed alignment and border artifacts in Playlist Random, Shuffle and Auto controls at increased display scaling.
+- Fixed Report a Bug preparation unexpectedly moving keyboard focus away from the operator's current field.
+- Fixed a completed waveform sometimes remaining partially displayed until the item was reselected or the application reopened.
+
+### Notes
+
+- Audio recovery restores the configured output when it returns. It does not restart interrupted playback or automatically switch to a different Windows default device.
+- Audio files analyzed before this update may not show bitrate until they are analyzed again. Existing waveform caches are preserved without automatic reanalysis.
+
 ## Node:Cue 1.1.3
+
+Published: 2026-10-13
 
 ### New Features
 
@@ -16,6 +51,8 @@
 - Fixed waveform file information overlapping the lower border at increased display scaling.
 
 ## Node:Cue 1.1.2
+
+Published: 2026-10-10
 
 ### New Features
 
@@ -36,6 +73,8 @@
 - Existing Linked projects now use independent Play Modes. Their saved Single/Multi settings, transitions and Playback Flow configuration are retained. Interruption between Cuelist and Pads now follows Playback Flow only; review these rules if your project previously relied on Linked Single Play.
 
 ## Node:Cue 1.1.1 - Monitor, Timecode and Playback Refinements
+
+Published: 2026-10-05
 
 Node:Cue 1.1.1 adds private listening and show rehearsal alongside public playback, with new Monitor controls supported by Stream Deck plugin 2.1.
 
@@ -73,6 +112,8 @@ Node:Cue 1.1.1 adds private listening and show rehearsal alongside public playba
 - Stream Deck plugin 2.1 requires Node:Cue 1.1.1 or later and is distributed separately through the official Elgato Marketplace.
 
 ## Node:Cue 1.1.0 - Project Properties and Playlist Random + Stream Deck Plugin 2.0
+
+Published: 2026-09-24
 
 The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). Install it from Marketplace to receive future plugin updates automatically in the Stream Deck app, with automatic updates enabled.
 
@@ -118,6 +159,8 @@ The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato
 
 ## Node:Cue 1.0.2 - Auxiliary Input and Show Operation
 
+Published: 2026-09-14
+
 ### New Features
 
 - Added Auxiliary In to the Playlist: route a physical input or an external application through a compatible virtual audio device into the Playlist bus, with an input selector, source name, level knob and meters.
@@ -153,6 +196,8 @@ The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato
 
 ## Node:Cue 1.0.1 - Live Playback and Reliability
 
+Published: 2026-09-09
+
 ### Improvements
 
 - Improved responsiveness when triggering Pads and Playlist tracks in rapid succession, including during fade transitions.
@@ -171,6 +216,8 @@ The new Node:Cue Stream Deck plugin 2.0 is now available on the official [Elgato
 - Fixed a Primary/Backup project mismatch after replacing a Pad's audio file.
 
 ## Node:Cue 1.0.0 - First Official Release
+
+Published: 2026-09-07
 
 Node:Cue 1.0.0 is the first official release of the application. It brings the complete live-show workflow together in one Windows application: plan a show in the Cuelist, trigger live elements from Pads, keep background music running in the Playlist, and control the whole system from the same operator workspace.
 
@@ -232,6 +279,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.21.0 - Primary/Backup Sync and Live Reliability
 
+Published: 2026-07-16
+
 ### New Features
 
 - Added Primary/Backup Sync for mirroring live operation between two Node:Cue systems over a dedicated IP network. The Backup follows accepted transport and project changes in read-only mode and automatically returns to Standalone operation if the Primary connection is lost.
@@ -263,6 +312,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.20.1 - Show Mode and Interface Reliability
 
+Published: 2026-06-25
+
 ### New Features
 
 - Added Show Mode, a live-operation lock that keeps playback controls, Now Playing, bus monitoring, view switching, and panel controls usable while hiding or blocking editing actions.
@@ -285,6 +336,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 - Fixed dark-mode Stop cue icon contrast in the sidebar.
 
 ## Node:Cue 0.20.0 - Supporter License, MIDI Map, and Live Operation Polish
+
+Published: 2026-06-22
 
 ### New Features
 
@@ -318,6 +371,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.19.2 - Audio Format Support and Interface Polish
 
+Published: 2026-06-12
+
 ### New Features
 
 - Added support for AAC and MP4/M4A audio files.
@@ -337,6 +392,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.19.1 - Fade Transitions and Update Notes
 
+Published: 2026-06-10
+
 ### Improvements
 
 - Added Now Playing waiting cards for playback queued behind a Fade out only transition. The card becomes the normal playback card when the queued item starts.
@@ -351,6 +408,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 - Kept item fade-ins intact during single-play Fade out only and Crossfade transitions for Cuelist, Pads, and Playlist playback.
 
 ## Node:Cue 0.19.0 - MIDI/OSC Cues, Waveform Navigation, and Playback Polish
+
+Published: 2026-06-09
 
 ### New Features
 
@@ -381,6 +440,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.18.31 - Playback Time Display and Device Discovery
 
+Published: 2026-05-27
+
 ### Improvements
 
 - Added a Preferences setting for choosing whether Now Playing cards display remaining time or playhead position.
@@ -392,6 +453,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 - Reapplying System Default now detects when the underlying Windows default output endpoint has changed and reopens the output stream accordingly.
 
 ## Node:Cue 0.18.30 - Cuelist Overlap and Workflow Fixes
+
+Published: 2026-05-26
 
 ### New Features
 
@@ -405,6 +468,8 @@ Node:Cue 1.0.0 is the first official release of the application. It brings the c
 
 ## Node:Cue 0.18.29 - Tooltip Polish
 
+Published: 2026-05-23
+
 This release focuses on clearer native tooltips and a simple way to disable them when they are not needed.
 
 ### Improvements
@@ -413,6 +478,8 @@ This release focuses on clearer native tooltips and a simple way to disable them
 - Standardized native tooltips across Cuelist, Pads, Playlist, sidebar transport controls, and editor normalization controls.
 
 ## Node:Cue 0.18.28 - Initial Public Release
+
+Published: 2026-05-23
 
 Node:Cue is a Windows show-control application designed for live audio playback, cue sequencing, pads, playlists, and professional event operation.
 
