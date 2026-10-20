@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.5
+
+Node:Cue 1.1.5 adds an optional two-column Sidebar, so Pads and bus meters can remain visible together. Place Now Playing and Project Browser across both columns or in either column, and resize the layout to suit your screen.
+
+The update also adds optional Global Pad hotkeys, waveform-follow controls and marker snapping to the playhead. Playback-position feedback, paused transitions and compact Sidebar controls are refined. See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.4
 
 Node:Cue 1.1.4 restores configured audio outputs when they become available again, with clear device and bus warnings. Recovery keeps the configured route and does not automatically switch to another Windows default output.

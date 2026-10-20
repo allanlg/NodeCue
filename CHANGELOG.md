@@ -1,5 +1,38 @@
 # Changelog
 
+## Node:Cue 1.1.5
+
+Published: 2026-10-20
+
+### New Features
+
+- Added an optional two-column Sidebar so two different views can remain visible together, such as Pads beside Bus meters. Resize each column independently and place Now Playing and Project Browser across both columns or in either column. The layout adapts to available width and remembers your arrangement.
+- Added Global hotkeys in Local Preferences > Pads to trigger assigned Pad hotkeys while Node:Cue is in the background. Disabled by default.
+- Added a Follow playhead button to each waveform. Automatic following remains enabled by default and can be turned off to inspect or edit a zoomed waveform during playback.
+- Added magnetic snapping of Start, End, Fade In and Fade Out markers to the playhead when playback is stopped or paused. Hold Shift while dragging to bypass snapping.
+
+### Improvements
+
+- Refined Sidebar Pad layouts, title sizing, hotkey visibility, label contrast and playback information at compact sizes. Added the single/double-click launch control and mouse-wheel page navigation to Sidebar Pads.
+- Added a keyboard indicator to the selection bar when hotkeys are being used elsewhere.
+- Added Hide Project Browser in Local Preferences to give Sidebar views more height. Project Browser remains visible by default and is still accessible from Project Properties.
+- Improved Sidebar view exchanges and Monitor placement stability, tab and Remote View button feedback, and border continuity in both themes and at increased display scaling.
+- Removed the redundant Stop Selected Cue transport buttons and hotkey entry. GO Monitor is now editable in Hotkeys, with Ctrl+Enter assigned by default.
+
+### Fixes
+
+- Restored the five-second Next cue preview for cues launched by Play Next inside Sequence groups.
+- Fixed the waveform playhead remaining at an edited position after resuming paused playback. Improved position accuracy, pause stability and zoomed follow behavior, and reduced changes in waveform density between playback and pause.
+- Fixed paused items incorrectly causing Single Play or Playback Flow transitions, including Group launches and transitions between Cuelist, Pads and Playlist.
+- Fixed stuttering progress displays on main and Sidebar Pads and in Cuelist and Playlist duration cells.
+- Fixed Playlist Name rows briefly flashing when toggled with the ON/OFF button.
+- Fixed decimal Fade In and Fade Out entry with a period or comma, and restored switch animations in Project Properties.
+
+### Notes
+
+- Global hotkeys, waveform following and Sidebar layout are local preferences. Existing projects retain their playback settings.
+- The Sidebar split becomes available when both columns can retain their minimum width. Narrowing the Sidebar temporarily rejoins the views without losing the saved arrangement.
+
 ## Node:Cue 1.1.4
 
 Published: 2026-10-16
