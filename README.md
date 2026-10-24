@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.6
+
+Node:Cue 1.1.6 makes the playback interface lighter and more responsive, including Sidebar resizing and short transitions. Waveforms, playback information and the extended two-column layout remain available.
+
+The new floating Global Pads Hotkeys widget lets you suspend and restore Pad hotkeys while working in another application. The update also adds right-click Pad selection and clearer Playing indicators. See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.5
 
 Node:Cue 1.1.5 adds an optional two-column Sidebar, so Pads and bus meters can remain visible together. Place Now Playing and Project Browser across both columns or in either column, and resize the layout to suit your screen.

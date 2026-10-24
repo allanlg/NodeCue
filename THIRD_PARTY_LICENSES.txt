@@ -15,7 +15,7 @@ Bundled/native components
 - Microsoft WebView2 Runtime - Microsoft Edge WebView2 Runtime terms (provided by Windows/WebView2 runtime, not owned by Node:Cue).
 - Material Design Icons - Apache-2.0 (inline SVG icons `midi-port` and `transit-connection-variant` from Pictogrammers).
 - IBM Plex Sans SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 font candidates retained under `frontend/assets/fonts/ibm-plex-sans/`; the complete license is bundled beside the fonts).
-- Outfit Regular, Medium, SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 fonts; the complete license is bundled beside the fonts under `frontend/assets/fonts/outfit/OFL.txt`).
+- Outfit Regular, Medium, SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 fonts and an uncompressed Medium copy for the native widget; the complete license is bundled beside the fonts under `frontend/assets/fonts/outfit/OFL.txt`).
 
 Main dependency families
 - Tauri / WebView2 - desktop application shell and native window integration.

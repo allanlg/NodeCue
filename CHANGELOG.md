@@ -1,5 +1,30 @@
 # Changelog
 
+## Node:Cue 1.1.6
+
+Published: 2026-10-24
+
+### New Features
+
+- Added a floating Global Pads Hotkeys widget that remains visible above other applications while Node:Cue is in the background. Switch Pad hotkeys off and on without returning to Node:Cue, and see a visual pulse when a shortcut is accepted. The widget can be moved and can be disabled in Local Preferences.
+
+### Improvements
+
+- Reduced CPU overhead from the playback display and improved responsiveness when resizing the Sidebar, including its extended two-column layout. Playback information and animations are preserved.
+- Improved playback display continuity during short crossfades and after heavy simultaneous playback.
+- Moved the Global Pads Hotkeys switch from Local Preferences to the status bar, keeping its actual state visible and directly accessible.
+- Right-click a Pad in the main Pads view to select it without starting playback in either Edit or Show mode, matching the Sidebar.
+- Refined the Playing panel with integrated Playing/Paused counters, the full Paused label in split columns, and animated icons for fade-in, fade-out and crossfade phases in both full-size and ultra-compact cards.
+- Harmonized Group Cue name emphasis between the main Cuelist and Sidebar.
+
+### Fixes
+
+- Fixed the Sidebar Cuelist showing a play icon for a selected cue that was not actually playing.
+
+### Notes
+
+- Global Pads Hotkeys remains a local setting and retains its saved state. The floating widget is enabled by default when the hotkeys are active and hides whenever Node:Cue regains focus.
+
 ## Node:Cue 1.1.5
 
 Published: 2026-10-20
