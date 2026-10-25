@@ -1,0 +1,6 @@
+.osc-copy-command { display:inline-flex; align-items:center; gap:6px; vertical-align:middle; }
+.osc-copy-button { display:inline-flex; align-items:center; justify-content:center; flex:none; width:28px; height:28px; padding:5px; border:1px solid transparent; border-radius:4px; background:transparent; color:var(--muted); cursor:pointer; }
+.osc-copy-button:hover { color:var(--cue); background:var(--panel-2); border-color:var(--line); }
+.osc-copy-button:focus-visible { outline:2px solid var(--cue); outline-offset:2px; }
+.osc-copy-button:active { transform:translateY(1px); }
+.osc-copy-status { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }

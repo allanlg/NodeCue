@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Node:Cue</title>
-  <meta name="description" content="Node:Cue V1.1.6: live-audio cue playback and show control for Windows, with private monitoring, PFL/AFL listening, show simulation and Timecode triggering.">
+  <title>Node:Cue audio playback software for live events on Windows</title>
+  <meta name="description" content="Audio playback for Windows, designed for live events. Build cue sequences, trigger sounds from pads and manage background music with three connected players.">
   <link rel="canonical" href="https://nodecue.app/">
   <link rel="icon" type="image/png" href="nodecue-logo-transparent.png">
   <style>
@@ -273,6 +273,42 @@
     .hero-lead strong {
       color: var(--text);
       font-weight: 650;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin: 20px auto 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.5vw, 18px);
+      line-height: 1.6;
+    }
+
+    .event-experience { padding: 58px 0; border-bottom: 1px solid var(--line); }
+    .event-experience .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: 64px;
+    }
+    .event-experience h2 { margin: 0; font-size: clamp(30px, 3.5vw, 46px); line-height: 1.1; }
+    .event-experience p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+    .workflow-questions { padding: 80px 0; border-top: 1px solid var(--line); }
+    .workflow-questions h2 { max-width: 720px; margin: 0 0 38px; font-size: clamp(34px, 4.5vw, 54px); line-height: 1.08; }
+    .workflow-question {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+      gap: 48px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .workflow-question h3 { margin: 0; font-size: 19px; font-weight: 650; line-height: 1.4; }
+    .workflow-question p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .workflow-answer p + p { margin-top: 18px; }
+    @media (max-width: 700px) {
+      .event-experience .shell, .workflow-question { grid-template-columns: 1fr; gap: 20px; }
+      .event-experience { padding: 42px 0; }
+      .workflow-questions { padding: 54px 0; }
     }
 
     .hero-actions {
@@ -1077,6 +1113,9 @@
         transition-duration: .01ms !important;
       }
     }
+    @media (max-width: 620px) { .site-nav { gap: 8px; } .site-nav a[href="#flow"] { display: none; } }
+    .guide-links { padding-top: 54px; padding-bottom: 54px; border-top: 1px solid var(--line); }
+    .guide-language-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
   </style>
 </head>
 <body>
@@ -1090,6 +1129,7 @@
         <a href="#workflows">Workflows</a>
         <a href="#flow">FLOW</a>
         <a href="#redundancy">Sync</a>
+        <a href="#guides">Guide</a>
         <a href="osc.html">OSC</a>
         <a href="changelog.html">Changelog</a>
         <a href="https://github.com/allanlg/NodeCue">GitHub</a>
@@ -1145,10 +1185,8 @@
             <h1 id="hero-title">Node:Cue</h1>
           </div>
           <p class="system-label"><span class="version-mark">V1.1 Out now</span><span>Only on Windows</span></p>
-          <p class="hero-lead">
-            <strong>Live audio show control.</strong> Plan the show, trigger sounds, and play
-            background music, all from one application.
-          </p>
+          <p class="hero-lead"><strong>Audio playback for Windows,<br>designed for live events.</strong></p>
+          <p class="hero-description">Build a cue sequence, keep sounds ready on pads and manage background music with three connected players. Designed for live sound engineers working with tight preparation times and changing show requirements.</p>
           <div class="hero-actions">
             <a
               class="button primary"
@@ -1161,6 +1199,13 @@
             <a class="button secondary" href="https://buy.polar.sh/polar_cl_3qQV0sqOwt6LvKFfmtN0CWsvdRYKmk0GKHq1a01hk98">Support development</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="event-experience" aria-labelledby="event-experience-title">
+      <div class="shell">
+        <h2 id="event-experience-title">Built from live event experience.</h2>
+        <p>Live events demand quick preparation and room for last-minute changes. Node:Cue brings cue sequences, sound pads and playlists together, so you can prepare the planned parts of a show and respond when things change.</p>
       </div>
     </section>
 
@@ -1194,7 +1239,7 @@
               <span class="workflow-mode">Use / Planned cue sequence</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-cuelist-20260907.png" alt="Node:Cue Cuelist running the Node:Cue Launch Keynote with audio, MIDI, OSC, Stop cues, Now Playing, buses, and waveform editing">
+              <img src="assets/screenshots/nodecue-cuelist-dark-20261025.png" alt="Node:Cue Cuelist in dark mode with a planned cue sequence, Now Playing, Sidebar Pads, bus meters and waveform editing">
               <figcaption>Actual Node:Cue interface / Cuelist</figcaption>
             </figure>
           </article>
@@ -1213,7 +1258,7 @@
               <span class="workflow-mode">Use / Jingles and sound effects</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-pads-20260907.png" alt="Node:Cue Pads with custom images, colors, hotkeys, simultaneous cue and pad playback, bus meters, EQ, compression, and live RTA">
+              <img src="assets/screenshots/nodecue-pads-dark-20261025.png" alt="Node:Cue Pads in dark mode with custom pad images, simultaneous cue and pad playback, Sidebar Cuelist, bus meters, EQ and compression">
               <figcaption>Actual Node:Cue interface / Pads</figcaption>
             </figure>
           </article>
@@ -1234,7 +1279,7 @@
               <span class="workflow-mode">Use / Background music</span>
             </div>
             <figure class="workflow-shot">
-              <img src="assets/screenshots/nodecue-playlist-20260907.png" alt="Node:Cue Playlist playing Quiet Machines with auto-trim and overlap controls, Now Playing, bus meters, waveform, EQ, and compression">
+              <img src="assets/screenshots/nodecue-playlist-dark-20261025.png" alt="Node:Cue Playlist in dark mode playing Operator Dream, with auto-trim and overlap controls, Sidebar Cuelist, bus meters, waveform, EQ and compression">
               <figcaption>Actual Node:Cue interface / Playlist</figcaption>
             </figure>
           </article>
@@ -1388,6 +1433,27 @@
       </div>
     </section>
 
+    <section class="workflow-questions" id="your-workflow" aria-labelledby="workflow-questions-title">
+      <div class="shell">
+        <h2 id="workflow-questions-title">Is Node:Cue right for your workflow?</h2>
+        <article class="workflow-question">
+          <h3>Who is Node:Cue designed for?</h3>
+          <p>Node:Cue is designed for live sound engineers who need flexible audio playback for live events. Set up smooth, automatic transitions quickly without configuring every file individually, or fine-tune individual cues when the show calls for precise timing and detailed settings. It adapts to both tight schedules and carefully programmed productions.</p>
+        </article>
+        <article class="workflow-question">
+          <h3>Why combine a Cuelist, Pads and Playlists?</h3>
+          <p>The three players work together through configurable transition rules. Launch a jingle from a Pad and fade out the background Playlist, then return to the Playlist afterwards. A Cuelist cue can stop the Playlist, or a Pad can interrupt Cuelist playback. Choose what stops, what fades and what keeps playing, so you can follow a planned sequence and react to the event as it happens.</p>
+        </article>
+        <article class="workflow-question">
+          <h3>Is Node:Cue an alternative to QLab?</h3>
+          <div class="workflow-answer">
+            <p>Yes, for audio playback on Windows. Node:Cue grew from the need for a QLab-like audio tool on Windows, with a different approach shaped by live event workflows. Its connected Cuelist, Pads and Playlist players bring planned sequences, spontaneous sound triggers and background music into one application.</p>
+            <p>Node:Cue focuses on audio playback. It does not replace QLab for uses such as video playback or lighting control.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="support-band" aria-labelledby="support-title">
       <div class="shell">
         <div class="support-copy">
@@ -1401,9 +1467,9 @@
 
     <section class="download-band" aria-labelledby="download-title">
       <div class="shell">
-        <p class="section-kicker">Node:Cue V1.1.6 / Windows x64</p>
+        <p class="section-kicker">Node:Cue V1.1.7 / Windows x64</p>
         <h2 id="download-title">Node:Cue V1 is ready for your next show.</h2>
-        <p>Download the official Windows installer for Node:Cue V1.1.6.</p>
+        <p>Download the official Windows installer for Node:Cue V1.1.7.</p>
         <a
           class="button primary"
           href="https://github.com/allanlg/NodeCue/releases/latest"
@@ -1415,6 +1481,11 @@
       </div>
     </section>
   </main>
+
+  <section class="shell guide-links" id="guides" aria-labelledby="guides-title">
+    <header class="section-heading"><h2 id="guides-title">User guide</h2><p>Read the complete Node:Cue user guide in English or French.</p></header>
+    <div class="guide-language-links"><a class="button secondary" href="guide/en/index.html" lang="en" hreflang="en">English</a><a class="button secondary" href="guide/fr/index.html" lang="fr" hreflang="fr">Français</a></div>
+  </section>
 
   <footer class="site-footer">
     <div class="shell">

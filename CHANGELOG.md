@@ -1,5 +1,25 @@
 # Changelog
 
+## Node:Cue 1.1.7
+
+Published: 2026-10-25
+
+### New Features
+
+- Added OSC commands and updated the OSC Command Reference.
+- Added French and English user guides on the website.
+
+### Improvements
+
+- Standardized OSC fade durations to a range of 0 to 60000 milliseconds (60 seconds), including AUX. An omitted duration uses the configured duration, capped at 60 seconds.
+- Standardized Project Browser list IDs: CL for Cuelists, PS for Pad Sets and PL for Playlists. Older projects migrate to the new prefixes while preserving their lists and contents.
+- Made Enter (Go), Ctrl+Enter (Go Monitor), Space (Pause / Resume), Tab (Sidebar), Ctrl+D (Deselect), Delete and Ctrl+G (Group selected cues) fixed shortcuts. Alt+Enter remains fixed.
+
+### Compatibility Notes
+
+- OSC addresses now have one supported spelling, with compound actions written without underscores, such as stopall, fadeout and altgo. Previous aliases, including panic and go_id variants, have been removed. Existing controller configurations may need updating against the OSC Command Reference.
+- Previous custom assignments for the newly fixed keyboard actions no longer apply.
+
 ## Node:Cue 1.1.6
 
 Published: 2026-10-24

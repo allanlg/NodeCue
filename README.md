@@ -16,6 +16,10 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.1.7
+
+Node:Cue 1.1.7 adds OSC commands and updates the [OSC Command Reference](OSC_COMMANDS.md). French and English user guides are now available on the [website](https://nodecue.app/#guides). See [the changelog](CHANGELOG.md).
+
 ## Node:Cue 1.1.6
 
 Node:Cue 1.1.6 makes the playback interface lighter and more responsive, including Sidebar resizing and short transitions. Waveforms, playback information and the extended two-column layout remain available.

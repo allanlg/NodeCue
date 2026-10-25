@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitor</title>
+  <link rel="stylesheet" href="monitor-demo.css">
+  <script src="monitor-demo.js" defer></script>
+</head>
+<body>
+  <section class="panel" aria-label="Monitor">
+    <header><strong>MONITOR</strong><button type="button" class="close" aria-label="Close Monitor" disabled>×</button></header>
+    <div class="listening">
+      <label class="switch-label">BUS MONITORING <input id="listening" type="checkbox" aria-label="Bus Monitoring"><span class="switch" aria-hidden="true"></span></label>
+      <div class="listening-controls">
+        <div class="sources">
+          <div class="source-heading"><span>SOURCE</span><div class="tap" aria-label="Monitoring position"><button type="button" data-tap="afl" aria-pressed="true" title="After bus fader and mute">AFL</button><button type="button" data-tap="pfl" aria-pressed="false" title="Before bus fader and mute">PFL</button></div></div>
+          <div class="source-grid"><button type="button" data-source="cuelist" aria-pressed="false">CUELIST</button><button type="button" data-source="pads" aria-pressed="false">PADS</button><button type="button" data-source="playlist" aria-pressed="false">PLAYLIST</button><button type="button" data-source="all" aria-pressed="true">ALL BUSES</button></div>
+        </div>
+        <div class="gain"><label for="level">BUS LEVEL</label><button id="level" type="button" class="knob" role="slider" aria-label="Bus Level" aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-18" aria-orientation="vertical" value="-18" title="Bus monitoring level"><span class="knob-indicator" aria-hidden="true"></span></button><output for="level">-18.0 dB</output></div>
+      </div>
+    </div>
+    <div class="preview-controls">
+      <label>PREVIEW <span class="info" tabindex="0" title="Single item: Plays the selected item once. Show simulation: Uses Flow and Play Mode, including transitions and multi-play.">ⓘ</span><select id="preview" aria-label="Preview"><option value="single">Single item</option><option value="scenario">Show simulation</option></select></label>
+      <label>TIMING <span class="info" tabindex="0" title="Skip waits: Skips Pre-wait and Post-wait. Follow timing: Uses Pre-wait and Post-wait.">ⓘ</span><select id="timing" aria-label="Timing"><option value="skip">Skip waits</option><option value="follow">Follow timing</option></select></label>
+      <div id="midi-field"><span>MIDI / OSC <span class="info" tabindex="0" title="Arms MIDI / OSC output for a Show simulation session.">ⓘ</span></span><label class="send"><input id="send" type="checkbox" aria-label="Send MIDI / OSC" disabled>Send MIDI / OSC</label></div>
+    </div>
+    <footer><span>OUTPUT</span> WASAPI · USB headphones · OUT 1-2</footer>
+  </section>
+</body>
+</html>
