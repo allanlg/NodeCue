@@ -18,7 +18,7 @@ Installer binaries are distributed as GitHub Release assets. They are not commit
 
 ## Node:Cue 1.1.7
 
-Node:Cue 1.1.7 adds OSC commands and updates the [OSC Command Reference](OSC_COMMANDS.md). French and English user guides are now available on the [website](https://nodecue.app/#guides). See [the changelog](CHANGELOG.md).
+Node:Cue 1.1.7 adds OSC commands and updates the [OSC Command Reference](OSC_COMMANDS.md). French and English user guides are now available on the [website](https://nodecue.app/guide/en/index.html). See [the changelog](CHANGELOG.md).
 
 ## Node:Cue 1.1.6
 

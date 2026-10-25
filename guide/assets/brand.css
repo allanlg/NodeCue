@@ -1,0 +1,29 @@
+/* Shared Node:Cue lockup, scaled from the homepage hero typography and alignment. */
+.nodecue-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .2em;
+  color: inherit;
+  font: 700 22px/.86 "Bahnschrift", "DIN Alternate", "Arial Narrow", sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nodecue-brand .nodecue-brand-mark {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.19em;
+  height: 1.19em;
+  margin: 0;
+  object-fit: contain;
+  transform: translateY(-.07143em);
+}
+.nodecue-brand .nodecue-brand-name {
+  font: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+}
+@media (max-width: 620px) {
+  .nodecue-brand { font-size: 20px; }
+}

@@ -109,6 +109,10 @@
       text-transform: uppercase;
     }
 
+    .site-nav-group { display: flex; align-items: center; gap: 22px; }
+    .site-nav-sections { color: var(--muted); font-size: 11px; font-weight: 500; }
+    .site-nav-pages { padding-left: 24px; border-left: 1px solid var(--line-strong); color: var(--text); }
+
     .site-nav a {
       position: relative;
       text-decoration: none;
@@ -1058,6 +1062,8 @@
     @media (max-width: 900px) {
       .shell { width: min(100% - 30px, 760px); }
       .site-nav { gap: 14px; }
+      .site-nav-group { gap: 14px; }
+      .site-nav-pages { padding-left: 14px; }
       .hero-copy { width: 100%; }
       .section-heading { grid-template-columns: 1fr; gap: 25px; }
       .integration-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1077,15 +1083,16 @@
     }
 
     @media (max-width: 620px) {
-      .site-header { height: 62px; }
-      .site-header .shell { gap: 14px; }
+      .site-header { height: 136px; }
+      .site-header .shell { flex-direction: column; align-items: stretch; justify-content: center; gap: 14px; }
+      .site-header .brand { align-self: flex-start; }
       .brand { font-size: 16px; }
       .brand img { width: 24px; height: 24px; }
-      .site-nav a:first-child,
-      .site-nav a:last-child { display: none; }
-      .site-nav { gap: 12px; font-size: 10px; }
-      .hero { padding-top: 92px; min-height: auto; }
-      .disco-grid { inset: 62px 0 0; }
+      .site-nav { flex-direction: column; align-items: stretch; gap: 12px; font-size: 11px; }
+      .site-nav-group { gap: 20px; }
+      .site-nav-pages { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+      .hero { padding-top: 166px; min-height: auto; }
+      .disco-grid { inset: 136px 0 0; }
       h1 { font-size: clamp(56px, 20.5vw, 80px); }
       .hero-lead { font-size: 18px; }
       .hero-actions { align-items: stretch; flex-direction: column; }
@@ -1113,26 +1120,28 @@
         transition-duration: .01ms !important;
       }
     }
-    @media (max-width: 620px) { .site-nav { gap: 8px; } .site-nav a[href="#flow"] { display: none; } }
-    .guide-links { padding-top: 54px; padding-bottom: 54px; border-top: 1px solid var(--line); }
-    .guide-language-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
   </style>
+  <link rel="stylesheet" href="assets/brand.css">
 </head>
 <body>
   <header class="site-header">
     <div class="shell">
-      <a class="brand" href="#top" aria-label="Node:Cue home">
-        <img src="nodecue-logo-transparent.png" alt="" aria-hidden="true">
-        <span>Node:Cue</span>
+      <a class="brand nodecue-brand" href="#top" aria-label="Node:Cue home">
+        <img class="nodecue-brand-mark" src="nodecue-logo-transparent.png" alt="" aria-hidden="true">
+        <span class="nodecue-brand-name">Node:Cue</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#workflows">Workflows</a>
-        <a href="#flow">FLOW</a>
-        <a href="#redundancy">Sync</a>
-        <a href="#guides">Guide</a>
-        <a href="osc.html">OSC</a>
-        <a href="changelog.html">Changelog</a>
-        <a href="https://github.com/allanlg/NodeCue">GitHub</a>
+        <div class="site-nav-group site-nav-sections" role="group" aria-label="On this page">
+          <a href="#workflows">Workflows</a>
+          <a href="#flow">FLOW</a>
+          <a href="#redundancy">Sync</a>
+        </div>
+        <div class="site-nav-group site-nav-pages" role="group" aria-label="Documentation and links">
+          <a href="guide/en/index.html" target="_blank" rel="noopener">Guide</a>
+          <a href="osc.html">OSC</a>
+          <a href="changelog.html">Changelog</a>
+          <a href="https://github.com/allanlg/NodeCue">GitHub</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -1482,10 +1491,6 @@
     </section>
   </main>
 
-  <section class="shell guide-links" id="guides" aria-labelledby="guides-title">
-    <header class="section-heading"><h2 id="guides-title">User guide</h2><p>Read the complete Node:Cue user guide in English or French.</p></header>
-    <div class="guide-language-links"><a class="button secondary" href="guide/en/index.html" lang="en" hreflang="en">English</a><a class="button secondary" href="guide/fr/index.html" lang="fr" hreflang="fr">Français</a></div>
-  </section>
 
   <footer class="site-footer">
     <div class="shell">
