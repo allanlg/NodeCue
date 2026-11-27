@@ -130,6 +130,40 @@
 <tr><td>Fade out Cuelist playback</td><td><code>/nodecue/cuelist/fadeout</code></td><td>Optional fade duration in milliseconds (integer 0-60000)</td></tr>
 <tr><td>Return the selected audio cue to its effective start</td><td><code>/nodecue/cuelist/rewind</code></td><td>None</td></tr>
 </tbody></table></div>
+<h3>Markers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>OSC address</th>
+<th>Arguments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go to the next marker</td>
+<td><code>/nodecue/cuelist/marker/next</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Go to the previous marker</td>
+<td><code>/nodecue/cuelist/marker/previous</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Add a marker at the playhead</td>
+<td><code>/nodecue/cuelist/marker/add</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Go to a marker</td>
+<td><code>/nodecue/cuelist/marker/go/{id}/{marker}</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>Next, Previous and Add act on the audio cue displayed in the Cuelist editor. Add is rejected in Show mode.</p>
+<p><code>{id}</code> is the cue ID in the opened Cuelist. <code>{marker}</code> is the marker's OSC name. Copy the complete address from the marker's OSC settings. The marker setting &quot;When marker is triggered&quot; determines whether playback starts.</p>
 </section>
 <section id="pads"><h2>Pads</h2>
 <div class="table-wrap"><table><thead><tr><th>Action</th><th>OSC address</th><th>Arguments</th></tr></thead><tbody>
@@ -160,6 +194,76 @@
 <tr><td>Fade out Playlist playback</td><td><code>/nodecue/playlist/fadeout</code></td><td>Optional fade duration in milliseconds (integer 0-60000)</td></tr>
 <tr><td>Return the selected audio track to its effective start</td><td><code>/nodecue/playlist/rewind</code></td><td>None</td></tr>
 </tbody></table></div>
+<h3>Dual Playlist</h3>
+<p>Replace <code>{target}</code> with <code>a</code> (Playlist A), <code>b</code> (Playlist B) or <code>both</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>OSC address</th>
+<th>Arguments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go on the selected track or AUX</td>
+<td><code>/nodecue/playlist/{target}/go</code></td>
+<td>Optional <code>alt</code> (string, value: alt)</td>
+</tr>
+<tr>
+<td>Go on a track by ID</td>
+<td><code>/nodecue/playlist/{target}/go/{id}</code></td>
+<td>Optional <code>alt</code> (string, value: alt)</td>
+</tr>
+<tr>
+<td>Alt Go on the selected track or AUX</td>
+<td><code>/nodecue/playlist/{target}/altgo</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Alt Go on a track by ID</td>
+<td><code>/nodecue/playlist/{target}/altgo/{id}</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Pause / resume playback</td>
+<td><code>/nodecue/playlist/{target}/pause</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Resume playback</td>
+<td><code>/nodecue/playlist/{target}/resume</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Stop playback</td>
+<td><code>/nodecue/playlist/{target}/stop</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Select the previous track</td>
+<td><code>/nodecue/playlist/{target}/back</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Select the next track</td>
+<td><code>/nodecue/playlist/{target}/next</code></td>
+<td>None</td>
+</tr>
+<tr>
+<td>Fade out playback</td>
+<td><code>/nodecue/playlist/{target}/fadeout</code></td>
+<td>Optional fade duration in milliseconds (integer 0-60000)</td>
+</tr>
+<tr>
+<td>Return the selected track to its effective start</td>
+<td><code>/nodecue/playlist/{target}/rewind</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>When Dual Playlist is enabled, Playlist addresses without a target act on Playlist A. <code>b</code> is rejected when Playlist B has no playlist. With <code>both</code>, an ID must exist in each loaded playlist.</p>
+<p>In Exclusive mode, Go, Next and Back sent to <code>both</code> act on the panel that is playing, or on Playlist A when neither is playing.</p>
 </section>
 <section id="auxiliary"><h2>Auxiliary In</h2>
 <p>These commands target AUX directly, regardless of the selected Playlist track. AUX Stop/Fade Out close only AUX; they do not stop a Playlist track.</p>
@@ -186,10 +290,11 @@
 <section id="bus"><h2>Bus</h2>
 <p>OSC bus IDs:</p>
 <ul>
+<li><code>0</code>: Monitor bus</li>
 <li><code>1</code>: Cuelist bus</li>
 <li><code>2</code>: Pads bus</li>
-<li><code>3</code>: Playlist bus</li>
-<li><code>4</code>: Monitor bus</li>
+<li><code>3</code>: Playlist 1 bus</li>
+<li><code>4</code>: Playlist 2 bus</li>
 </ul>
 <div class="table-wrap"><table><thead><tr><th>Action</th><th>OSC address</th><th>Arguments</th></tr></thead><tbody>
 <tr><td>Toggle bus mute</td><td><code>/nodecue/bus/mute/{id}</code></td><td>None</td></tr>
@@ -243,7 +348,7 @@ Argument: 3000</code></pre>
 <pre><code>Address: /nodecue/cuelist/go/12.5
 Argument: alt</code></pre>
 <p>Set Monitor to -12 dB:</p>
-<pre><code>Address: /nodecue/bus/leveldb/4
+<pre><code>Address: /nodecue/bus/leveldb/0
 Argument: -12</code></pre>
 <p>Set AUX to silence without closing it:</p>
 <pre><code>Address: /nodecue/aux/leveldb

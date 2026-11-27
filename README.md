@@ -16,6 +16,12 @@ For Windows, download the latest `NodeCue_<version>_x64-setup.exe` installer fro
 
 Installer binaries are distributed as GitHub Release assets. They are not committed directly to this repository.
 
+## Node:Cue 1.2.0
+
+Node:Cue 1.2.0 adds markers on audio cues, Dual Playlist with a second Playlist bus, and Go To, Time and Note cues. Markers and both playlists can be controlled by MIDI, OSC and Stream Deck plugin 2.2.
+
+Projects saved with 1.2.0 cannot be opened in earlier versions, and the OSC ID of the Monitor bus changes from 4 to 0. See [the changelog](CHANGELOG.md) before updating.
+
 ## Node:Cue 1.1.7
 
 Node:Cue 1.1.7 adds OSC commands and updates the [OSC Command Reference](OSC_COMMANDS.md). French and English user guides are now available on the [website](https://nodecue.app/guide/en/index.html). See [the changelog](CHANGELOG.md).
@@ -60,7 +66,7 @@ The update also adds Timecode trigger names and colors, remaining-play indicator
 
 The official Stream Deck plugin is available on [Elgato Marketplace](https://marketplace.elgato.com/product/nodecue-80402450-4deb-4399-9f52-6a81f0e7c088). In Node:Cue, **Install Stream Deck plugin** opens that page. The plugin is no longer bundled with the application installer.
 
-Plugin 2.1 adds Monitor/PFL, Capture Trigger and Return Playhead to Start controls for Node:Cue 1.1.1 or later. The application and plugin have separate version numbers and update channels.
+Plugin 2.2 adds Marker and Dual Playlist controls and requires Node:Cue 1.2.0. The application and plugin have separate version numbers and update channels.
 
 ## Updates
 

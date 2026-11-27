@@ -1,15 +1,29 @@
-Node:Cue License
+Node:Cue | End User License Agreement
 
-Copyright (c) 2026 Allan Le Guyader. All rights reserved.
+Copyright © 2026 Allan Le Guyader. All rights reserved.
 
-Node:Cue is free to use and may be shared for free.
+1. Free use and the Supporter license
 
-You may use Node:Cue for personal, artistic, educational, and professional show-control work.
+You may use Node:Cue free of charge, for personal or professional use, including paid work and use within a company, an association or any other organisation. For example, a freelance sound engineer, a venue, a production company or a school may use Node:Cue free of charge.
 
-The optional official supporter license supports development and may remove in-app supporter reminders. It does not restrict the free use rights above and does not grant resale, sublicensing, modification, or commercial exploitation rights over Node:Cue itself.
+The optional Supporter license helps fund development and removes support reminders on activated computers. It is perpetual and lets you keep up to two computers activated at the same time. You can move activations between computers.
 
-You may not sell, rent, sublicense, repackage, modify, or commercially exploit Node:Cue itself.
+2. Acceptance, use and distribution
 
-The Node:Cue name, source code, binaries, design, and documentation remain the intellectual property of Allan Le Guyader.
+This agreement applies to the version of Node:Cue it accompanies. You must accept it before installing that version or updating to it. If you accept on behalf of an organisation, you must be authorised to represent it.
 
-Third-party components bundled with Node:Cue remain under their own licenses. See THIRD_PARTY_LICENSES.txt for third-party notices and additional component-specific rights.
+All show operation features remain available regardless of activation status. You may share the original official installer free of charge.
+
+3. Intellectual property and restrictions
+
+Allan Le Guyader retains the intellectual property rights he holds in Node:Cue and its documentation, including its code, interface and graphics. This agreement grants permission to use the software under its terms. You retain any rights you hold in your projects, audio files and other content used with Node:Cue.
+
+Except where applicable law or a third-party license permits it, you must obtain prior permission to sell, rent, sublicense, repackage or modify the software, distribute a modified version, or remove copyright or license notices. The same rule applies to reverse engineering, decompiling or disassembling the software, or attempting to recover its source code. It also applies to bypassing license activation or verification to obtain the benefits of a paid license.
+
+Your statutory rights remain in effect, including, where the relevant legal conditions are met, making a necessary backup copy, observing, studying or testing the operation or security of the software, and decompiling parts of it when necessary for interoperability with independently created software. Third-party components are governed by their own licenses, listed in THIRD_PARTY_LICENSES.txt.
+
+4. Activation and contact
+
+Node:Cue uses Polar for license activation. When you activate a license, Node:Cue sends Polar the license key, an installation identifier, an activation label and the software version. Windows encrypts the saved key. Node:Cue sends the key and the activation identifier to Polar when it verifies the license at startup or releases an activation.
+
+Your statutory rights and guarantees remain in effect. For licensing enquiries, contact support@nodecue.app.

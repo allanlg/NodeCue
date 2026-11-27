@@ -14,6 +14,7 @@ Bundled/native components
 - libsoxr 0.1.3 - LGPL-2.1-or-later (distributed as the dynamically linked `soxr.dll`; the installed application also includes `licenses/libsoxr/LICENCE` and `licenses/libsoxr/COPYING.LGPL`). Users may replace `soxr.dll` with a compatible modified version.
 - Microsoft WebView2 Runtime - Microsoft Edge WebView2 Runtime terms (provided by Windows/WebView2 runtime, not owned by Node:Cue).
 - Material Design Icons - Apache-2.0 (inline SVG icons `midi-port` and `transit-connection-variant` from Pictogrammers).
+- Lucide Icons - ISC (inline SVG icons `shuffle` and `rotate-cw` used in the Playlist controls).
 - IBM Plex Sans SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 font candidates retained under `frontend/assets/fonts/ibm-plex-sans/`; the complete license is bundled beside the fonts).
 - Outfit Regular, Medium, SemiBold and Bold - SIL Open Font License 1.1 (embedded WOFF2 fonts and an uncompressed Medium copy for the native widget; the complete license is bundled beside the fonts under `frontend/assets/fonts/outfit/OFL.txt`).
 
@@ -755,6 +756,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Lucide Icons — ISC
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Notes
 - This inventory is a distribution notice, not a replacement for the full upstream license texts.

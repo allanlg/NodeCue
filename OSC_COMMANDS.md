@@ -40,6 +40,20 @@ These commands control only the active view, like its playback controls.
 | Select the next cue | `/nodecue/cuelist/next` | None |
 | Fade out Cuelist playback | `/nodecue/cuelist/fadeout` | Optional fade duration in milliseconds (integer 0-60000) |
 | Return the selected audio cue to its effective start | `/nodecue/cuelist/rewind` | None |
+
+### Markers
+
+| Action | OSC address | Arguments |
+| --- | --- | --- |
+| Go to the next marker | `/nodecue/cuelist/marker/next` | None |
+| Go to the previous marker | `/nodecue/cuelist/marker/previous` | None |
+| Add a marker at the playhead | `/nodecue/cuelist/marker/add` | None |
+| Go to a marker | `/nodecue/cuelist/marker/go/{id}/{marker}` | None |
+
+Next, Previous and Add act on the audio cue displayed in the Cuelist editor. Add is rejected in Show mode.
+
+`{id}` is the cue ID in the opened Cuelist. `{marker}` is the marker's OSC name. Copy the complete address from the marker's OSC settings. The marker setting "When marker is triggered" determines whether playback starts.
+
 ## Pads
 
 | Action | OSC address | Arguments |
@@ -70,6 +84,29 @@ These commands control only the active view, like its playback controls.
 | Select the next track | `/nodecue/playlist/next` | None |
 | Fade out Playlist playback | `/nodecue/playlist/fadeout` | Optional fade duration in milliseconds (integer 0-60000) |
 | Return the selected audio track to its effective start | `/nodecue/playlist/rewind` | None |
+
+### Dual Playlist
+
+Replace `{target}` with `a` (Playlist A), `b` (Playlist B) or `both`.
+
+| Action | OSC address | Arguments |
+| --- | --- | --- |
+| Go on the selected track or AUX | `/nodecue/playlist/{target}/go` | Optional `alt` (string, value: alt) |
+| Go on a track by ID | `/nodecue/playlist/{target}/go/{id}` | Optional `alt` (string, value: alt) |
+| Alt Go on the selected track or AUX | `/nodecue/playlist/{target}/altgo` | None |
+| Alt Go on a track by ID | `/nodecue/playlist/{target}/altgo/{id}` | None |
+| Pause / resume playback | `/nodecue/playlist/{target}/pause` | None |
+| Resume playback | `/nodecue/playlist/{target}/resume` | None |
+| Stop playback | `/nodecue/playlist/{target}/stop` | None |
+| Select the previous track | `/nodecue/playlist/{target}/back` | None |
+| Select the next track | `/nodecue/playlist/{target}/next` | None |
+| Fade out playback | `/nodecue/playlist/{target}/fadeout` | Optional fade duration in milliseconds (integer 0-60000) |
+| Return the selected track to its effective start | `/nodecue/playlist/{target}/rewind` | None |
+
+When Dual Playlist is enabled, Playlist addresses without a target act on Playlist A. `b` is rejected when Playlist B has no playlist. With `both`, an ID must exist in each loaded playlist.
+
+In Exclusive mode, Go, Next and Back sent to `both` act on the panel that is playing, or on Playlist A when neither is playing.
+
 ## Auxiliary In
 
 These commands target AUX directly, regardless of the selected Playlist track.
@@ -113,10 +150,11 @@ Global Stop All and Global Fade Out affect all playback in the project, includin
 
 OSC bus IDs:
 
+- `0`: Monitor bus
 - `1`: Cuelist bus
 - `2`: Pads bus
-- `3`: Playlist bus
-- `4`: Monitor bus
+- `3`: Playlist 1 bus
+- `4`: Playlist 2 bus
 
 | Action | OSC address | Arguments |
 | --- | --- | --- |
@@ -209,7 +247,7 @@ Argument: alt
 Set Monitor to -12 dB:
 
 ```text
-Address: /nodecue/bus/leveldb/4
+Address: /nodecue/bus/leveldb/0
 Argument: -12
 ```
 

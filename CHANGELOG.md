@@ -1,5 +1,48 @@
 # Changelog
 
+## Node:Cue 1.2.0
+
+Published: 2026-11-27
+
+### New Features
+
+- Added markers to audio cues. Place them on the waveform, name and color them, then go to them during the show from the keyboard, MIDI, OSC, Timecode or Stream Deck. Each marker starts playback at its position or moves the playhead without playing.
+- Added Marker List, a window bringing together the markers of a Cuelist to edit their settings, find their cues and delete several at once.
+- Added Dual Playlist to display two playlists side by side, each with its own controls. Play them together, or let one fade out the other. Tracks can be moved between panels, and Auxiliary In can be launched separately in each.
+- Added a second Playlist output bus. Each playlist can be assigned to Playlist 1 or Playlist 2, with its own fader, mute, outputs and Monitor source.
+- Added Go To cues to move the selection to another cue without launching it.
+- Added Time Cues to count down, wait until a set time or display a clock, with the option to continue to the next cue.
+- Added Note Cues for operator instructions in the Cuelist, with formatted text, two columns and links.
+- Added OSC commands for markers, Playlist A and B and the Playlist 2 bus. See the [OSC Command Reference](https://nodecue.app/osc.html).
+- Stream Deck plugin 2.2 adds a Marker action, Playlist A and B targets and Playlist 1 and 2 bus mute. It requires Node:Cue 1.2.0.
+
+### Improvements
+
+- Group Cues without audio now follow the Apply Flow to control cues setting when they contain Stop, MIDI or OSC cues, instead of always triggering Playback Flow.
+- Stop cues now use a Target ID field, as Go To cues do.
+- Timecode triggers can target the start of a cue or one of its markers.
+- Project Health in the title bar now indicates when a project is not fully portable.
+- Added Clear all MIDI mappings to MIDI Map, with confirmation.
+- Durations now separate fractions of a second with a period, such as 02:51.54.
+- Operator messages are now kept in Logs instead of appearing temporarily over the interface.
+- Playback is more stable when the computer is busy, reducing the risk of audio dropouts.
+- Session logs now record what triggered each command: keyboard, click, Stream Deck, OSC, MIDI, Timecode or Sync.
+
+### Fixes
+
+- Node:Cue no longer crashes with some ASIO drivers after a long session or when the audio device is reopened. If an ASIO device cannot start, Node:Cue now starts with WASAPI and keeps your ASIO choice for the next launch.
+- Node:Cue now starts on a computer without the Microsoft Visual C++ Redistributable, which could cause a "VCRUNTIME140.dll was not found" error.
+
+### Licensing
+
+- The license agreement is now available in English and French, and must be accepted when installing or updating. Node:Cue remains free to use, including for professional work and in companies. See the [license agreement](https://nodecue.app/eula.html).
+- The application shows the active Supporter license and its holder. A license that cannot be verified offline shows a reminder, and playback and show operation remain available.
+
+### Compatibility Notes
+
+- Projects saved with Node:Cue 1.2.0 cannot be opened in earlier versions. A copy of the previous project state is kept in its BACKUPS folder the first time an older project is saved. On a Primary and Backup pair, update both computers.
+- OSC bus IDs have changed: Monitor is now ID 0, and ID 4 is now Playlist 2. Update controllers using /nodecue/bus/mute/4, /nodecue/bus/level/4 or /nodecue/bus/leveldb/4 for Monitor, otherwise they will control Playlist 2.
+
 ## Node:Cue 1.1.7
 
 Published: 2026-10-25
